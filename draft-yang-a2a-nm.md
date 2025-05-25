@@ -45,10 +45,15 @@ TODO Abstract
 TODO Introduction
 
 
-# Conventions and Definitions
+# Terminology & Notation Conventions
 
 {::boilerplate bcp14-tagged}
 
+# Problem Statemtent
+
+# Operational Consideration
+
+# Conclusion
 
 # Security Considerations
 
@@ -62,7 +67,6 @@ This document has no IANA actions.
 
 --- back
 
-# Acknowledgments
-{:numbered="false"}
+# Reference
 
 TODO acknowledge.
