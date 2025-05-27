@@ -42,7 +42,21 @@ TODO Abstract
 
 # Introduction
 
-TODO Introduction
+With the advancement of large language models (LLMs), the concept of AI agents has gradually attracted significant attention. An AI agent refers to a category of software applications that utilizes LLMs to interact with users or other agents and accomplish specific tasks. Some examples of AI agents are:
+
+- A fitness AI agent that recommends suitable physical activities for users based on users' health conditions, geographical locations, weather, and wind factors.
+- A multimodal AI agent that collaborates with domain-specific agents to complete diverse tasks such as translation, image generation, and video production."
+
+Fundamentally, an AI agent is developed based on large language models (LLMs), with its prompt engineering varying according to its specialized domain. Sophisticated prompts typically incorporate:
+
+- Domain-specific documentation
+- Available tools and capabilities
+- Function callings (in some cases)
+- User-provided inputs
+
+Based on this comprehensive prompt structure, the LLM dynamically determines subsequent actions, which may involve continuing dialogue with users to gather additional information, invoking appropriate tools to execute specific functions, or initiating interactions with other specialized agents.
+
+The aforementioned examples demonstrate that AI agents are typically domain-specific, which raises an important challenge: users may request an agent to perform tasks beyond its specialized capabilities. In such cases, a more effective solution involves enabling the current agent to communicate with other agents and delegate tasks to better-suited counterparts.
 
 
 # Conventions and Definitions
@@ -80,8 +94,6 @@ often require engineers to:
 - Act as human intermediaries for inter-device communication
 
 This approach introduces significant operational inefficiencies and suboptimal human resource utilization.
-
-# Problem Statemtent
 
 # Operational Consideration
 
