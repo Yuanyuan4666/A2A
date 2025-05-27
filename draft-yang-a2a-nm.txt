@@ -4,8 +4,8 @@
 
 Network Working Group                                       Yuanyuan4666
 Internet-Draft                                    Your Organization Here
-Intended status: Informational                               25 May 2025
-Expires: 26 November 2025
+Intended status: Informational                               27 May 2025
+Expires: 28 November 2025
 
 
                                   A2A
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 November 2025.
+   This Internet-Draft will expire on 28 November 2025.
 
 Copyright Notice
 
@@ -61,13 +61,17 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-   2.  Terminology & Notation Conventions
-   3.  Problem Statemtent
-   4.  Operational Consideration
-   5.  Conclusion
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Normative References
+   2.  Conventions and Definitions
+   3.  Overview of key challenges for the network management
+     3.1.  Limitations of Unified AI Agents in Heterogeneous NETCONF/
+           YANG Environments
+     3.2.  Operational Inefficiencies in Multi-Device Management
+           Scenarios
+   4.  Problem Statemtent
+   5.  Operational Consideration
+   6.  Conclusion
+   7.  Security Considerations
+   8.  IANA Considerations
    Appendix A.  Reference
    Author's Address
 
@@ -75,38 +79,79 @@ Table of Contents
 
    TODO Introduction
 
-2.  Terminology & Notation Conventions
+2.  Conventions and Definitions
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
+   *  AI Agent: A software system or program that is capable of
+      autonomously performing goals and tasks on behalf of a user or
+      another system.
 
-3.  Problem Statemtent
+   *  Agent Card: A common metadata file that describes an agent's
+      capabilities, skills, interface URLs, and authentication
+      requirements.  Clients discover and identify the agent through
+      this file.
 
-4.  Operational Consideration
+   *  A2A server: An AI agent that receives requests and performs tasks
 
-5.  Conclusion
+   *  A2A client: An AI agent that sends requests to servers
 
-6.  Security Considerations
+3.  Overview of key challenges for the network management
+
+   In large scale network management environment, a large number of
+   devices from different vendors need to be uniformly managed, which
+   can lead to the following issues:
+
+3.1.  Limitations of Unified AI Agents in Heterogeneous NETCONF/YANG
+      Environments
+
+   Vendor implementations of YANG models and NETCONF/RESTCONF protocols
+   exhibit significant divergence.  A unified AI agent trained with
+   homogeneous datasets and operating within fixed contextual frameworks
+   inherently fails to adapt to vendor-specific device behaviors,
+   resulting in suboptimal management performance, primarily due to:
+
+   *  *Overgeneralized Training Data*: Single training corpus cannot
+      capture all vendor implementations
+
+   *  *Inflexible Contextual Frameworks*: Static operational contexts
+      cannot accommodate device-specific nuances
+
+3.2.  Operational Inefficiencies in Multi-Device Management Scenarios
+
+   In multi-device operational environments, critical workflows
+   including:
+
+   *  Fault diagnosis
+
+   *  Traffic monitoring
+
+   *  Security enforcement
+
+   often require engineers to:
+
+   *  Manually collect and correlate logs across devices
+
+   *  Perform root cause analysis without cross-device context
+
+   *  Validate solutions through iterative device-by-device testing
+
+   *  Act as human intermediaries for inter-device communication
+
+   This approach introduces significant operational inefficiencies and
+   suboptimal human resource utilization.
+
+4.  Problem Statemtent
+
+5.  Operational Consideration
+
+6.  Conclusion
+
+7.  Security Considerations
 
    TODO Security
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    This document has no IANA actions.
-
-8.  Normative References
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 Appendix A.  Reference
 
