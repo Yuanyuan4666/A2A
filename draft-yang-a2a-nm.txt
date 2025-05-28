@@ -4,8 +4,8 @@
 
 Network Working Group                                       Yuanyuan4666
 Internet-Draft                                    Your Organization Here
-Intended status: Informational                               27 May 2025
-Expires: 28 November 2025
+Intended status: Informational                               28 May 2025
+Expires: 29 November 2025
 
 
                                   A2A
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 November 2025.
+   This Internet-Draft will expire on 29 November 2025.
 
 Copyright Notice
 
@@ -71,6 +71,11 @@ Table of Contents
    5.  Conclusion
    6.  Security Considerations
    7.  IANA Considerations
+   8.  Operational Need
+   9.  Architecture Overview
+     9.1.  Deployment Considerations
+       9.1.1.  Set Up Different AI Agents for Different Devices
+       9.1.2.  Set Up Different AI Agents for Different Tasks
    Appendix A.  Reference
    Author's Address
 
@@ -186,6 +191,48 @@ Table of Contents
 7.  IANA Considerations
 
    This document has no IANA actions.
+
+8.  Operational Need
+
+   This section outlines operational aspects of A2A with Network
+   management requirements as follows:
+
+   *  _Domain-Specific AI Agents_: For appropriately scoped domains,
+      high-quality domain-specific training data yields optimally
+      performing agents that demonstrate superior effectiveness within
+      their target operational environments.
+
+   *  _Information Security_: All AI agents must employ either
+      standardized encryption formats or data anonymization techniques
+      to ensure secure information transmission.  These measures shall
+      guarantee communication confidentiality, protect sensitive data
+      elements, and maintain privacy preservation requirements across
+      all inter-agent exchanges.
+
+   *  _Automated Workflow Capabilities_: The system shall demonstrate
+      the ability to: (1) comprehend high-level user intent, (2) execute
+      extended workflow sequences, and (3) implement cross-verification
+      mechanisms throughout prolonged operations to mitigate error
+      accumulation, semantic drift, and hallucination propagation
+      phenomena.
+
+9.  Architecture Overview
+
+9.1.  Deployment Considerations
+
+9.1.1.  Set Up Different AI Agents for Different Devices
+
+   // TODO: 体现agent之间的交流 // TODO: 如何画一个处理不同flow的ai agent图
+   +-------------+ | User | +-----+-------+ | +-----+-------+ | AI
+   Agent | +-----+-------+ |
+   +-------------------+------------------+ | | | +----+-------+
+   +-----+-------+ +----+------+ | AI Agent +-----+ AI Agent +-----+ AI
+   Agent | +----+-------+ +-----+-------+ +----+------+ | | |
+   +----+-------+ +-----+-------+ +----+------+ | Network | |
+   Network | | Network | | Devices | | Devices | | Devices |
+   +------------+ +-------------+ +-----------+
+
+9.1.2.  Set Up Different AI Agents for Different Tasks
 
 Appendix A.  Reference
 
