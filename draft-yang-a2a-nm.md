@@ -95,58 +95,76 @@ often require engineers to:
 
 This approach introduces significant operational inefficiencies and suboptimal human resource utilization.
 
-# Operational Consideration
-
-# Conclusion
-
-# Security Considerations
-
-TODO Security
-
-
-# IANA Considerations
-
-This document has no IANA actions.
-
 # Operational Need
 
 This section outlines operational aspects of A2A with Network management requirements as follows:
 
 - *Domain-Specific AI Agents*: For appropriately scoped domains, high-quality domain-specific training data yields optimally performing agents that demonstrate superior effectiveness within their target operational environments.
 - *Information Security*: All AI agents must employ either standardized encryption formats or data anonymization techniques to ensure secure information transmission. These measures shall guarantee communication confidentiality, protect sensitive data elements, and maintain privacy preservation requirements across all inter-agent exchanges.
-- *Automated Workflow Capabilities*: The system shall demonstrate the ability to: (1) comprehend high-level user intent, (2) execute extended workflow sequences, and (3) implement cross-verification mechanisms throughout prolonged operations to mitigate error accumulation, semantic drift, and hallucination propagation phenomena.
+- *Automated Workflow Capabilities*: To mitigate error accumulation, semantic drift, and hallucination propagation phenomena, the system shall demonstrate the ability to:
+  - comprehend high-level user intent
+  - execute extended workflow sequences
+  - implement cross-verification mechanisms throughout prolonged operations
+
 
 # Architecture Overview
 
-## Deployment Considerations
+Large language models (LLMs) inherently excel at understanding complex user instructions, a capability that becomes even more pronounced in an AI agent-to-agent (A2A) architecture. Beyond merely comprehending sophisticated requirements, they can autonomously orchestrate lengthy network management workflows, making them particularly suitable for large-scale network device management scenarios. Therefore, we have introduced the A2A protocol in the network management environments for building an intelligent network management and control platform.
 
-### Set Up Different AI Agents for Different Devices
+## Constructing AI Agent Networks
 
-// TODO: 体现agent之间的交流
-// TODO: 如何画一个处理不同flow的ai agent图
-                      +-------------+
-                      |    User     |
-                      +-----+-------+
-                            |
-                      +-----+-------+
-                      |   AI Agent  |
-                      +-----+-------+
-                            |
-        +-------------------+------------------+
-        |                   |                  |
-   +----+-------+     +-----+-------+     +----+------+
-   |  AI Agent  +-----+  AI Agent   +-----+  AI Agent |
-   +----+-------+     +-----+-------+     +----+------+
-        |                   |                  |
-   +----+-------+     +-----+-------+     +----+------+
-   |  Network   |     |  Network    |     |  Network  |
-   |  Devices   |     |  Devices    |     |  Devices  |
-   +------------+     +-------------+     +-----------+
+During AI agent training, excessive specialization in a particular domain carries the risk of overfitting, necessitating appropriate domain partitioning. While fully-connected networks can maximize the advantages of A2A architectures, they introduce prohibitive operational costs and latency issues. Consequently, structured network topologies become essential.
+
+## AI Agent-Tool Interaction
+
+The current A2A (Agent-to-Agent) protocol specification exclusively supports direct agent interactions. To enable comprehensive functionality, additional protocol extensions are required to address two critical aspects: (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.
+
+## On-Demand Manual Monitoring Interface
+
+For long-running workflows or tasks requiring continuous supervision, users require a real-time monitoring interface with dual capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.
+
+## Workflow
+
+                                +-------------+
+                                |    User     |
+                                +-----+-------+
+                                      |
+                                +-----+-------+
+                                |   AI Agent  |
+                                +-----+-------+
+                                      |
+                  +-------------------+------------------+
+                  |                   |                  |
+             +----+-------+     +-----+-------+     +----+------+
+             |  AI Agent  +-----+  AI Agent   +-----+  AI Agent |
+             +----+----+--+     +-----+-------+     +-+--+------+
+                  |    |              |               |  |
+                  |    +--------------+---------------+  |
+                tools              tools              tools
+                  |                   |                  |
+                  |             +-----+-------+          |
+                  +-------------+  Network    +----------+
+                                |  Devices    |
+                                +-------------+
+
+A general workflow is as follows:
+
+- User Input Submission: An operator submits a natural language request to a central AI agent.
+- Agent Intent Processing: The central AI agent processes natural language inputs by parsing instructions into structured tasks.
+- Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributs subtasks via an Agent Card Registry to specialized subordinate agents based on their capabilities.
+- Iteration continues until all tasks reach executable leaf-tier agents in the hierarchy.
+- Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
+
+# Security Considerations
+
+# IANA Considerations
+
+This document has no IANA actions.
 
 
-### Set Up Different AI Agents for Different Tasks
 --- back
 
 # Reference
 
 TODO acknowledge.
+
