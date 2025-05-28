@@ -108,7 +108,43 @@ TODO Security
 
 This document has no IANA actions.
 
+# Operational Need
 
+This section outlines operational aspects of A2A with Network management requirements as follows:
+
+- *Domain-Specific AI Agents*: For appropriately scoped domains, high-quality domain-specific training data yields optimally performing agents that demonstrate superior effectiveness within their target operational environments.
+- *Information Security*: All AI agents must employ either standardized encryption formats or data anonymization techniques to ensure secure information transmission. These measures shall guarantee communication confidentiality, protect sensitive data elements, and maintain privacy preservation requirements across all inter-agent exchanges.
+- *Automated Workflow Capabilities*: The system shall demonstrate the ability to: (1) comprehend high-level user intent, (2) execute extended workflow sequences, and (3) implement cross-verification mechanisms throughout prolonged operations to mitigate error accumulation, semantic drift, and hallucination propagation phenomena.
+
+# Architecture Overview
+
+## Deployment Considerations
+
+### Set Up Different AI Agents for Different Devices
+
+// TODO: 体现agent之间的交流
+// TODO: 如何画一个处理不同flow的ai agent图
+                      +-------------+
+                      |    User     |
+                      +-----+-------+
+                            |
+                      +-----+-------+
+                      |   AI Agent  |
+                      +-----+-------+
+                            |
+        +-------------------+------------------+
+        |                   |                  |
+   +----+-------+     +-----+-------+     +----+------+
+   |  AI Agent  +-----+  AI Agent   +-----+  AI Agent |
+   +----+-------+     +-----+-------+     +----+------+
+        |                   |                  |
+   +----+-------+     +-----+-------+     +----+------+
+   |  Network   |     |  Network    |     |  Network  |
+   |  Devices   |     |  Devices    |     |  Devices  |
+   +------------+     +-------------+     +-----------+
+
+
+### Set Up Different AI Agents for Different Tasks
 --- back
 
 # Reference
