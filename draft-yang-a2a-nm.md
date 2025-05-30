@@ -8,12 +8,12 @@ number:
 date:
 consensus: true
 v: 3
-# area: AREA
-# workgroup: WG Working Group
+# area: OPS and ART
+# workgroup: Network Working Group
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - A2A
+ - Network Management
+
 venue:
 #  group: WG
 #  type: Working Group
@@ -39,7 +39,10 @@ informative:
 
 --- abstract
 
-TODO Abstract
+This document outlines the applicability of A2A to the network management
+in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
+aspect, key components, generic workflow and deployment scenarios. The impact
+of integrating A2A into the network management system is also discussed.
 
 
 --- middle
