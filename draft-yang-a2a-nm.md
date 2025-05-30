@@ -126,18 +126,6 @@ This section outlines operational aspects of A2A with Network management require
 
 Large language models (LLMs) inherently excel at understanding complex user instructions, a capability that becomes even more pronounced in an AI agent-to-agent (A2A) architecture. Beyond merely comprehending sophisticated requirements, they can autonomously orchestrate lengthy network management workflows, making them particularly suitable for large-scale network management scenarios. Therefore, we have introduced the A2A protocol in the network management environments for building an intelligent network management and control platform.
 
-## Constructing AI Agent Networks
-
-During AI agent training, excessive specialization in a particular domain carries the risk of overfitting, necessitating appropriate domain partitioning. While fully-connected networks can maximize the advantages of A2A architectures, they introduce prohibitive operational costs and latency issues. Consequently, structured network topologies become essential.
-
-## AI Agent-Tool Interaction
-
-The current A2A (Agent-to-Agent) protocol specification exclusively supports direct agent interactions. To enable comprehensive functionality, additional protocol extensions are required to address two critical aspects: (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.
-
-## On-Demand Monitoring Interface
-
-For long-running workflows or tasks requiring continuous supervision, users require a real-time monitoring interface with dual capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.
-
 ## Multi-Agent Communication Deployment Scenario
 
                                 +-------------+
@@ -145,13 +133,15 @@ For long-running workflows or tasks requiring continuous supervision, users requ
                                 +-----+-------+
                                       |
                                 +-----+-------+
-                                |   AI Agent  |
+                              Service Orchestrator
+                                | (AI Agent)  |
                                 +-----+-------+
                                       |
                   +-------------------+------------------+
                   |                   |                  |
              +----+-------+     +-----+-------+     +----+------+
-             |  AI Agent  |     |  AI Agent   |     |  AI Agent |
+           Network Controller  Network Controller  Network Controller
+             |(AI Agent)  |     | (AI Agent)  |     |(AI Agent) |
              +----+-------+     +-----+-------+     +----+------+
                   |                   |                  |
                   |                   |                  |
@@ -161,6 +151,19 @@ For long-running workflows or tasks requiring continuous supervision, users requ
                   +-------------+  Network    +----------+
                                 |  Devices    |
                                 +-------------+
+In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g.,
+both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent
+within the service orchestrator can provide registry database for other service agents within the network controller to 
+register its location.
+
+The interaction in the multi-agent communication deployment scenario can be break down into:
+- AI Agent to Agent interaction
+- AI Agent to Tool interaction
+For AI Agent to Tool interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
+ (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.
+
+AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
+capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.
 
 A general workflow is as follows:
 
