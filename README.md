@@ -1,8 +1,8 @@
 <!-- regenerate: on (set to off if you edit this file) -->
 
-# A2A
+# Applicability of A2A for the Network Management
 
-This is the working area for the individual Internet-Draft, "A2A".
+This is the working area for the individual Internet-Draft, "Applicability of A2A for the Network Management".
 
 * [Editor's Copy](https://Yuanyuan4666.github.io/A2A/#go.draft-yang-a2a-nm.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-yang-a2a-nm)
