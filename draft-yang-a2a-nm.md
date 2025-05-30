@@ -42,21 +42,30 @@ TODO Abstract
 
 # Introduction
 
-With the advancement of large language models (LLMs), the concept of AI agents has gradually attracted significant attention. An AI agent refers to a category of software applications that utilizes LLMs to interact with users or other agents and accomplish specific tasks. Some examples of AI agents are:
+With the advancement of large language models (LLMs), the concept of AI agents has gradually attracted significant attention. An AI agent
+refers to a category of software applications that utilizes LLMs to interact with users or other agents and accomplish specific tasks. Take
+A multimodal AI agent as an example, it can collaborate with other domain-specific agents to complete diverse tasks such as translation,
+configuration generation, and API development.
 
-- A fitness AI agent that recommends suitable physical activities for users based on users' health conditions, geographical locations, weather, and wind factors.
-- A multimodal AI agent that collaborates with domain-specific agents to complete diverse tasks such as translation, image generation, and video production."
+A2A provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
+process, regardless of their underlying technologies. Agents can advertise their capabilities using an 'Agent Card' in JSON format, or send
+messages to communicate context, replies, artifacts, or user instructions, which make it easier to build AI applications that can interact
+with heterogeneous AI ecosystems in specific domain.
 
-Fundamentally, an AI agent is developed based on large language models (LLMs), with its prompt engineering varying according to its specialized domain. Sophisticated prompts typically incorporate:
+With significant adoption of AI Agents across the Internet,Agent to Agent Communication protocol may become the foundation for the next wave
+of Internet communication technologies across domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field
+is meant to develop various rich AI driven network applications, realize intent based networks management automation in the multi-vendor
+heterogeneous network environment. By establishing standard interfaces for Intelligent message routing,heterogeneous AI ecosystems interaction,
+cross-platform collaboration, A2A enables:
 
-- Domain-specific documentation
-- Available tools and capabilities
-- Function callings (in some cases)
-- User-provided inputs
+o Dynamic Capability Discovery and tasks and artifacts exposure
 
-Based on this comprehensive prompt structure, the LLM dynamically determines subsequent actions, which may involve continuing dialogue with users to gather additional information, invoking appropriate tools to execute specific functions, or initiating interactions with other specialized agents.
+o Multi-agent workflows, coordination, delegation
 
-The aforementioned examples demonstrate that AI agents are typically domain-specific, which raises an important challenge: users may request an agent to perform tasks beyond its specialized capabilities. In such cases, a more effective solution involves enabling the current agent to communicate with other agents and delegate tasks to better-suited counterparts.
+This document outlines the applicability of A2A to the network management
+in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
+aspect, key components, generic workflow and deployment scenarios. The impact
+of integrating A2A into the network management system is also discussed.
 
 
 # Conventions and Definitions
