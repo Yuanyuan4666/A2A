@@ -74,10 +74,7 @@ Table of Contents
      3.3.  Lack integration with Network APIs
    4.  Operational Consideration
    5.  Architecture Overview
-     5.1.  Constructing AI Agent Networks
-     5.2.  AI Agent-Tool Interaction
-     5.3.  On-Demand Monitoring Interface
-     5.4.  Multi-Agent Communication Deployment Scenario
+     5.1.  Multi-Agent Communication Deployment Scenario
    6.  Security Considerations
    7.  IANA Considerations
    8.  Informative References
@@ -225,55 +222,45 @@ Table of Contents
    management environments for building an intelligent network
    management and control platform.
 
-5.1.  Constructing AI Agent Networks
+5.1.  Multi-Agent Communication Deployment Scenario
 
-   During AI agent training, excessive specialization in a particular
-   domain carries the risk of overfitting, necessitating appropriate
-   domain partitioning.  While fully-connected networks can maximize the
-   advantages of A2A architectures, they introduce prohibitive
-   operational costs and latency issues.  Consequently, structured
-   network topologies become essential.
+                            +-------------+
+                            |    User     |
+                            +-----+-------+
+                                  |
+                            +-----+-------+
+                          Service Orchestrator
+                            | (AI Agent)  |
+                            +-----+-------+
+                                  |
+              +-------------------+------------------+
+              |                   |                  |
+         +----+-------+     +-----+-------+     +----+------+
+       Network Controller  Network Controller  Network Controller
+         |(AI Agent)  |     | (AI Agent)  |     |(AI Agent) |
+         +----+-------+     +-----+-------+     +----+------+
+              |                   |                  |
+              |                   |                  |
+            tools              tools              tools
+              |                   |                  |
+              |             +-----+-------+          |
+              +-------------+  Network    +----------+
+                            |  Devices    |
+                            +-------------+ In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g., both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent within the service orchestrator can provide registry database for other service agents within the network controller to register its location.
 
-5.2.  AI Agent-Tool Interaction
+   The interaction in the multi-agent communication deployment scenario
+   can be break down into: - AI Agent to Agent interaction - AI Agent to
+   Tool interaction For AI Agent to Tool interaction, to enable
+   comprehensive functionality, additional protocol extensions are
+   required to address two critical aspects: (1) standardized tool
+   invocation mechanisms for agent-tool interoperability, and (2)
+   monitoring frameworks for tool usage tracking and auditing.
 
-   The current A2A (Agent-to-Agent) protocol specification exclusively
-   supports direct agent interactions.  To enable comprehensive
-   functionality, additional protocol extensions are required to address
-   two critical aspects: (1) standardized tool invocation mechanisms for
-   agent-tool interoperability, and (2) monitoring frameworks for tool
-   usage tracking and auditing.
-
-5.3.  On-Demand Monitoring Interface
-
-   For long-running workflows or tasks requiring continuous supervision,
-   users require a real-time monitoring interface with dual
-   capabilities: (1) live network state observation and (2) validation
-   of agent-proposed remediation actions during anomaly resolution
-   scenarios.
-
-5.4.  Multi-Agent Communication Deployment Scenario
-
-                               +-------------+
-                               |    User     |
-                               +-----+-------+
-                                     |
-                               +-----+-------+
-                               |   AI Agent  |
-                               +-----+-------+
-                                     |
-                 +-------------------+------------------+
-                 |                   |                  |
-            +----+-------+     +-----+-------+     +----+------+
-            |  AI Agent  |     |  AI Agent   |     |  AI Agent |
-            +----+-------+     +-----+-------+     +----+------+
-                 |                   |                  |
-                 |                   |                  |
-               tools              tools              tools
-                 |                   |                  |
-                 |             +-----+-------+          |
-                 +-------------+  Network    +----------+
-                               |  Devices    |
-                               +-------------+
+   AI Agent to Agent interaction, users require a real-time monitoring
+   interface for long-running workflows or tasks requiring continuous
+   supervision with dual capabilities: (1) live network state
+   observation and (2) validation of agent-proposed remediation actions
+   during anomaly resolution scenarios.
 
    A general workflow is as follows:
 
