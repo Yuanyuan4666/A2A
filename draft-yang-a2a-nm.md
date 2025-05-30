@@ -88,6 +88,7 @@ In large scale network management environment, a large number of devices from di
 heterogeneous network environment which can lead to the following issues:
 
 ## Limitations of 3rd party management in Heterogeneous Network Environments
+
 In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols exhibit significant divergence.
 Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only partially support standard
 Network management protocols while Other vendors might choose non-stanard network management protocol or telemetry protocol such as gnmi, grpc. Without
@@ -95,6 +96,7 @@ standard protocol or open programmable framework with multi-vendors integration 
 protocols and allowing quickly adapt to different device are still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
 
 ## Static Data format or Data model for management interface, unable to adapt to the speed of service roll out
+
 The IETF is currently working on and also publishing a set of YANG models for network service configuration. Network Service configurations are built from a combination of network element and protocol configuration, but are specified to service users in more abstract terms, which enables service agility to speed
 service creation and delivery and allows the deployment of innovative new services across networks. However Network service model provide static interface
 with a fixed, unchanging format, it is unable to adapt to new service requirements, e.g., when some new service attributes are introduced and correlated with
@@ -102,17 +104,20 @@ the specific network service model A or knowledge graph B using RDF, it is hard 
 interface which is using network service model A.
 
 ## Lack integration with Network APIs
+
 Today, network API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
 the northbound interface of the network controller or the interface between the network controller and the network devices. However Network API ecosystem and
 YANG model ecosystem are both built as silo and lack integration or mapping between them.
 
-# Operational Need
+# Operational Consideration
 
 This section outlines operational aspects of A2A with Network management requirements as follows:
 
-- *Domain-Specific AI Agents*: For appropriately scoped domains, high-quality domain-specific training data yields optimally performing agents that demonstrate superior effectiveness within their target operational environments.
-- *Information Security*: All AI agents must employ either standardized encryption formats or data anonymization techniques to ensure secure information transmission. These measures shall guarantee communication confidentiality, protect sensitive data elements, and maintain privacy preservation requirements across all inter-agent exchanges.
-- *Automated Workflow Capabilities*: To mitigate error accumulation, semantic drift, and hallucination propagation phenomena, the system shall demonstrate the ability to:
+- *Domain-Specific AI Agents*: For appropriately scoped domains, high-quality domain-specific training data yields optimally performing agents that
+  demonstrate superior effectiveness within their target operational environments.
+- *Dynamic Capability Discovery*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive interactions.
+- *Automated Workflow coordination, delegation*: To mitigate error accumulation, semantic drift, and hallucination propagation phenomena, the AI Agent shall
+  demonstrate the ability to:
   - comprehend high-level user intent
   - execute extended workflow sequences
   - implement cross-verification mechanisms throughout prolonged operations
