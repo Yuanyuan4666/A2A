@@ -1,5 +1,5 @@
 ---
-title: "A2A"
+title: "Applicability of A2A to the Network Management "
 category: info
 
 docname: draft-yang-a2a-nm-latest
@@ -27,7 +27,11 @@ author:
     fullname: "Yuanyuan4666"
     organization: Your Organization Here
     email: "yangyuanyuan55@huawei.com"
-
+ -
+   fullname: Qin Wu
+   organization: Huawei
+   email: bill.wu@huawei.com
+ 
 normative:
 
 informative:
