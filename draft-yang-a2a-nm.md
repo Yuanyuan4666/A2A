@@ -159,8 +159,11 @@ within the service orchestrator can provide registry database for other service 
 register its location.
 
 The interaction in the multi-agent communication deployment scenario can be break down into:
-- AI Agent to Agent interaction
-- AI Agent to Tool interaction
+
+- *AI Agent to Agent interaction*
+
+- *AI Agent to Tool interaction*
+
 For AI Agent to Tool interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
  (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.
 
