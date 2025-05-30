@@ -72,7 +72,7 @@ Table of Contents
      3.2.  Static Data format or Data model for management interface,
            unable to adapt to the speed of service roll out
      3.3.  Lack integration with Network APIs
-   4.  Operational Need
+   4.  Operational Consideration
    5.  Architecture Overview
      5.1.  Constructing AI Agent Networks
      5.2.  AI Agent-Tool Interaction
@@ -188,7 +188,7 @@ Table of Contents
    ecosystem are both built as silo and lack integration or mapping
    between them.
 
-4.  Operational Need
+4.  Operational Consideration
 
    This section outlines operational aspects of A2A with Network
    management requirements as follows:
@@ -198,16 +198,13 @@ Table of Contents
       performing agents that demonstrate superior effectiveness within
       their target operational environments.
 
-   *  _Information Security_: All AI agents must employ either
-      standardized encryption formats or data anonymization techniques
-      to ensure secure information transmission.  These measures shall
-      guarantee communication confidentiality, protect sensitive data
-      elements, and maintain privacy preservation requirements across
-      all inter-agent exchanges.
+   *  _Dynamic Capability Discovery_: Agent can automatically detect and
+      understand each other's capabilities, enabling more intelligent
+      and adaptive interactions.
 
-   *  _Automated Workflow Capabilities_: To mitigate error accumulation,
-      semantic drift, and hallucination propagation phenomena, the
-      system shall demonstrate the ability to:
+   *  _Automated Workflow coordination, delegation_: To mitigate error
+      accumulation, semantic drift, and hallucination propagation
+      phenomena, the AI Agent shall demonstrate the ability to:
 
       -  comprehend high-level user intent
 
