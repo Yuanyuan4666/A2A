@@ -2,11 +2,10 @@
 
 
 
-Network Working Group                                       Yuanyuan4666
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                                     Q. Wu
-Expires: 1 December 2025                                          Huawei
-                                                             30 May 2025
+Network Working Group                                            Y. Yang
+Internet-Draft                                                     Q. Wu
+Intended status: Informational                                    Huawei
+Expires: 1 December 2025                                     30 May 2025
 
 
              Applicability of A2A to the Network Management
@@ -320,8 +319,8 @@ Appendix A.  Reference
 
 Authors' Addresses
 
-   Yuanyuan4666
-   Your Organization Here
+   Yuanyuan Yang
+   Huawei
    Email: yangyuanyuan55@huawei.com
 
 
