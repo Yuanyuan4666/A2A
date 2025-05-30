@@ -127,7 +127,7 @@ This section outlines operational aspects of A2A with Network management require
 Large language models (LLMs) inherently excel at understanding complex user instructions, a capability that becomes even more pronounced in an AI agent-to-agent (A2A) architecture. Beyond merely comprehending sophisticated requirements, they can autonomously orchestrate lengthy network management workflows, making them particularly suitable for large-scale network management scenarios. Therefore, we have introduced the A2A protocol in the network management environments for building an intelligent network management and control platform.
 
 ## Multi-Agent Communication Deployment Scenario
-
+~~~~
                                 +-------------+
                                 |    User     |
                                 +-----+-------+
@@ -151,6 +151,8 @@ Large language models (LLMs) inherently excel at understanding complex user inst
                   +-------------+  Network    +----------+
                                 |  Devices    |
                                 +-------------+
+~~~~
+
 In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g.,
 both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent
 within the service orchestrator can provide registry database for other service agents within the network controller to
