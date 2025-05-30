@@ -224,29 +224,36 @@ Table of Contents
 
 5.1.  Multi-Agent Communication Deployment Scenario
 
-                            +-------------+
-                            |    User     |
-                            +-----+-------+
-                                  |
-                            +-----+-------+
-                          Service Orchestrator
-                            | (AI Agent)  |
-                            +-----+-------+
-                                  |
-              +-------------------+------------------+
-              |                   |                  |
-         +----+-------+     +-----+-------+     +----+------+
-       Network Controller  Network Controller  Network Controller
-         |(AI Agent)  |     | (AI Agent)  |     |(AI Agent) |
-         +----+-------+     +-----+-------+     +----+------+
-              |                   |                  |
-              |                   |                  |
-            tools              tools              tools
-              |                   |                  |
-              |             +-----+-------+          |
-              +-------------+  Network    +----------+
-                            |  Devices    |
-                            +-------------+ In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g., both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent within the service orchestrator can provide registry database for other service agents within the network controller to register its location.
+                                   +-------------+
+                                   |    User     |
+                                   +-----+-------+
+                                         |
+                                   +-----+-------+
+                                 Service Orchestrator
+                                   | (AI Agent)  |
+                                   +-----+-------+
+                                         |
+                     +-------------------+------------------+
+                     |                   |                  |
+                +----+-------+     +-----+-------+     +----+------+
+              Network Controller  Network Controller  Network Controller
+                |(AI Agent)  |     | (AI Agent)  |     |(AI Agent) |
+                +----+-------+     +-----+-------+     +----+------+
+                     |                   |                  |
+                     |                   |                  |
+                   tools              tools              tools
+                     |                   |                  |
+                     |             +-----+-------+          |
+                     +-------------+  Network    +----------+
+                                   |  Devices    |
+                                   +-------------+
+
+   In the multi-agent communication deployment scenario, AI Agents can
+   be deployed at both service layer and network layer,e.g., both
+   service orchestrator and network controller can introduce AI Agent
+   and allow Agent to Agent communication.  AI Agent within the service
+   orchestrator can provide registry database for other service agents
+   within the network controller to register its location.
 
    The interaction in the multi-agent communication deployment scenario
    can be break down into: - AI Agent to Agent interaction - AI Agent to
