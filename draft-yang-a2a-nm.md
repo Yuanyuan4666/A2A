@@ -68,32 +68,27 @@ The aforementioned examples demonstrate that AI agents are typically domain-spec
 
 # Overview of key challenges for the network management
 
-In large scale network management environment, a large number of devices from different vendors need to be uniformly managed, which can lead to the following issues:
+In large scale network management environment, a large number of devices from different network vendors need to be uniformly managed, especially in the
+heterogeneous network environment which can lead to the following issues:
 
-## Limitations of Unified AI Agents in Heterogeneous NETCONF/YANG Environments
+## Limitations of 3rd party management in Heterogeneous Network Environments
+In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols exhibit significant divergence.
+Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only partially support standard
+Network management protocols while Other vendors might choose non-stanard network management protocol or telemetry protocol such as gnmi, grpc. Without
+standard protocol or open programmable framework with multi-vendors integration drivers, integration various different data models and management
+protocols and allowing quickly adapt to different device are still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
 
-Vendor implementations of YANG models and NETCONF/RESTCONF protocols exhibit significant divergence. A unified AI agent trained with homogeneous datasets and operating within fixed contextual frameworks inherently fails to adapt to vendor-specific device behaviors, resulting in suboptimal management performance, primarily due to:
+## Static Data format or Data model for management interface, unable to adapt to the speed of service roll out
+The IETF is currently working on and also publishing a set of YANG models for network service configuration. Network Service configurations are built from a combination of network element and protocol configuration, but are specified to service users in more abstract terms, which enables service agility to speed
+service creation and delivery and allows the deployment of innovative new services across networks. However Network service model provide static interface
+with a fixed, unchanging format, it is unable to adapt to new service requirements, e.g., when some new service attributes are introduced and correlated with
+the specific network service model A or knowledge graph B using RDF, it is hard to expose these new attributes or capability through the same management
+interface which is using network service model A.
 
-- **Overgeneralized Training Data**: Single training corpus cannot capture all vendor implementations
-
-- **Inflexible Contextual Frameworks**: Static operational contexts cannot accommodate device-specific nuances
-
-## Operational Inefficiencies in Multi-Device Management Scenarios
-
-In multi-device operational environments, critical workflows including:
-
-- Fault diagnosis
-- Traffic monitoring
-- Security enforcement
-
-often require engineers to:
-
-- Manually collect and correlate logs across devices
-- Perform root cause analysis without cross-device context
-- Validate solutions through iterative device-by-device testing
-- Act as human intermediaries for inter-device communication
-
-This approach introduces significant operational inefficiencies and suboptimal human resource utilization.
+## Lack integration with Network APIs
+Today, network API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
+the northbound interface of the network controller or the interface between the network controller and the network devices. However Network API ecosystem and
+YANG model ecosystem are both built as silo and lack integration or mapping between them.
 
 # Operational Need
 
