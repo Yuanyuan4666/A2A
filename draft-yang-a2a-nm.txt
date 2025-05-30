@@ -78,7 +78,6 @@ Table of Contents
    6.  Security Considerations
    7.  IANA Considerations
    8.  Informative References
-   Appendix A.  Reference
    Authors' Addresses
 
 1.  Introduction
@@ -308,10 +307,6 @@ Table of Contents
               Progress, Internet-Draft, draft-rosenberg-ai-protocols-00,
               5 May 2025, <https://datatracker.ietf.org/doc/html/draft-
               rosenberg-ai-protocols-00>.
-
-Appendix A.  Reference
-
-   TODO acknowledge.
 
 Authors' Addresses
 
