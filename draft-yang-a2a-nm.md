@@ -153,7 +153,7 @@ Large language models (LLMs) inherently excel at understanding complex user inst
                                 +-------------+
 In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g.,
 both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent
-within the service orchestrator can provide registry database for other service agents within the network controller to 
+within the service orchestrator can provide registry database for other service agents within the network controller to
 register its location.
 
 The interaction in the multi-agent communication deployment scenario can be break down into:
