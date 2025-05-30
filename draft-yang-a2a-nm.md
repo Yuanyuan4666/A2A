@@ -122,10 +122,9 @@ This section outlines operational aspects of A2A with Network management require
   - execute extended workflow sequences
   - implement cross-verification mechanisms throughout prolonged operations
 
-
 # Architecture Overview
 
-Large language models (LLMs) inherently excel at understanding complex user instructions, a capability that becomes even more pronounced in an AI agent-to-agent (A2A) architecture. Beyond merely comprehending sophisticated requirements, they can autonomously orchestrate lengthy network management workflows, making them particularly suitable for large-scale network device management scenarios. Therefore, we have introduced the A2A protocol in the network management environments for building an intelligent network management and control platform.
+Large language models (LLMs) inherently excel at understanding complex user instructions, a capability that becomes even more pronounced in an AI agent-to-agent (A2A) architecture. Beyond merely comprehending sophisticated requirements, they can autonomously orchestrate lengthy network management workflows, making them particularly suitable for large-scale network management scenarios. Therefore, we have introduced the A2A protocol in the network management environments for building an intelligent network management and control platform.
 
 ## Constructing AI Agent Networks
 
@@ -139,7 +138,7 @@ The current A2A (Agent-to-Agent) protocol specification exclusively supports dir
 
 For long-running workflows or tasks requiring continuous supervision, users require a real-time monitoring interface with dual capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.
 
-## Workflow
+## Deployment Scenario
 
                                 +-------------+
                                 |    User     |
