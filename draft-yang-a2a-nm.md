@@ -24,8 +24,8 @@ venue:
 
 author:
  -
-    fullname: "Yuanyuan4666"
-    organization: Your Organization Here
+    fullname: Yuanyuan Yang
+    organization: Huawei
     email: "yangyuanyuan55@huawei.com"
  -
    fullname: Qin Wu
