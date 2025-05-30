@@ -1185,10 +1185,10 @@ of integrating A2A into the network management system is also discussed.<a href=
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-ai-agent-tool-interaction" class="internal xref">AI Agent-Tool Interaction</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-on-demand-manual-monitoring" class="internal xref">On-Demand Manual Monitoring Interface</a></p>
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-on-demand-monitoring-interf" class="internal xref">On-Demand Monitoring Interface</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
-                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-deployment-scenario" class="internal xref">Deployment Scenario</a></p>
+                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-multi-agent-communication-d" class="internal xref">Multi-Agent Communication Deployment Scenario</a></p>
 </li>
             </ul>
 </li>
@@ -1355,18 +1355,18 @@ demonstrate the ability to:<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
 <p id="section-5.2-1">The current A2A (Agent-to-Agent) protocol specification exclusively supports direct agent interactions. To enable comprehensive functionality, additional protocol extensions are required to address two critical aspects: (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="on-demand-manual-monitoring-interface">
+<div id="on-demand-monitoring-interface">
 <section id="section-5.3">
-        <h3 id="name-on-demand-manual-monitoring">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-on-demand-manual-monitoring" class="section-name selfRef">On-Demand Manual Monitoring Interface</a>
+        <h3 id="name-on-demand-monitoring-interf">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-on-demand-monitoring-interf" class="section-name selfRef">On-Demand Monitoring Interface</a>
         </h3>
 <p id="section-5.3-1">For long-running workflows or tasks requiring continuous supervision, users require a real-time monitoring interface with dual capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="deployment-scenario">
+<div id="multi-agent-communication-deployment-scenario">
 <section id="section-5.4">
-        <h3 id="name-deployment-scenario">
-<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-deployment-scenario" class="section-name selfRef">Deployment Scenario</a>
+        <h3 id="name-multi-agent-communication-d">
+<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-multi-agent-communication-d" class="section-name selfRef">Multi-Agent Communication Deployment Scenario</a>
         </h3>
 <div class="alignLeft art-text artwork" id="section-5.4-1">
 <pre>
@@ -1381,10 +1381,10 @@ demonstrate the ability to:<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
               +-------------------+------------------+
               |                   |                  |
          +----+-------+     +-----+-------+     +----+------+
-         |  AI Agent  +-----+  AI Agent   +-----+  AI Agent |
-         +----+----+--+     +-----+-------+     +-+--+------+
-              |    |              |               |  |
-              |    +--------------+---------------+  |
+         |  AI Agent  |     |  AI Agent   |     |  AI Agent |
+         +----+-------+     +-----+-------+     +----+------+
+              |                   |                  |
+              |                   |                  |
             tools              tools              tools
               |                   |                  |
               |             +-----+-------+          |
@@ -1402,7 +1402,8 @@ demonstrate the ability to:<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
             <p id="section-5.4-3.2.1">Agent Intent Processing: The central AI agent processes natural language inputs by parsing instructions into structured tasks.<a href="#section-5.4-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.4-3.3">
-            <p id="section-5.4-3.3.1">Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributs subtasks via an Agent Card Registry to specialized subordinate agents based on their capabilities.<a href="#section-5.4-3.3.1" class="pilcrow">¶</a></p>
+            <p id="section-5.4-3.3.1">Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributs subtasks via an Agent Card Registry to specialized
+subordinate agents based on their capabilities.<a href="#section-5.4-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.4-3.4">
             <p id="section-5.4-3.4.1">Iteration continues until all tasks reach executable leaf-tier agents in the hierarchy.<a href="#section-5.4-3.4.1" class="pilcrow">¶</a></p>

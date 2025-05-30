@@ -76,8 +76,8 @@ Table of Contents
    5.  Architecture Overview
      5.1.  Constructing AI Agent Networks
      5.2.  AI Agent-Tool Interaction
-     5.3.  On-Demand Manual Monitoring Interface
-     5.4.  Deployment Scenario
+     5.3.  On-Demand Monitoring Interface
+     5.4.  Multi-Agent Communication Deployment Scenario
    6.  Security Considerations
    7.  IANA Considerations
    8.  Informative References
@@ -243,7 +243,7 @@ Table of Contents
    agent-tool interoperability, and (2) monitoring frameworks for tool
    usage tracking and auditing.
 
-5.3.  On-Demand Manual Monitoring Interface
+5.3.  On-Demand Monitoring Interface
 
    For long-running workflows or tasks requiring continuous supervision,
    users require a real-time monitoring interface with dual
@@ -251,7 +251,7 @@ Table of Contents
    of agent-proposed remediation actions during anomaly resolution
    scenarios.
 
-5.4.  Deployment Scenario
+5.4.  Multi-Agent Communication Deployment Scenario
 
                                +-------------+
                                |    User     |
@@ -264,10 +264,10 @@ Table of Contents
                  +-------------------+------------------+
                  |                   |                  |
             +----+-------+     +-----+-------+     +----+------+
-            |  AI Agent  +-----+  AI Agent   +-----+  AI Agent |
-            +----+----+--+     +-----+-------+     +-+--+------+
-                 |    |              |               |  |
-                 |    +--------------+---------------+  |
+            |  AI Agent  |     |  AI Agent   |     |  AI Agent |
+            +----+-------+     +-----+-------+     +----+------+
+                 |                   |                  |
+                 |                   |                  |
                tools              tools              tools
                  |                   |                  |
                  |             +-----+-------+          |
