@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-29T03:33:44.170469+00:00",
+  "timestamp": "2025-06-01T03:52:37.491480+00:00",
   "repo": "Yuanyuan4666/A2A",
   "labels": [
     {
@@ -50,5 +50,62 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOOwDY886YNoAT",
+      "title": "Rewrite Introduction",
+      "url": "https://github.com/Yuanyuan4666/A2A/pull/1",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-30T04:14:36Z",
+      "updatedAt": "2025-05-30T07:43:43Z",
+      "baseRepository": "Yuanyuan4666/A2A",
+      "baseRefName": "main",
+      "baseRefOid": "c0c623e7e064d1f5248632191d61e742e88f46c6",
+      "headRepository": "billwuqin/A2A",
+      "headRefName": "patch-1",
+      "headRefOid": "5390998525ff46afb4263dfe61bc8ff1d20e48c7",
+      "closedAt": "2025-05-30T07:43:43Z",
+      "mergedAt": "2025-05-30T07:43:43Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "9c160befe5390cb20ba59c76efb3f1894c1391a3"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOOwDY886YOrVa",
+      "title": "Rewrite Key challenges for network management",
+      "url": "https://github.com/Yuanyuan4666/A2A/pull/2",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-30T07:34:35Z",
+      "updatedAt": "2025-05-30T07:44:07Z",
+      "baseRepository": "Yuanyuan4666/A2A",
+      "baseRefName": "main",
+      "baseRefOid": "c0c623e7e064d1f5248632191d61e742e88f46c6",
+      "headRepository": "billwuqin/A2A",
+      "headRefName": "patch-2",
+      "headRefOid": "14bd8dffb97057d69fae704aa88013effa15ee01",
+      "closedAt": "2025-05-30T07:44:07Z",
+      "mergedAt": "2025-05-30T07:44:07Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "21d0ba8f8754d3a433be7df3eef57d4bb8c6946f"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
