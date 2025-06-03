@@ -174,7 +174,7 @@ A general workflow is as follows:
 
 - User Input Submission: An operator submits a natural language request to a central AI agent.
 - Agent Intent Processing: The central AI agent processes natural language inputs by parsing instructions into structured tasks.
-- Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributs subtasks via an Agent Card Registry to specialized
+- Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributes subtasks via an Agent Card Registry to specialized
   subordinate agents based on their capabilities.
 - Iteration continues until all tasks reach executable leaf-tier agents in the hierarchy.
 - Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
