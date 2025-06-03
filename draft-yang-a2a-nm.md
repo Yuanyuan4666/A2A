@@ -167,9 +167,9 @@ The interaction in the multi-agent communication deployment scenario can be brea
 
 - *AI Agent to Agent interaction*
 
-- *AI Agent to Tool interaction*
+- *AI Agent to Tools interaction*
 
-For AI Agent to Tool interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
+For AI Agent to Tools interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
  (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.
 
 AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
@@ -186,6 +186,8 @@ A general workflow is as follows:
 
 # Impact of integrating A2A on Network Management
 
+## Agent to Agent Interaction
+
 A2A leverages advanced machine learning models or knowledge graph
 models and sophisticated communication protocols such as one built
 on top of HTTP, SSE, JSON-RPC.
@@ -196,6 +198,9 @@ model which transforms these interactions into dynamic, context-aware conversati
 
 In addition, Agents can now negotiate, interpret subtle contextual cues, and make
 collaborative decisions in real-time.
+
+## Agent to Tools Interaction
+
 
 # Security Considerations
 
