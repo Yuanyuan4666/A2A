@@ -1282,9 +1282,9 @@ heterogeneous network environment which can lead to the following issues:<a href
 <p id="section-3.1-1">In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span><span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> exhibit
 significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
 partially support standard Network management protocols while Other vendors might choose non-stanard network management protocol or telemetry protocol
-such as gnmi, grpc. Without standard protocol or open programmable framework with multi-vendors integration drivers, integration various different data
-models and management protocols and allowing quickly adapt to different device are still big challenges. The same challenge is applied to multi-domain
-heterogeneous environment.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+such as gnmi <span>[<a href="#I-D.openconfig-rtgwg-gnmi-spec" class="cite xref">I-D.openconfig-rtgwg-gnmi-spec</a>]</span>, grpc <span>[<a href="#I-D.kumar-rtgwg-grpc-protocol" class="cite xref">I-D.kumar-rtgwg-grpc-protocol</a>]</span>. Without standard protocol or open programmable framework with
+multi-vendors integration drivers, integration various different data models and management protocols and allowing quickly adapt to different device are
+still big challenges. The same challenge is applied to multi-domain heterogeneous environment.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="static-data-format-or-data-model-for-management-interface-unable-to-adapt-to-the-speed-of-service-roll-out">
@@ -1489,6 +1489,14 @@ is sufficient for network management.<a href="#section-6.2-2" class="pilcrow">¶
 <a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.kumar-rtgwg-grpc-protocol">[I-D.kumar-rtgwg-grpc-protocol]</dt>
+        <dd>
+<span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Kolhe, J.</span>, <span class="refAuthor">Ghemawat, S.</span>, and <span class="refAuthor">L. Ryan</span>, <span class="refTitle">"gRPC Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kumar-rtgwg-grpc-protocol-00</span>, <time datetime="2016-07-08" class="refDate">8 July 2016</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-kumar-rtgwg-grpc-protocol-00">https://datatracker.ietf.org/doc/html/draft-kumar-rtgwg-grpc-protocol-00</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.openconfig-rtgwg-gnmi-spec">[I-D.openconfig-rtgwg-gnmi-spec]</dt>
+        <dd>
+<span class="refAuthor">Shakir, R.</span>, <span class="refAuthor">Shaikh, A.</span>, <span class="refAuthor">Borman, P.</span>, <span class="refAuthor">Hines, M.</span>, <span class="refAuthor">Lebsack, C.</span>, and <span class="refAuthor">C. Morrow</span>, <span class="refTitle">"gRPC Network Management Interface (gNMI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-openconfig-rtgwg-gnmi-spec-01</span>, <time datetime="2018-03-05" class="refDate">5 March 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-openconfig-rtgwg-gnmi-spec-01">https://datatracker.ietf.org/doc/html/draft-openconfig-rtgwg-gnmi-spec-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.rosenberg-ai-protocols">[I-D.rosenberg-ai-protocols]</dt>
       <dd>
 <span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">C. F. Jennings</span>, <span class="refTitle">"Framework, Use Cases and Requirements for AI Agent Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-rosenberg-ai-protocols-00</span>, <time datetime="2025-05-05" class="refDate">5 May 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-rosenberg-ai-protocols-00">https://datatracker.ietf.org/doc/html/draft-rosenberg-ai-protocols-00</a>&gt;</span>. </dd>

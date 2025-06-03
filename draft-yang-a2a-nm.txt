@@ -160,12 +160,14 @@ Table of Contents
    different YANG models such as IETF YANG, Openconfig YANG, Vendor
    specific YANG.  Some vendors only partially support standard Network
    management protocols while Other vendors might choose non-stanard
-   network management protocol or telemetry protocol such as gnmi, grpc.
-   Without standard protocol or open programmable framework with multi-
-   vendors integration drivers, integration various different data
-   models and management protocols and allowing quickly adapt to
-   different device are still big challenges.  The same challenge is
-   applied to multi-domain heterogeneous environment.
+   network management protocol or telemetry protocol such as gnmi
+   [I-D.openconfig-rtgwg-gnmi-spec], grpc
+   [I-D.kumar-rtgwg-grpc-protocol].  Without standard protocol or open
+   programmable framework with multi-vendors integration drivers,
+   integration various different data models and management protocols
+   and allowing quickly adapt to different device are still big
+   challenges.  The same challenge is applied to multi-domain
+   heterogeneous environment.
 
 3.2.  Static Data format or Data model for management interface, unable
       to adapt to the speed of service roll out
@@ -347,6 +349,21 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc8040>.
 
 9.2.  Informative References
+
+   [I-D.kumar-rtgwg-grpc-protocol]
+              Kumar, A., Kolhe, J., Ghemawat, S., and L. Ryan, "gRPC
+              Protocol", Work in Progress, Internet-Draft, draft-kumar-
+              rtgwg-grpc-protocol-00, 8 July 2016,
+              <https://datatracker.ietf.org/doc/html/draft-kumar-rtgwg-
+              grpc-protocol-00>.
+
+   [I-D.openconfig-rtgwg-gnmi-spec]
+              Shakir, R., Shaikh, A., Borman, P., Hines, M., Lebsack,
+              C., and C. Morrow, "gRPC Network Management Interface
+              (gNMI)", Work in Progress, Internet-Draft, draft-
+              openconfig-rtgwg-gnmi-spec-01, 5 March 2018,
+              <https://datatracker.ietf.org/doc/html/draft-openconfig-
+              rtgwg-gnmi-spec-01>.
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
