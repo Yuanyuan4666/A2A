@@ -117,14 +117,15 @@ YANG model ecosystem are both built as silo and lack integration or mapping betw
 
 This section outlines operational aspects of A2A with Network management requirements as follows:
 
-- *Domain-Specific AI Agents*: For appropriately scoped domains, high-quality domain-specific training data yields optimally performing agents that
-  demonstrate superior effectiveness within their target operational environments.
-- *Dynamic Capability Discovery*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive interactions.
-- *Automated Workflow coordination, delegation*: To mitigate error accumulation, semantic drift, and hallucination propagation phenomena, the AI Agent shall
-  demonstrate the ability to:
-  - comprehend high-level user intent
-  - execute extended workflow sequences
-  - implement cross-verification mechanisms throughout prolonged operations
+- *Dynamic Capability Discovery and Negotiation*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive 
+  interactions, e.g.,client and remote agents can negotiate the correct format needed.
+
+- *Task management*: The communication between a client and remote agent is oriented towards task completion and agents work to fulfill end-user requests.
+  The task object is defined by the protocol and has a lifecycle. Each of the agents can communicate to stay in sync with each other on the latest status of
+  completing a task.
+
+- *Automated Workflow coordination, delegation*: Agents comprehend high-level user intent,execute extended workflow sequences. In addition, they enable more
+  intelligent, context-aware agent interactions, e.g., Agents send each other messages to communicate context, replies, artifacts, or user instructions.
 
 # Architecture Overview
 
