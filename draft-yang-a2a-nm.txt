@@ -75,9 +75,10 @@ Table of Contents
    4.  Operational Consideration
    5.  Architecture Overview
      5.1.  Multi-Agent Communication Deployment Scenario
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Informative References
+   6.  Impact of integrating A2A on Network Management
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -293,13 +294,26 @@ Table of Contents
       dynamically adjusts the workflow based on result analysis and
       policy rules.
 
-6.  Security Considerations
+6.  Impact of integrating A2A on Network Management
 
-7.  IANA Considerations
+   A2A leverages advanced machine learning models or knowledge graph
+   models and sophisticated communication protocols.
+
+   Unlike REST or NETCONF/RESTCONF, other open API that follow
+   predefined, static request-response patterns, A2A introduces a more
+   adaptive communication model which transforms these interactions into
+   dynamic, context-aware conversations.
+
+   In addition, Agents can now negotiate, interpret subtle contextual
+   cues, and make collaborative decisions in real-time.
+
+7.  Security Considerations
+
+8.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  Informative References
+9.  Informative References
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
