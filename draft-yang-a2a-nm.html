@@ -1185,6 +1185,14 @@ of integrating A2A into the network management system is also discussed.<a href=
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-impact-of-integrating-a2a-o" class="internal xref">Impact of integrating A2A on Network Management</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-agent-to-agent-interaction" class="internal xref">Agent to Agent Interaction</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-agent-to-tools-interaction" class="internal xref">Agent to Tools Interaction</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
@@ -1365,10 +1373,10 @@ register its location.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
             <p id="section-5.1-4.1.1"><em>AI Agent to Agent interaction</em><a href="#section-5.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.1-4.2">
-            <p id="section-5.1-4.2.1"><em>AI Agent to Tool interaction</em><a href="#section-5.1-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-4.2.1"><em>AI Agent to Tools interaction</em><a href="#section-5.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-5.1-5">For AI Agent to Tool interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
+<p id="section-5.1-5">For AI Agent to Tools interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
  (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
 <p id="section-5.1-6">AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
 capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.<a href="#section-5.1-6" class="pilcrow">¶</a></p>
@@ -1400,14 +1408,28 @@ subordinate agents based on their capabilities.<a href="#section-5.1-8.3.1" clas
       <h2 id="name-impact-of-integrating-a2a-o">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-impact-of-integrating-a2a-o" class="section-name selfRef">Impact of integrating A2A on Network Management</a>
       </h2>
-<p id="section-6-1">A2A leverages advanced machine learning models or knowledge graph
+<div id="agent-to-agent-interaction">
+<section id="section-6.1">
+        <h3 id="name-agent-to-agent-interaction">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-agent-to-agent-interaction" class="section-name selfRef">Agent to Agent Interaction</a>
+        </h3>
+<p id="section-6.1-1">A2A leverages advanced machine learning models or knowledge graph
 models and sophisticated communication protocols such as one built
-on top of HTTP, SSE, JSON-RPC.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">Unlike REST or NETCONF/RESTCONF, other open API that follow predefined,
+on top of HTTP, SSE, JSON-RPC.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">Unlike REST or NETCONF/RESTCONF, other open API that follow predefined,
 static request-response patterns, A2A introduces a more adaptive communication
-model which transforms these interactions into dynamic, context-aware conversations.<a href="#section-6-2" class="pilcrow">¶</a></p>
-<p id="section-6-3">In addition, Agents can now negotiate, interpret subtle contextual cues, and make
-collaborative decisions in real-time.<a href="#section-6-3" class="pilcrow">¶</a></p>
+model which transforms these interactions into dynamic, context-aware conversations.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.1-3">In addition, Agents can now negotiate, interpret subtle contextual cues, and make
+collaborative decisions in real-time.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="agent-to-tools-interaction">
+<section id="section-6.2">
+        <h3 id="name-agent-to-tools-interaction">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-agent-to-tools-interaction" class="section-name selfRef">Agent to Tools Interaction</a>
+      </h3>
+</section>
+</div>
 </section>
 </div>
 <div id="security-considerations">
