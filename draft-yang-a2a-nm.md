@@ -62,12 +62,14 @@ with heterogeneous AI ecosystems in specific domain.
 With significant adoption of AI Agents across the Internet,Agent to Agent Communication protocol may become the foundation for the next wave
 of Internet communication technologies across domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field
 is meant to develop various rich AI driven network applications, realize intent based networks management automation in the multi-vendor
-heterogeneous network environment. By establishing standard interfaces for Intelligent message routing,heterogeneous AI ecosystems interaction,
-cross-platform collaboration, A2A enables:
+heterogeneous network environment. By establishing standard interfaces for dynamic Capability Discovery, intelligent message routing, heterogeneous
+AI ecosystems interaction,cross-platform collaboration, A2A enables:
 
-o Dynamic Capability Discovery and tasks and artifacts exposure
+o Workflows that span a long duration or involve many stages
 
-o Multi-agent workflows, coordination, delegation
+o Data Sharing and tasks completion that require cross-system collaboration
+
+o Coordination Between Specialized Agents
 
 This document discusses the applicability of A2A to the network management
 in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
