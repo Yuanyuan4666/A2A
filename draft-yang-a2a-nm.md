@@ -81,8 +81,8 @@ of integrating A2A into the network management system is also discussed.
 
 - AI Agent: A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.
 - Agent Card: A common metadata file that describes an agent's capabilities, skills, interface URLs, and authentication requirements. Clients discover and identify the agent through this file.
-- A2A server: An AI agent that receives requests and performs tasks
-- A2A client: An AI agent that sends requests to servers
+- A2A Server: An AI agent that receives requests and performs tasks
+- A2A Client: An AI agent that sends requests to servers
 
 # Overview of key challenges for the network management
 
