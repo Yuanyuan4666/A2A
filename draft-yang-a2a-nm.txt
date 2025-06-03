@@ -80,7 +80,9 @@ Table of Contents
      6.2.  Agent to Tools Interaction
    7.  Security Considerations
    8.  IANA Considerations
-   9.  Informative References
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -307,10 +309,10 @@ Table of Contents
    models and sophisticated communication protocols such as one built on
    top of HTTP, SSE, JSON-RPC.
 
-   Unlike REST or NETCONF/RESTCONF, other open API that follow
-   predefined, static request-response patterns, A2A introduces a more
-   adaptive communication model which transforms these interactions into
-   dynamic, context-aware conversations.
+   Unlike REST or NETCONF/RESTCONF [RFC6241][RFC8040], other open API
+   that follow predefined, static request-response patterns, A2A
+   introduces a more adaptive communication model which transforms these
+   interactions into dynamic, context-aware conversations.
 
    In addition, Agents can now negotiate, interpret subtle contextual
    cues, and make collaborative decisions in real-time.  The cost is
@@ -331,7 +333,20 @@ Table of Contents
 
    This document has no IANA actions.
 
-9.  Informative References
+9.  References
+
+9.1.  Normative References
+
+   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
+              and A. Bierman, Ed., "Network Configuration Protocol
+              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6241>.
+
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8040>.
+
+9.2.  Informative References
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
