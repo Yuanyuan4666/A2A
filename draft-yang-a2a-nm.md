@@ -117,7 +117,7 @@ YANG model ecosystem are both built as silo and lack integration or mapping betw
 
 This section outlines operational aspects of A2A with Network management requirements as follows:
 
-- *Dynamic Capability Discovery and Negotiation*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive 
+- *Dynamic Capability Discovery and Negotiation*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive
   interactions, e.g.,client and remote agents can negotiate the correct format needed.
 
 - *Task management*: The communication between a client and remote agent is oriented towards task completion and agents work to fulfill end-user requests.
