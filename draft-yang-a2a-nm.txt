@@ -13,7 +13,7 @@ Expires: 5 December 2025                                     3 June 2025
 
 Abstract
 
-   This document outlines the applicability of A2A to the network
+   This document discusses the applicability of A2A to the network
    management in the multi-domain heterogeneous network environment that
    utilizes IETF technologies.  It explores operational aspect, key
    components, generic workflow and deployment scenarios.  The impact of
@@ -113,7 +113,7 @@ Table of Contents
 
    o Multi-agent workflows, coordination, delegation
 
-   This document outlines the applicability of A2A to the network
+   This document discusses the applicability of A2A to the network
    management in the multi-domain heterogeneous network environment that
    utilizes IETF technologies.  It explores operational aspect, key
    components, generic workflow and deployment scenarios.  The impact of
