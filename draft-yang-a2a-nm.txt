@@ -282,7 +282,7 @@ Table of Contents
       language inputs by parsing instructions into structured tasks.
 
    *  Workflow Graph Decision: The central AI agent decomposing tasks
-      into workflow graphs, and distributs subtasks via an Agent Card
+      into workflow graphs, and distributes subtasks via an Agent Card
       Registry to specialized subordinate agents based on their
       capabilities.
 
