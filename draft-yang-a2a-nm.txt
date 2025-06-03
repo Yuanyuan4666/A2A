@@ -5,7 +5,7 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 1 December 2025                                     30 May 2025
+Expires: 5 December 2025                                     3 June 2025
 
 
              Applicability of A2A to the Network Management
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 December 2025.
+   This Internet-Draft will expire on 5 December 2025.
 
 Copyright Notice
 
@@ -231,7 +231,7 @@ Table of Contents
                                  Service Orchestrator
                                    | (AI Agent)  |
                                    +-----+-------+
-                                         |
+                                         |Agent to Agent
                      +-------------------+------------------+
                      |                   |                  |
                 +----+-------+     +-----+-------+     +----+------+
@@ -240,7 +240,7 @@ Table of Contents
                 +----+-------+     +-----+-------+     +----+------+
                      |                   |                  |
                      |                   |                  |
-                   tools              tools              tools
+              Agent to tools       Agent to  tools      Agent to tools
                      |                   |                  |
                      |             +-----+-------+          |
                      +-------------+  Network    +----------+
