@@ -195,25 +195,23 @@ Table of Contents
    This section outlines operational aspects of A2A with Network
    management requirements as follows:
 
-   *  _Domain-Specific AI Agents_: For appropriately scoped domains,
-      high-quality domain-specific training data yields optimally
-      performing agents that demonstrate superior effectiveness within
-      their target operational environments.
+   *  _Dynamic Capability Discovery and Negotiation_: Agent can
+      automatically detect and understand each other's capabilities,
+      enabling more intelligent and adaptive interactions, e.g.,client
+      and remote agents can negotiate the correct format needed.
 
-   *  _Dynamic Capability Discovery_: Agent can automatically detect and
-      understand each other's capabilities, enabling more intelligent
-      and adaptive interactions.
+   *  _Task management_: The communication between a client and remote
+      agent is oriented towards task completion and agents work to
+      fulfill end-user requests.  The task object is defined by the
+      protocol and has a lifecycle.  Each of the agents can communicate
+      to stay in sync with each other on the latest status of completing
+      a task.
 
-   *  _Automated Workflow coordination, delegation_: To mitigate error
-      accumulation, semantic drift, and hallucination propagation
-      phenomena, the AI Agent shall demonstrate the ability to:
-
-      -  comprehend high-level user intent
-
-      -  execute extended workflow sequences
-
-      -  implement cross-verification mechanisms throughout prolonged
-         operations
+   *  _Automated Workflow coordination, delegation_: Agents comprehend
+      high-level user intent,execute extended workflow sequences.  In
+      addition, they enable more intelligent, context-aware agent
+      interactions, e.g., Agents send each other messages to communicate
+      context, replies, artifacts, or user instructions.
 
 5.  Architecture Overview
 
