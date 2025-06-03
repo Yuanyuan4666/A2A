@@ -181,16 +181,16 @@ A general workflow is as follows:
 
 # Impact of integrating A2A on Network Management
 
- A2A leverages advanced machine learning models or knowledge graph
-	models and sophisticated communication protocols.
+A2A leverages advanced machine learning models or knowledge graph
+models and sophisticated communication protocols.
 	
-	Unlike REST or NETCONF/RESTCONF, other open API that follow predefined,
- static request-response patterns, A2A introduces a more adaptive communication
- model which transforms these interactions into dynamic, context-aware conversations.
-	
-	In addition, Agents can now negotiate, interpret subtle contextual cues, and make
- collaborative decisions in real-time.
- 
+Unlike REST or NETCONF/RESTCONF, other open API that follow predefined,
+static request-response patterns, A2A introduces a more adaptive communication
+model which transforms these interactions into dynamic, context-aware conversations.
+
+In addition, Agents can now negotiate, interpret subtle contextual cues, and make
+collaborative decisions in real-time.
+
 # Security Considerations
 
 # IANA Considerations
