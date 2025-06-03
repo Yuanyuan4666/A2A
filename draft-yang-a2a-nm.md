@@ -39,7 +39,7 @@ informative:
 
 --- abstract
 
-This document outlines the applicability of A2A to the network management
+This document discusses the applicability of A2A to the network management
 in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
 aspect, key components, generic workflow and deployment scenarios. The impact
 of integrating A2A into the network management system is also discussed.
@@ -69,7 +69,7 @@ o Dynamic Capability Discovery and tasks and artifacts exposure
 
 o Multi-agent workflows, coordination, delegation
 
-This document outlines the applicability of A2A to the network management
+This document discusses the applicability of A2A to the network management
 in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
 aspect, key components, generic workflow and deployment scenarios. The impact
 of integrating A2A into the network management system is also discussed.
