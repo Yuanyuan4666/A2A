@@ -197,10 +197,16 @@ static request-response patterns, A2A introduces a more adaptive communication
 model which transforms these interactions into dynamic, context-aware conversations.
 
 In addition, Agents can now negotiate, interpret subtle contextual cues, and make
-collaborative decisions in real-time.
+collaborative decisions in real-time. The cost is more context information needs to
+be kept as states in both sides.
 
 ## Agent to Tools Interaction
 
+In case of collabration between small AI model in the network element and large AI model
+in the network controller, A2A can be used to negotiate more context related informaton.
+
+In case of no lightweight AI in the network element, REST or NETCONF/RESTCONF, other open API
+is sufficient for network management.
 
 # Security Considerations
 
