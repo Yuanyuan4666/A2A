@@ -124,7 +124,7 @@ This section outlines operational aspects of A2A with Network management require
   The task object is defined by the protocol and has a lifecycle. Each of the agents can communicate to stay in sync with each other on the latest status of
   completing a task.
 
-- *Automated Workflow coordination, delegation*: Agents comprehend high-level user intent,execute extended workflow sequences. In addition, they enable more
+- *Automated Workflow coordination*: Agents comprehend high-level user intent,execute extended workflow sequences. In addition, they enable more
   intelligent, context-aware agent interactions, e.g., Agents send each other messages to communicate context, replies, artifacts, or user instructions.
 
 # Architecture Overview
