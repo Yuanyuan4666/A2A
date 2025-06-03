@@ -93,11 +93,12 @@ heterogeneous network environment which can lead to the following issues:
 
 ## Limitations of 3rd party management in Heterogeneous Network Environments
 
-In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols exhibit significant divergence.
-Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only partially support standard
-Network management protocols while Other vendors might choose non-stanard network management protocol or telemetry protocol such as gnmi, grpc. Without
-standard protocol or open programmable framework with multi-vendors integration drivers, integration various different data models and management
-protocols and allowing quickly adapt to different device are still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
+In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols {{!RFC6241}}{{!RFC8040}} exhibit
+significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
+partially support standard Network management protocols while Other vendors might choose non-stanard network management protocol or telemetry protocol
+such as gnmi, grpc. Without standard protocol or open programmable framework with multi-vendors integration drivers, integration various different data
+models and management protocols and allowing quickly adapt to different device are still big challenges. The same challenge is applied to multi-domain
+heterogeneous environment.
 
 ## Static Data format or Data model for management interface, unable to adapt to the speed of service roll out
 
