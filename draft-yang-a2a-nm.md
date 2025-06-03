@@ -179,6 +179,18 @@ A general workflow is as follows:
 - Iteration continues until all tasks reach executable leaf-tier agents in the hierarchy.
 - Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
+# Impact of integrating A2A on Network Management
+
+ A2A leverages advanced machine learning models or knowledge graph
+	models and sophisticated communication protocols.
+	
+	Unlike REST or NETCONF/RESTCONF, other open API that follow predefined,
+ static request-response patterns, A2A introduces a more adaptive communication
+ model which transforms these interactions into dynamic, context-aware conversations.
+	
+	In addition, Agents can now negotiate, interpret subtle contextual cues, and make
+ collaborative decisions in real-time.
+ 
 # Security Considerations
 
 # IANA Considerations
