@@ -207,11 +207,11 @@ Table of Contents
       to stay in sync with each other on the latest status of completing
       a task.
 
-   *  _Automated Workflow coordination, delegation_: Agents comprehend
-      high-level user intent,execute extended workflow sequences.  In
-      addition, they enable more intelligent, context-aware agent
-      interactions, e.g., Agents send each other messages to communicate
-      context, replies, artifacts, or user instructions.
+   *  _Automated Workflow coordination_: Agents comprehend high-level
+      user intent,execute extended workflow sequences.  In addition,
+      they enable more intelligent, context-aware agent interactions,
+      e.g., Agents send each other messages to communicate context,
+      replies, artifacts, or user instructions.
 
 5.  Architecture Overview
 
