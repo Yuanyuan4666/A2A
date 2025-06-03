@@ -136,7 +136,7 @@ Large language models (LLMs) inherently excel at understanding complex user inst
                               Service Orchestrator
                                 | (AI Agent)  |
                                 +-----+-------+
-                                      |
+                                      |Agent to Agent
                   +-------------------+------------------+
                   |                   |                  |
              +----+-------+     +-----+-------+     +----+------+
@@ -145,7 +145,7 @@ Large language models (LLMs) inherently excel at understanding complex user inst
              +----+-------+     +-----+-------+     +----+------+
                   |                   |                  |
                   |                   |                  |
-                tools              tools              tools
+           Agent to tools       Agent to  tools      Agent to tools
                   |                   |                  |
                   |             +-----+-------+          |
                   +-------------+  Network    +----------+
