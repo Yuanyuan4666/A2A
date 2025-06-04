@@ -204,10 +204,13 @@ be kept as states in both sides.
 ## Agent to Tools Interaction
 
 In case of collabration between small AI model in the network element and large AI model
-in the network controller, A2A can be used to negotiate more context related informaton.
+in the network controller, A2A can be used to negotiate more context related informaton
+and invoke the tools. The cost is more context information needs to be kept as states in
+both sides.
 
 In case of no lightweight AI in the network element, REST or NETCONF/RESTCONF, other open API
-is sufficient for network management.
+is sufficient for network management. There is no impact on management protocol used between
+the network element and the management system.
 
 # Security Considerations
 
