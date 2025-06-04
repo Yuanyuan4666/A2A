@@ -5,7 +5,7 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 5 December 2025                                     3 June 2025
+Expires: 6 December 2025                                     4 June 2025
 
 
              Applicability of A2A to the Network Management
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 December 2025.
+   This Internet-Draft will expire on 6 December 2025.
 
 Copyright Notice
 
@@ -324,10 +324,14 @@ Table of Contents
 
    In case of collabration between small AI model in the network element
    and large AI model in the network controller, A2A can be used to
-   negotiate more context related informaton.
+   negotiate more context related informaton and invoke the tools.  The
+   cost is more context information needs to be kept as states in both
+   sides.
 
    In case of no lightweight AI in the network element, REST or NETCONF/
-   RESTCONF, other open API is sufficient for network management.
+   RESTCONF, other open API is sufficient for network management.  There
+   is no impact on management protocol used between the network element
+   and the management system.
 
 7.  Security Considerations
 
