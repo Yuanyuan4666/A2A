@@ -5,7 +5,9 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 6 December 2025                                     4 June 2025
+Expires: 6 December 2025                                        H. Chihi
+                                                        InnovCOM Sup'COM
+                                                             4 June 2025
 
 
              Applicability of A2A to the Network Management
@@ -386,3 +388,8 @@ Authors' Addresses
    Qin Wu
    Huawei
    Email: bill.wu@huawei.com
+
+
+   Houda Chihi
+   InnovCOM Sup'COM
+   Email: houda.chihi@supcom.tn
