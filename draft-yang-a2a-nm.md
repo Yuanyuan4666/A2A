@@ -216,6 +216,9 @@ In case of no lightweight AI in the network element, REST or NETCONF/RESTCONF, o
 is sufficient for network management. There is no impact on management protocol used between
 the network element and the management system.
 
+If YANG2CLI script has been deployed in the network element, this script can be used to
+translate YANG schema into CLI command and mange the 3rd party network device.
+
 # Security Considerations
 
 # IANA Considerations
