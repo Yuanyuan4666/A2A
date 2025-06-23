@@ -63,7 +63,7 @@ of integrating A2A into the network management system is also discussed.
 
 With the advancement of large language models (LLMs), the concept of AI agents has gradually attracted significant attention. An AI agent
 refers to a category of software applications that utilizes LLMs to interact with users or other agents and accomplish specific tasks. Take
-A multimodal AI agent as an example, it can collaborate with other domain-specific agents to complete diverse tasks such as translation,
+a multimodal AI agent as an example, it can collaborate with other domain-specific agents to complete diverse tasks such as translation,
 configuration generation, and API development.
 
 A2A provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
@@ -94,7 +94,8 @@ of integrating A2A into the network management system is also discussed.
 # Conventions and Definitions
 
 - AI Agent: A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.
-- Agent Card: A common metadata file that describes an agent's capabilities, skills, interface URLs, and authentication requirements. Clients discover and identify the agent through this file.
+- Agent Card: A common metadata file that describes an agent's capabilities, skills, interface URLs, and authentication requirements. Clients
+              discover and identify the agent through this file.
 - A2A Server: An AI agent that receives requests and performs tasks
 - A2A Client: An AI agent that sends requests to servers
 
@@ -194,7 +195,7 @@ A general workflow is as follows:
 - Agent Intent Processing: The central AI agent processes natural language inputs by parsing instructions into structured tasks.
 - Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributes subtasks via an Agent Card Registry to specialized
   subordinate agents based on their capabilities.
-- Iteration continues until all tasks reach executable leaf-tier agents in the hierarchy.
+- Iteration continues until all tasks reach executable leaf tier agents in the hierarchy.
 - Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
 # Impact of integrating A2A on Network Management
