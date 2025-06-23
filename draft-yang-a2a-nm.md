@@ -215,8 +215,8 @@ be kept as states in both sides.
 
 ## Agent to Tools Interaction
 
-In case of collabration between small AI model in the network element and large AI model
-in the network controller, A2A can be used to negotiate more context related informaton
+In case of collaboration between small AI model in the network element and large AI model
+in the network controller, A2A can be used to negotiate more context related information
 and invoke the tools. The cost is more context information needs to be kept as states in
 both sides.
 
