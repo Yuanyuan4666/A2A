@@ -35,6 +35,14 @@ author:
    fullname: Houda Chihi
    organization: InnovCOM Sup'COM
    email: houda.chihi@supcom.tn
+ -
+  fullname: Diego Lopez
+  organization: Telefonica
+  email: diego.r.lopez@telefonica.com
+ -
+  fullname: Nathalie Romo Moreno
+  organization: Deutsche Telekom
+  email: nathalie.romo-moreno@telekom.de
 
 normative:
 
