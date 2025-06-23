@@ -121,10 +121,10 @@ with a fixed, unchanging format, it is unable to adapt to new service requiremen
 the specific network service model A or knowledge graph B using RDF, it is hard to expose these new attributes or capability through the same management
 interface which is using network service model A.
 
-## Lack integration with Network APIs
+## Lack integration with Open APIs
 
-Today, network API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
-the northbound interface of the network controller or the interface between the network controller and the network devices. However Network API ecosystem and
+Today, Open API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
+the northbound interface of the network controller or the southbound interface of the network controller. However Open API ecosystem and
 YANG model ecosystem are both built as silo and lack integration or mapping between them.
 
 # Operational Consideration
