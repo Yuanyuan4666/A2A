@@ -104,7 +104,7 @@ of integrating A2A into the network management system is also discussed.
 In large scale network management environment, a large number of devices from different network vendors need to be uniformly managed, especially in the
 heterogeneous network environment which can lead to the following issues:
 
-## Limitations of 3rd party management in Heterogeneous Network Environments
+## Limitations of 3rd Party Management in Heterogeneous Network Environments
 
 In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols {{!RFC6241}}{{!RFC8040}} exhibit
 significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
@@ -113,7 +113,7 @@ such as gnmi {{?I-D.openconfig-rtgwg-gnmi-spec}}, grpc {{?I-D.kumar-rtgwg-grpc-p
 multi-vendors integration drivers, integration various different data models and management protocols and allowing quickly adapt to different device are
 still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
 
-## Static Data format or Data model for management interface, unable to adapt to the speed of service roll out
+## Static Data Format or Data Model for Management Interface, Unable to Adapt to the Speed of Service Roll Out
 
 The IETF is currently working on and also publishing a set of YANG models for network service configuration. Network Service configurations are built from a combination of network element and protocol configuration, but are specified to service users in more abstract terms, which enables service agility to speed
 service creation and delivery and allows the deployment of innovative new services across networks. However Network service model provide static interface
@@ -121,7 +121,7 @@ with a fixed, unchanging format, it is unable to adapt to new service requiremen
 the specific network service model A or knowledge graph B using RDF, it is hard to expose these new attributes or capability through the same management
 interface which is using network service model A.
 
-## Lack integration with Open APIs
+## YANG Model Lacks integration with Open APIs
 
 Today, Open API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
 the northbound interface of the network controller or the southbound interface of the network controller. However Open API ecosystem and
