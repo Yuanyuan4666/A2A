@@ -5,13 +5,13 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 25 December 2025                                       H. Chihi
+Expires: 26 December 2025                                       H. Chihi
                                                         InnovCOM Sup'COM
                                                                 D. Lopez
                                                               Telefonica
                                                             N. R. Moreno
                                                         Deutsche Telekom
-                                                            23 June 2025
+                                                            24 June 2025
 
 
              Applicability of A2A to the Network Management
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 December 2025.
+   This Internet-Draft will expire on 26 December 2025.
 
 Copyright Notice
 
@@ -73,11 +73,11 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Overview of key challenges for the network management
-     3.1.  Limitations of 3rd party management in Heterogeneous
+     3.1.  Limitations of 3rd Party Management in Heterogeneous
            Network Environments
-     3.2.  Static Data format or Data model for management interface,
-           unable to adapt to the speed of service roll out
-     3.3.  Lack integration with Open APIs
+     3.2.  Static Data Format or Data Model for Management Interface,
+           Unable to Adapt to the Speed of Service Roll Out
+     3.3.  YANG Model Lacks integration with Open APIs
    4.  Operational Consideration
    5.  Architecture Overview
      5.1.  Multi-Agent Communication Deployment Scenario
@@ -157,7 +157,7 @@ Table of Contents
    especially in the heterogeneous network environment which can lead to
    the following issues:
 
-3.1.  Limitations of 3rd party management in Heterogeneous Network
+3.1.  Limitations of 3rd Party Management in Heterogeneous Network
       Environments
 
    In the multi-vendor heterogeneous environment,vendors implementations
@@ -175,8 +175,8 @@ Table of Contents
    challenges.  The same challenge is applied to multi-domain
    heterogeneous environment.
 
-3.2.  Static Data format or Data model for management interface, unable
-      to adapt to the speed of service roll out
+3.2.  Static Data Format or Data Model for Management Interface, Unable
+      to Adapt to the Speed of Service Roll Out
 
    The IETF is currently working on and also publishing a set of YANG
    models for network service configuration.  Network Service
@@ -192,7 +192,7 @@ Table of Contents
    these new attributes or capability through the same management
    interface which is using network service model A.
 
-3.3.  Lack integration with Open APIs
+3.3.  YANG Model Lacks integration with Open APIs
 
    Today, Open API has been widely adopted by the northbound interface
    of OSS/BSS or Network orchestrator while YANG data models have been
