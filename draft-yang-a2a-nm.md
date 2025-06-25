@@ -152,10 +152,10 @@ Large language models (LLMs) inherently excel at understanding complex user inst
                   |                   |                  |
            Agent to tools       Agent to  tools      Agent to tools
                   |                   |                  |
-                  |             +-----+-------+          |
-                  +-------------+  Network    +----------+
-                                |  Devices    |
-                                +-------------+
+                  +-------------------+------------------+
+                  |                Network               |
+                  |                Devices               |
+                  +--------------------------------------+
 ~~~~
 
 In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g.,
