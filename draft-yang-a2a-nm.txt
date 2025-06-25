@@ -274,7 +274,9 @@ Table of Contents
    service orchestrator and network controller can introduce AI Agent
    and allow Agent to Agent communication.  AI Agent within the service
    orchestrator can provide registry database for other service agents
-   within the network controller to register its location.
+   within the network controller to register their agent cards, which
+   would include information like device inventory data and protocol
+   support.
 
    The interaction in the multi-agent communication deployment scenario
    can be break down into:
@@ -283,17 +285,17 @@ Table of Contents
 
    *  _AI Agent to Tools interaction_
 
+   For AI Agent to Agent interaction, users require a real-time
+   monitoring interface for long-running workflows or tasks requiring
+   continuous supervision with dual capabilities: (1) live network state
+   observation and (2) validation of agent-proposed remediation actions
+   during anomaly resolution scenarios.
+
    For AI Agent to Tools interaction, to enable comprehensive
    functionality, additional protocol extensions are required to address
    two critical aspects: (1) standardized tool invocation mechanisms for
    agent-tool interoperability, and (2) monitoring frameworks for tool
    usage tracking and auditing.
-
-   AI Agent to Agent interaction, users require a real-time monitoring
-   interface for long-running workflows or tasks requiring continuous
-   supervision with dual capabilities: (1) live network state
-   observation and (2) validation of agent-proposed remediation actions
-   during anomaly resolution scenarios.
 
    A general workflow is as follows:
 
@@ -311,9 +313,9 @@ Table of Contents
    *  Iteration continues until all tasks reach executable leaf tier
       agents in the hierarchy.
 
-   *  Leaf agents report outcomes to the central agent, which
-      dynamically adjusts the workflow based on result analysis and
-      policy rules.
+   *  Leaf agents invoke tools and report outcomes to the central agent,
+      which dynamically adjusts the workflow based on result analysis
+      and policy rules.
 
 6.  Impact of integrating A2A on Network Management
 

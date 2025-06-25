@@ -1378,7 +1378,7 @@ YANG model ecosystem are both built as silo and lack integration or mapping betw
 <p id="section-5.1-2">In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g.,
 both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent
 within the service orchestrator can provide registry database for other service agents within the network controller to
-register its location.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+register their agent cards, which would include information like device inventory data and protocol support.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
 <p id="section-5.1-3">The interaction in the multi-agent communication deployment scenario can be break down into:<a href="#section-5.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.1-4.1">
@@ -1388,10 +1388,10 @@ register its location.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
             <p id="section-5.1-4.2.1"><em>AI Agent to Tools interaction</em><a href="#section-5.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-5.1-5">For AI Agent to Tools interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
- (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
-<p id="section-5.1-6">AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
-capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.<a href="#section-5.1-6" class="pilcrow">¶</a></p>
+<p id="section-5.1-5">For AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
+capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
+<p id="section-5.1-6">For AI Agent to Tools interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
+ (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.<a href="#section-5.1-6" class="pilcrow">¶</a></p>
 <p id="section-5.1-7">A general workflow is as follows:<a href="#section-5.1-7" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.1-8.1">
@@ -1408,7 +1408,7 @@ subordinate agents based on their capabilities.<a href="#section-5.1-8.3.1" clas
             <p id="section-5.1-8.4.1">Iteration continues until all tasks reach executable leaf tier agents in the hierarchy.<a href="#section-5.1-8.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.1-8.5">
-            <p id="section-5.1-8.5.1">Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.<a href="#section-5.1-8.5.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-8.5.1">Leaf agents invoke tools and report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.<a href="#section-5.1-8.5.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
