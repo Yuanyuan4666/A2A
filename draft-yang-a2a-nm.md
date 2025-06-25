@@ -66,24 +66,14 @@ refers to a category of software applications that utilizes LLMs to interact wit
 a multimodal AI agent as an example, it can collaborate with other domain-specific agents to complete diverse tasks such as translation,
 configuration generation, and API development.
 
-A2A provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
+Agent to Agent Communication protocol(A2A) provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
 process, regardless of their underlying technologies. Agents can advertise their capabilities using an 'Agent Card' in JSON format, or send
 messages to communicate context, replies, artifacts, or user instructions, which make it easier to build AI applications that can interact
 with heterogeneous AI ecosystems in specific domain.
 
-With significant adoption of AI Agents across the Internet,Agent to Agent Communication protocol may become the foundation for the next wave
-of Internet communication technologies across domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field
-is meant to develop various rich AI driven network applications, realize intent based networks management automation in the multi-vendor
-heterogeneous network environment. By establishing standard interfaces for dynamic Capability Discovery, intelligent message routing, heterogeneous
-AI ecosystems interaction,cross-platform collaboration, A2A enables AI Agents to:
+With significant adoption of AI Agents across the Internet, A2A may become the foundation for the next wave of Internet communication technologies across domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field aims to develop various AI-driven network applications and realize intent-based network management automation in multi-vendor heterogeneous network environments.
 
-o Understand contextual nuances
-
-o Negotiate and adapt in real-time
-
-o Make collaborative decisions
-
-o Maintain persistent, intelligent interactions
+To achieve this vision, A2A establishes standard interfaces that address key challenges in multi-agent collaboration. First, it provides dynamic capability discovery mechanisms that allow agents to automatically identify and understand what services other agents can provide, eliminating the need for static configuration. Second, it enables intelligent message routing that can direct communications between agents based on their capabilities and current availability, ensuring efficient collaboration. Finally, it enables cross-platform interoperability by providing common protocols that allow agents to collaborate seamlessly across different AI frameworks, platforms, and implementation approaches, abstracting away underlying technical differences.
 
 This document discusses the applicability of A2A to the network management
 in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
@@ -104,7 +94,7 @@ of integrating A2A into the network management system is also discussed.
 In large scale network management environment, a large number of devices from different network vendors need to be uniformly managed, especially in the
 heterogeneous network environment which can lead to the following issues:
 
-## Limitations of 3rd Party Management in Heterogeneous Network Environments
+## Protocol and Data Model Fragmentation in Multi-Vendor Networks
 
 In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols {{!RFC6241}}{{!RFC8040}} exhibit
 significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
@@ -113,13 +103,13 @@ such as gnmi {{?I-D.openconfig-rtgwg-gnmi-spec}}, grpc {{?I-D.kumar-rtgwg-grpc-p
 multi-vendors integration drivers, integration various different data models and management protocols and allowing quickly adapt to different device are
 still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
 
-## Static Data Format or Data Model for Management Interface, Unable to Adapt to the Speed of Service Roll Out
+## Inflexibility of Static Data Models for Evolving Service Requirements
 
-The IETF is currently working on and also publishing a set of YANG models for network service configuration. Network Service configurations are built from a combination of network element and protocol configuration, but are specified to service users in more abstract terms, which enables service agility to speed
-service creation and delivery and allows the deployment of innovative new services across networks. However Network service model provide static interface
-with a fixed, unchanging format, it is unable to adapt to new service requirements, e.g., when some new service attributes are introduced and correlated with
-the specific network service model A or knowledge graph B using RDF, it is hard to expose these new attributes or capability through the same management
-interface which is using network service model A.
+While YANG models provide a structured approach to network service configuration, their static nature creates significant bottlenecks in rapidly evolving service environments. YANG models are typically defined during the design phase with fixed schemas that specify predetermined attributes and capabilities. When new service requirements emerge—such as novel QoS parameters, security features, or performance metrics—the existing YANG models cannot dynamically accommodate these additions.
+
+For example, if a network operator wants to introduce machine learning-based traffic optimization as a new service feature, the current YANG model may lack the necessary attributes to configure or monitor this capability. Adding these attributes requires updating the YANG schema, going through standardization processes, and potentially coordinating across multiple vendors—a process that can take months or years. This rigidity prevents network operators from quickly deploying innovative services and limits their ability to respond to changing market demands or customer requirements.
+
+The static nature of current data models thus creates a fundamental mismatch between the pace of service innovation and the flexibility of management interfaces.
 
 ## YANG Model Lacks integration with Open APIs
 
@@ -131,15 +121,11 @@ YANG model ecosystem are both built as silo and lack integration or mapping betw
 
 This section outlines operational aspects of A2A with Network management requirements as follows:
 
-- *Dynamic Capability Discovery and Negotiation*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive
-  interactions, e.g.,client and remote agents can negotiate the correct format needed.
+- *Dynamic Capability Discovery and Negotiation*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive interactions.
 
-- *Task Management*: The communication between a client and remote agent is oriented towards task completion and agents work to fulfill end-user requests.
-  The task object is defined by the protocol and has a lifecycle. Each of the agents can communicate to stay in sync with each other on the latest status of
-  completing a task.
+- *Task Management*: The A2A protocol enables agents to coordinate when working together to fulfill user requests. Agents can communicate about their progress and share information needed to complete collaborative work.
 
-- *Automated Workflow Coordination*: Agents comprehend high-level user intent,execute extended workflow sequences. In addition, they enable more
-  intelligent, context-aware agent interactions, e.g., Agents send each other messages to communicate context, replies, artifacts, or user instructions.
+- *Automated Workflow Coordination*: Agents can understand high-level user intent and execute complex, multi-step workflows that span multiple agents. This enables intelligent sequencing of network operations, such as coordinating service provisioning across discovery, validation, and configuration phases.
 
 # Architecture Overview
 
