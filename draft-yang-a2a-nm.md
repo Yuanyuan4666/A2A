@@ -161,7 +161,7 @@ Large language models (LLMs) inherently excel at understanding complex user inst
 In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g.,
 both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent
 within the service orchestrator can provide registry database for other service agents within the network controller to
-register its location.
+register their agent cards, which would include information like device inventory data and protocol support.
 
 The interaction in the multi-agent communication deployment scenario can be break down into:
 
@@ -169,11 +169,11 @@ The interaction in the multi-agent communication deployment scenario can be brea
 
 - *AI Agent to Tools interaction*
 
+For AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
+capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.
+
 For AI Agent to Tools interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
  (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.
-
-AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
-capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.
 
 A general workflow is as follows:
 
@@ -182,7 +182,7 @@ A general workflow is as follows:
 - Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributes subtasks via an Agent Card Registry to specialized
   subordinate agents based on their capabilities.
 - Iteration continues until all tasks reach executable leaf tier agents in the hierarchy.
-- Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
+- Leaf agents invoke tools and report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
 # Impact of integrating A2A on Network Management
 
