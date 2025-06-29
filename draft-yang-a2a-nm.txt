@@ -11,6 +11,8 @@ Expires: 31 December 2025                                       H. Chihi
                                                               Telefonica
                                                             N. R. Moreno
                                                         Deutsche Telekom
+                                                           L. Tailhardat
+                                  Orange ResearchAdd commentMore actions
                                                             29 June 2025
 
 
@@ -410,3 +412,8 @@ Authors' Addresses
    Nathalie Romo Moreno
    Deutsche Telekom
    Email: nathalie.romo-moreno@telekom.de
+
+
+   Lionel Tailhardat
+   Orange ResearchAdd commentMore actions
+   Email: lionel.tailhardat@orange.com
