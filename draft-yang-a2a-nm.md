@@ -43,6 +43,10 @@ author:
   fullname: Nathalie Romo Moreno
   organization: Deutsche Telekom
   email: nathalie.romo-moreno@telekom.de
+ -
+  fullname: Lionel Tailhardat
+  organization: Orange ResearchAdd commentMore actions
+  email: lionel.tailhardat@orange.com
 
 normative:
 
