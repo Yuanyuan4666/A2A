@@ -239,10 +239,15 @@ and user instruction is security sensitive and requires authentication,authoriza
 protection. Legacy communication protocols such as HTTPS/TLS, designed for human-centric interactions,
 simply cannot withstand the high-speed exchanges between intelligent agents.  Key security challenges
 in AI agent communication include:
+
 - Identity Verification: Ensuring that agents are who they claim to be
+
 - Data Integrity: Preventing unauthorized modifications during transmission
+
 - Confidentiality: Protecting sensitive information from potential breaches
+
 - Scalable Security: Maintaining robust protection across diverse and complex networks
+
 
 # IANA Considerations
 
