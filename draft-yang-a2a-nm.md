@@ -234,6 +234,16 @@ translate YANG schema into CLI command and mange the 3rd party network device.
 
 # Security Considerations
 
+The communication between Agents for the exchange of context information, capability information
+and user instruction is security sensitive and requires authentication,authorization and integrity
+protection. Legacy communication protocols such as HTTPS/TLS, designed for human-centric interactions,
+simply cannot withstand the high-speed exchanges between intelligent agents.  Key security challenges
+in AI agent communication include:
+- Identity Verification: Ensuring that agents are who they claim to be
+- Data Integrity: Preventing unauthorized modifications during transmission
+- Confidentiality: Protecting sensitive information from potential breaches
+- Scalable Security: Maintaining robust protection across diverse and complex networks
+
 # IANA Considerations
 
 This document has no IANA actions.
