@@ -17,7 +17,7 @@ Expires: 4 January 2026                                         H. Chihi
 
 
              Applicability of A2A to the Network Management
-                        draft-yang-a2a-nm-latest
+                     draft-yang-nmrg-a2a-nm-latest
 
 Abstract
 
@@ -34,7 +34,7 @@ About This Document
    The latest revision of this draft can be found at
    https://Yuanyuan4666.github.io/A2A/draft-yang-a2a-nm.html.  Status
    information for this document may be found at
-   https://datatracker.ietf.org/doc/draft-yang-a2a-nm/.
+   https://datatracker.ietf.org/doc/draft-yang-nmrg-a2a-nm/.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/Yuanyuan4666/A2A.
