@@ -203,43 +203,41 @@ A general workflow is as follows:
 - Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
 ## Example
-Take multi-vendor network management as an example, the MCP server is deployed locally on the network controller, and the tools are
-integrated into the MCP server. The server provides the following registered tool descriptor information:
+This document describes the deployment of a network configuration within a secure video meeting context. The scheduling agent is deployed to the Service Orchestrator, while the worker agent is deployed to the network controller. Registered on the Service Orchestrator, the agent card formally defines a worker agent's capabilities, interfaces, and operational characteristics within network management systems.
 
-Tools description: It describes the name, use, and parameters of tools.
-
-Tools implementation: MCP implementation describes how the tools are invoked.
-
-See Tool descriptor information example as follows:
-
+See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
 ~~~~
-# Tool Descriptor
-[
-  {
-    "name": "batch_configure_devices",
-    "description": "Batch Configure Network Devices"，
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "device_ips": {"type": "array", "items": {"type": "string"}, "description": "Device IP List"}，
-        "commands": {"type": "array", "items": {"type": "string"}, "description": "CLI Sequence"}，
-        "credential_id": {"type": "string", "description": "Credential ID"}
-      }，
-      "required": ["device_ips", "commands"]
-    }
-  },
-  {
-    "name": "check_device_status",
-    "description": "Check the Status of Network Devices"，
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "device_ip": {"type": "string"},
-        "metrics": {"type": "array", "items": {"enum": ["cpu", "memory", "interface"]}}
-      }
-    }
-  }
-]
+{
+    "name": "QoSAgent",
+    "description": "Automatically configure QoS policies",
+    "url": "https://qos-agent.example.com/tasks/send",
+    "capabilities": ["QoS_Policy"],
+    "skills": [
+        {
+            "id": "set_qos",
+            "name": "QoS configuration",
+            "description": "QoS configuration",
+            "inputModes": ["text/structured"],
+            "outputModes": ["text/status"]
+        }
+    ]
+}
+{
+    "name": "SecurityAgent",
+    "description": "
+Automatically configure network security policies",
+    "url": "https://security-agent.example.com/tasks/send",
+    "capabilities": ["IPSEC", "DTLS"],
+    "skills": [
+        {
+            "id": "enable_encryption",
+            "name": "Encryption method configuration",
+            "description": "Encryption method configuration",
+            "inputModes": ["text/structured"],
+            "outputModes": ["text/status"]
+        }
+    ]
+}
 # Tool Implementation
 from netmiko import ConnectHandler
 from mcp_server import McpServer
