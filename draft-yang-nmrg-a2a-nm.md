@@ -203,7 +203,7 @@ A general workflow is as follows:
 - Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
 ## Example
-This document describes the deployment of a network configuration within a secure video meeting context. The scheduling agent is deployed to the Service Orchestrator, while the worker agent is deployed to the network controller. Registered on the Service Orchestrator, the agent card formally defines a worker agent's capabilities, interfaces, and operational characteristics within network management systems.
+This section describes the deployment of a network configuration within a secure video meeting context. The scheduling agent is deployed to the Service Orchestrator, while the worker agent is deployed to the network controller. Registered on the Service Orchestrator, the agent card formally defines a worker agent's capabilities, interfaces, and operational characteristics within network management systems.
 
 See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
 ~~~~
