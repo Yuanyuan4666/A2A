@@ -84,14 +84,15 @@ Table of Contents
    5.  Architecture Overview
      5.1.  Multi-Agent Communication Deployment Scenario
      5.2.  Example
-   6.  Impact of integrating A2A on Network Management
-     6.1.  Agent to Agent Interaction
-     6.2.  Agent to Tools Interaction
-   7.  Security Considerations
-   8.  IANA Considerations
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   6.  Connection Pool Management
+   7.  Impact of integrating A2A on Network Management
+     7.1.  Agent to Agent Interaction
+     7.2.  Agent to Tools Interaction
+   8.  Security Considerations
+   9.  IANA Considerations
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -313,82 +314,51 @@ Table of Contents
 
 5.2.  Example
 
-   Take multi-vendor network management as an example, the MCP server is
-   deployed locally on the network controller, and the tools are
-   integrated into the MCP server.  The server provides the following
-   registered tool descriptor information:
+   This document describes the deployment of a network configuration
+   within a secure video meeting context.  The scheduling agent is
+   deployed to the Service Orchestrator, while the worker agent is
+   deployed to the network controller.  Registered on the Service
+   Orchestrator, the agent card formally defines a worker agent's
+   capabilities, interfaces, and operational characteristics within
+   network management systems.
 
-   Tools description: It describes the name, use, and parameters of
-   tools.
+   See the following Agent card examples for two worker agents (QoS
+   Agent and Security Agent): ~~~~ { "name": "QoSAgent", "description":
+   "Automatically configure QoS policies", "url": "https://qos-
+   agent.example.com/tasks/send", "capabilities": ["QoS_Policy"],
+   "skills": [ { "id": "set_qos", "name": "QoS configuration",
+   "description": "QoS configuration", "inputModes": ["text/
+   structured"], "outputModes": ["text/status"] } ] } { "name":
+   "SecurityAgent", "description": " Automatically configure network
+   security policies", "url": "https://security-agent.example.com/tasks/
+   send", "capabilities": ["IPSEC", "DTLS"], "skills": [ { "id":
+   "enable_encryption", "name": "Encryption method configuration",
+   "description": "Encryption method configuration", "inputModes":
+   ["text/structured"], "outputModes": ["text/status"] } ] } # Tool
+   Implementation from netmiko import ConnectHandler from mcp_server
+   import McpServer
 
-   Tools implementation: MCP implementation describes how the tools are
-   invoked.
+   app = FastAPI() server = McpServer(app)
 
-   See Tool descriptor information example as follows:
+6.  Connection Pool Management
 
-# Tool Descriptor
-[
-  {
-    "name": "batch_configure_devices",
-    "description": "Batch Configure Network Devices"，
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "device_ips": {"type": "array", "items": {"type": "string"}, "description": "Device IP List"}，
-        "commands": {"type": "array", "items": {"type": "string"}, "description": "CLI Sequence"}，
-        "credential_id": {"type": "string", "description": "Credential ID"}
-      }，
-      "required": ["device_ips", "commands"]
-    }
-  },
-  {
-    "name": "check_device_status",
-    "description": "Check the Status of Network Devices"，
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "device_ip": {"type": "string"},
-        "metrics": {"type": "array", "items": {"enum": ["cpu", "memory", "interface"]}}
-      }
-    }
-  }
-]
-# Tool Implementation
-from netmiko import ConnectHandler
-from mcp_server import McpServer
+   devices = { "192.168.1.1": {"device_type": "VendorA-
+   XYZ"，"credential": "admin:XYZ@password"}, "192.168.1.2":
+   {"device_type": "VendorB-ABC","credential":"admin:ABC@passowrd"} ....
+   }
 
-app = FastAPI()
-server = McpServer(app)
+   @server.tool("batch_configure_devices") async def
+   batch_config(device_ips: list,commands: list,credential_id: str):
+   results = {} for ip in device_ips: conn = ConnectHandler( ip = ip,
+   username = devices[ip]["credential"].split(':')[0], password =
+   devices[ip]["credential"].split(':')[1], device_type =
+   devices[ip]["device_type"] ) output = conn.send_config_set(commands)
+   results[ip] = output return {"success": True, "details": results)
 
-#Connection Pool Management
-devices = {
-    "192.168.1.1": {"device_type": "VendorA-XYZ"，"credential": "admin:XYZ@password"},
-    "192.168.1.2": {"device_type": "VendorB-ABC","credential":"admin:ABC@passowrd"}
-     ....
-}
-
-@server.tool("batch_configure_devices")
-async def batch_config(device_ips: list,commands: list,credential_id: str):
-    results = {}
-    for ip in device_ips:
-        conn = ConnectHandler(
-            ip = ip,
-            username = devices[ip]["credential"].split(':')[0],
-            password = devices[ip]["credential"].split(':')[1],
-            device_type = devices[ip]["device_type"]
-        )
-        output = conn.send_config_set(commands)
-        results[ip] = output
-    return {"success": True, "details": results)
-
-@server.tool("check_device_status")
-async def check_status(device_ip: str, metrics: list):
-    status = {}
-    if "cpu" in metrics:
-        status["cpu"] = get_cpu_usage (device_ip)
-    if "memory" in metrics:
-        status["memory"] = get_memory_usage(device_ip)
-    return status
+   @server.tool("check_device_status") async def check_status(device_ip:
+   str, metrics: list): status = {} if "cpu" in metrics: status["cpu"] =
+   get_cpu_usage (device_ip) if "memory" in metrics: status["memory"] =
+   get_memory_usage(device_ip) return status ~~~~
 
    Suppose a user submits a request (via the client) such as "Configure
    OSPF Area 0 with process ID 100 for all core switches in the Beijing
@@ -421,9 +391,9 @@ async def check_status(device_ip: str, metrics: list):
      "192.168.10.2": "Error: no response from the device",
    }
 
-6.  Impact of integrating A2A on Network Management
+7.  Impact of integrating A2A on Network Management
 
-6.1.  Agent to Agent Interaction
+7.1.  Agent to Agent Interaction
 
    A2A leverages advanced machine learning models or knowledge graph
    models and sophisticated communication protocols such as one built on
@@ -438,7 +408,7 @@ async def check_status(device_ip: str, metrics: list):
    cues, and make collaborative decisions in real-time.  The cost is
    more context information needs to be kept as states in both sides.
 
-6.2.  Agent to Tools Interaction
+7.2.  Agent to Tools Interaction
 
    In case of collaboration between small AI model in the network
    element and large AI model in the network controller, A2A can be used
@@ -455,7 +425,7 @@ async def check_status(device_ip: str, metrics: list):
    script can be used to translate YANG schema into CLI command and
    mange the 3rd party network device.
 
-7.  Security Considerations
+8.  Security Considerations
 
    The communication between Agents for the exchange of context
    information, capability information and user instruction is security
@@ -477,13 +447,13 @@ async def check_status(device_ip: str, metrics: list):
    *  Scalable Security: Maintaining robust protection across diverse
       and complex networks
 
-8.  IANA Considerations
+9.  IANA Considerations
 
    This document has no IANA actions.
 
-9.  References
+10.  References
 
-9.1.  Normative References
+10.1.  Normative References
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
@@ -494,7 +464,7 @@ async def check_status(device_ip: str, metrics: list):
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/rfc/rfc8040>.
 
-9.2.  Informative References
+10.2.  Informative References
 
    [I-D.kumar-rtgwg-grpc-protocol]
               Kumar, A., Kolhe, J., Ghemawat, S., and L. Ryan, "gRPC
