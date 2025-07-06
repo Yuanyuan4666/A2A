@@ -255,15 +255,67 @@ Suppose a user submits a natural language request such as "The meeting will have
 }
 ~~~~
 
-The MCP server executes the network management operation in JSON format and returns the results to the MCP client, which forwards them to the LLM. The
-LLM parses the response, generates a natural-language summary, and sends it back to the client for final presentation to the user. See natural lanauge summary example as follows:
-
+The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for `set_qos` and `enable_encryption` are structured as follows:
 ~~~~
 
 {
-  "192.168.10.1": "Configure Successfully, take 2.3 seconds",
-  "192.168.10.2": "Error: no response from the device",
+    "taskId": "task-multi-001",
+    "subTasks": [
+        {
+            "agent": "QoSAgent",
+            "action": "set_qos",
+            "parameters": {
+	            "configuration": {
+		            "acceptedOutputModes": [
+			            "text/status"
+                    ]
+	            },
+	            "minimum_bandwidth": "100Mbps",
+	            "priority": "0"
+            }
+        },
+        { 
+            "agent": "SecurityAgent",
+            "action": "enable_encryption",
+            "parameters": {
+	            "configuration": {
+		            "acceptedOutputModes": [
+			            "text/status"
+                    ]
+	            },
+	            "encryption_method": "ipsec",
+	            "key_management": "dtls",
+            }
+        }
+    ]
 }
+
+~~~~
+
+The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
+~~~~
+
+{
+    "taskId": "task-multi-001",
+    "action": "deploy_network_configuration",
+    "parameters": {
+        "context": "secure_video_meeting",
+        "scope": "100",
+        "secure_level": "Top Secret",
+    }
+}
+
+{
+  "taskId": "subtask-qos-001",
+  "status": "completed",
+  "artifacts": [{"type": "text", "content": "QoS setup completed"}]
+}
+{
+  "taskId": "subtask-sec-001",
+  "status": "completed",
+  "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
+}
+
 
 ~~~~
 
