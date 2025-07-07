@@ -5,7 +5,7 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 7 January 2026                                         H. Chihi
+Expires: 8 January 2026                                         H. Chihi
                                                         InnovCOM Sup'COM
                                                                 D. Lopez
                                                               Telefonica
@@ -13,7 +13,7 @@ Expires: 7 January 2026                                         H. Chihi
                                                         Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
-                                                             6 July 2025
+                                                             7 July 2025
 
 
              Applicability of A2A to the Network Management
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 January 2026.
+   This Internet-Draft will expire on 8 January 2026.
 
 Copyright Notice
 
@@ -313,7 +313,7 @@ Table of Contents
 
 5.2.  Example
 
-   This document describes the deployment of a network configuration
+   This section describes the deployment of a network configuration
    within a secure video meeting context.  The scheduling agent is
    deployed to the Service Orchestrator, while the worker agent is
    deployed to the network controller.  Registered on the Service
@@ -342,17 +342,31 @@ Suppose a user submits a natural language request such as "The meeting will have
    "secure_video_meeting", "scope": "100", "secure_level": "Top Secret",
    } } ~~~~
 
-   The MCP server executes the network management operation in JSON
-   format and returns the results to the MCP client, which forwards them
-   to the LLM.  The LLM parses the response, generates a natural-
-   language summary, and sends it back to the client for final
-   presentation to the user.  See natural lanauge summary example as
-   follows:
+   The Service Orchestrator sends subtasks in a structured format to the
+   Network Controller.  For example, the subtasks for set_qos and
+   enable_encryption are structured as follows: ~~~~
 
-   {
-     "192.168.10.1": "Configure Successfully, take 2.3 seconds",
-     "192.168.10.2": "Error: no response from the device",
-   }
+   { "taskId": "task-multi-001", "subTasks": [ { "agent": "QoSAgent",
+   "action": "set_qos", "parameters": { "configuration": {
+   "acceptedOutputModes": [ "text/status" ] }, "minimum_bandwidth":
+   "100Mbps", "priority": "0" } }, { "agent": "SecurityAgent", "action":
+   "enable_encryption", "parameters": { "configuration": {
+   "acceptedOutputModes": [ "text/status" ] }, "encryption_method":
+   "ipsec", "key_management": "dtls", } } ] }
+
+The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
+
+   { "taskId": "task-multi-001", "action":
+   "deploy_network_configuration", "parameters": { "context":
+   "secure_video_meeting", "scope": "100", "secure_level": "Top Secret",
+   } }
+
+   { "taskId": "subtask-qos-001", "status": "completed", "artifacts":
+   [{"type": "text", "content": "QoS setup completed"}] } { "taskId":
+   "subtask-sec-001", "status": "completed", "artifacts": [{"type":
+   "text", "content": "IPSEC encryption enabled"}] }
+
+   ~~~~
 
 6.  Impact of integrating A2A on Network Management
 
