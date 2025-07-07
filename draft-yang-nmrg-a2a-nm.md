@@ -225,8 +225,7 @@ See the following Agent card examples for two worker agents (QoS Agent and Secur
 }
 {
     "name": "SecurityAgent",
-    "description": "
-Automatically configure network security policies",
+    "description": "Automatically configure network security policies",
     "url": "https://security-agent.example.com/tasks/send",
     "capabilities": ["IPSEC", "DTLS"],
     "skills": [
@@ -294,7 +293,6 @@ The Service Orchestrator sends subtasks in a structured format to the Network Co
 The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
 
 ~~~~
-
 {
     "taskId": "task-multi-001",
     "action": "deploy_network_configuration",
