@@ -5,14 +5,14 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 8 January 2026                                         H. Chihi
-                                                        InnovCOM Sup'COM
-                                                                D. Lopez
+Expires: 8 January 2026                                         D. Lopez
                                                               Telefonica
                                                             N. R. Moreno
                                                         Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
+                                                                H. Chihi
+                                                        InnovCOM Sup'COM
                                                              7 July 2025
 
 
@@ -541,11 +541,6 @@ Authors' Addresses
    Email: bill.wu@huawei.com
 
 
-   Houda Chihi
-   InnovCOM Sup'COM
-   Email: houda.chihi@supcom.tn
-
-
    Diego Lopez
    Telefonica
    Email: diego.r.lopez@telefonica.com
@@ -559,3 +554,8 @@ Authors' Addresses
    Lionel Tailhardat
    Orange ResearchAdd commentMore actions
    Email: lionel.tailhardat@orange.com
+
+
+   Houda Chihi
+   InnovCOM Sup'COM
+   Email: houda.chihi@supcom.tn
