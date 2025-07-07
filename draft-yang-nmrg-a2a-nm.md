@@ -32,10 +32,6 @@ author:
    organization: Huawei
    email: bill.wu@huawei.com
  -
-   fullname: Houda Chihi
-   organization: InnovCOM Sup'COM
-   email: houda.chihi@supcom.tn
- -
   fullname: Diego Lopez
   organization: Telefonica
   email: diego.r.lopez@telefonica.com
@@ -47,6 +43,10 @@ author:
   fullname: Lionel Tailhardat
   organization: Orange ResearchAdd commentMore actions
   email: lionel.tailhardat@orange.com
+ -
+   fullname: Houda Chihi
+   organization: InnovCOM Sup'COM
+   email: houda.chihi@supcom.tn
 
 normative:
 
