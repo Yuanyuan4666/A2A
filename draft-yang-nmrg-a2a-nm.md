@@ -274,7 +274,7 @@ The Service Orchestrator sends subtasks in a structured format to the Network Co
 	            "priority": "0"
             }
         },
-        { 
+        {
             "agent": "SecurityAgent",
             "action": "enable_encryption",
             "parameters": {
