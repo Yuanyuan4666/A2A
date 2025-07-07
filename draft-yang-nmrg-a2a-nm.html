@@ -1440,8 +1440,9 @@ subordinate agents based on their capabilities.<a href="#section-5.1-8.3.1" clas
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-example" class="section-name selfRef">Example</a>
         </h3>
 <p id="section-5.2-1">This section describes the deployment of a network configuration within a secure video meeting context. The scheduling agent is deployed to the Service Orchestrator, while the worker agent is deployed to the network controller. Registered on the Service Orchestrator, the agent card formally defines a worker agent's capabilities, interfaces, and operational characteristics within network management systems.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
-~~~~
+<p id="section-5.2-2">See the following Agent card examples for two worker agents (QoS Agent and Security Agent):<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2-3">
+<pre>
 {
     "name": "QoSAgent",
     "description": "Automatically configure QoS policies",
@@ -1472,14 +1473,13 @@ Automatically configure network security policies",
             "outputModes": ["text/status"]
         }
     ]
-}<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-5.2-3">
-<pre>
-Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:
-
+}
 </pre><a href="#section-5.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-5.2-4">{
+<p id="section-5.2-4">Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2-5">
+<pre>
+{
     "taskId": "task-multi-001",
     "action": "deploy_network_configuration",
     "parameters": {
@@ -1488,10 +1488,12 @@ Suppose a user submits a natural language request such as "The meeting will have
         "secure_level": "Top Secret",
     }
 }
-~~~~<a href="#section-5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.2-5">The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for <code>set_qos</code> and <code>enable_encryption</code> are structured as follows:
-~~~~<a href="#section-5.2-5" class="pilcrow">¶</a></p>
-<p id="section-5.2-6">{
+</pre><a href="#section-5.2-5" class="pilcrow">¶</a>
+</div>
+<p id="section-5.2-6">The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for <code>set_qos</code> and <code>enable_encryption</code> are structured as follows:<a href="#section-5.2-6" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2-7">
+<pre>
+{
     "taskId": "task-multi-001",
     "subTasks": [
         {
@@ -1521,13 +1523,13 @@ Suppose a user submits a natural language request such as "The meeting will have
             }
         }
     ]
-}<a href="#section-5.2-6" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-5.2-7">
-<pre>
-The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
+}
 </pre><a href="#section-5.2-7" class="pilcrow">¶</a>
 </div>
-<p id="section-5.2-8">{
+<p id="section-5.2-8">The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:<a href="#section-5.2-8" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2-9">
+<pre>
+{
     "taskId": "task-multi-001",
     "action": "deploy_network_configuration",
     "parameters": {
@@ -1535,8 +1537,8 @@ The network controller executes network management operations on network devices
         "scope": "100",
         "secure_level": "Top Secret",
     }
-}<a href="#section-5.2-8" class="pilcrow">¶</a></p>
-<p id="section-5.2-9">{
+}
+{
   "taskId": "subtask-qos-001",
   "status": "completed",
   "artifacts": [{"type": "text", "content": "QoS setup completed"}]
@@ -1545,8 +1547,9 @@ The network controller executes network management operations on network devices
   "taskId": "subtask-sec-001",
   "status": "completed",
   "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
-}<a href="#section-5.2-9" class="pilcrow">¶</a></p>
-<p id="section-5.2-10">~~~~<a href="#section-5.2-10" class="pilcrow">¶</a></p>
+}
+</pre><a href="#section-5.2-9" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>

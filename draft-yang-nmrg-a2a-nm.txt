@@ -322,51 +322,115 @@ Table of Contents
    network management systems.
 
    See the following Agent card examples for two worker agents (QoS
-   Agent and Security Agent): ~~~~ { "name": "QoSAgent", "description":
-   "Automatically configure QoS policies", "url": "https://qos-
-   agent.example.com/tasks/send", "capabilities": ["QoS_Policy"],
-   "skills": [ { "id": "set_qos", "name": "QoS configuration",
-   "description": "QoS configuration", "inputModes": ["text/
-   structured"], "outputModes": ["text/status"] } ] } { "name":
-   "SecurityAgent", "description": " Automatically configure network
-   security policies", "url": "https://security-agent.example.com/tasks/
-   send", "capabilities": ["IPSEC", "DTLS"], "skills": [ { "id":
-   "enable_encryption", "name": "Encryption method configuration",
-   "description": "Encryption method configuration", "inputModes":
-   ["text/structured"], "outputModes": ["text/status"] } ] }
+   Agent and Security Agent):
 
-Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:
+   {
+       "name": "QoSAgent",
+       "description": "Automatically configure QoS policies",
+       "url": "https://qos-agent.example.com/tasks/send",
+       "capabilities": ["QoS_Policy"],
+       "skills": [
+           {
+               "id": "set_qos",
+               "name": "QoS configuration",
+               "description": "QoS configuration",
+               "inputModes": ["text/structured"],
+               "outputModes": ["text/status"]
+           }
+       ]
+   }
+   {
+       "name": "SecurityAgent",
+       "description": "
+   Automatically configure network security policies",
+       "url": "https://security-agent.example.com/tasks/send",
+       "capabilities": ["IPSEC", "DTLS"],
+       "skills": [
+           {
+               "id": "enable_encryption",
+               "name": "Encryption method configuration",
+               "description": "Encryption method configuration",
+               "inputModes": ["text/structured"],
+               "outputModes": ["text/status"]
+           }
+       ]
+   }
 
-   { "taskId": "task-multi-001", "action":
-   "deploy_network_configuration", "parameters": { "context":
-   "secure_video_meeting", "scope": "100", "secure_level": "Top Secret",
-   } } ~~~~
+   Suppose a user submits a natural language request such as "The
+   meeting will have 100 participants.  The security level is Top
+   Secret" to the platform integrated with the Service Orchestrator.
+   The platform parses the request and converts it into JSON format as
+   follows:
+
+   {
+       "taskId": "task-multi-001",
+       "action": "deploy_network_configuration",
+       "parameters": {
+           "context": "secure_video_meeting",
+           "scope": "100",
+           "secure_level": "Top Secret",
+       }
+   }
 
    The Service Orchestrator sends subtasks in a structured format to the
    Network Controller.  For example, the subtasks for set_qos and
-   enable_encryption are structured as follows: ~~~~
+   enable_encryption are structured as follows:
 
-   { "taskId": "task-multi-001", "subTasks": [ { "agent": "QoSAgent",
-   "action": "set_qos", "parameters": { "configuration": {
-   "acceptedOutputModes": [ "text/status" ] }, "minimum_bandwidth":
-   "100Mbps", "priority": "0" } }, { "agent": "SecurityAgent", "action":
-   "enable_encryption", "parameters": { "configuration": {
-   "acceptedOutputModes": [ "text/status" ] }, "encryption_method":
-   "ipsec", "key_management": "dtls", } } ] }
+   {
+       "taskId": "task-multi-001",
+       "subTasks": [
+           {
+               "agent": "QoSAgent",
+               "action": "set_qos",
+               "parameters": {
+                       "configuration": {
+                               "acceptedOutputModes": [
+                                       "text/status"
+                       ]
+                       },
+                       "minimum_bandwidth": "100Mbps",
+                       "priority": "0"
+               }
+           },
+           {
+               "agent": "SecurityAgent",
+               "action": "enable_encryption",
+               "parameters": {
+                       "configuration": {
+                               "acceptedOutputModes": [
+                                       "text/status"
+                       ]
+                       },
+                       "encryption_method": "ipsec",
+                       "key_management": "dtls",
+               }
+           }
+       ]
+   }
 
-The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
+   The network controller executes network management operations on
+   network devices and returns the results to the Service Orchestrator
+   in JSON format.  Example responses for the subtasks are shown below:
 
-   { "taskId": "task-multi-001", "action":
-   "deploy_network_configuration", "parameters": { "context":
-   "secure_video_meeting", "scope": "100", "secure_level": "Top Secret",
-   } }
-
-   { "taskId": "subtask-qos-001", "status": "completed", "artifacts":
-   [{"type": "text", "content": "QoS setup completed"}] } { "taskId":
-   "subtask-sec-001", "status": "completed", "artifacts": [{"type":
-   "text", "content": "IPSEC encryption enabled"}] }
-
-   ~~~~
+{
+    "taskId": "task-multi-001",
+    "action": "deploy_network_configuration",
+    "parameters": {
+        "context": "secure_video_meeting",
+        "scope": "100",
+        "secure_level": "Top Secret",
+    }
+}
+{
+  "taskId": "subtask-qos-001",
+  "status": "completed",
+  "artifacts": [{"type": "text", "content": "QoS setup completed"}]
+}
+{
+  "taskId": "subtask-sec-001",
+  "status": "completed",
+  "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
+}
 
 6.  Impact of integrating A2A on Network Management
 
