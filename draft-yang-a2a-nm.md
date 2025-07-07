@@ -253,21 +253,25 @@ in AI agent communication include:
 
 This document has no IANA actions.
 
-# Appendix 1, Template preparation
+# Appendix I: Template preparation
 
 This appendix should be removed when the template will be stable.
 
 It is based on the example from https://datatracker.ietf.org/doc/rfc9450/.
 
 ## Use Case Description
+
 General description of the use case.
 
 ## GREEN WG Charter Specifics
+
 (if there are no GREEN specific aspects, then it is not a UC to be documented)
 For example, the use case involves components that can report on energy consumption and that might be reconfigured (on a local or global scale) to operate based on energy goals/limitations.
+
 ### The Need for Energy Efficiency
 
 ## Requirements for GREEN
+
 Examples (can be split into different categories to facilitate a summary at the end of the document):
 - Granularity of measurements should be per component, per line, per port
 - Ability to switch on/off, put on sleep mode… components.
@@ -275,7 +279,9 @@ Examples (can be split into different categories to facilitate a summary at the 
 - Ability to operate globally (not constrained to just one device) based on power savings/goals (e.g., steer traffic using a different path that consumes less energy)
 
 
+## Framework for GREEN
 
+~~~~
 (a)              (b)              (c)
 Inventory        Monitor       +- DataSheets/DataBase and/or via API
 Of identity      Energy        |  Metadata and other device/component
@@ -338,7 +344,7 @@ The main elements in the framework are as follows:
 
 This appendix outlines the necessity of defining a framework for energy efficiency management within the GREEN Working Group's current phase. Establishing a framework now is crucial for standardizing processes, optimizing energy usage, and ensuring interoperability across network devices. Immediate action enables the industry to achieve cost savings, meet regulatory requirements, and maintain competitiveness. By utilizing insights from existing use cases, the framework can deliver actionable metrics and support ongoing innovation, positioning the industry to effectively manage future energy challenges.
 
-## 1. Framework Necessity
+## Framework Necessity
 
 Analyzing use cases such as the "Incremental Application of the GREEN Framework" reveals the critical need for a structured approach to transitioning network devices towards energy-efficient operations. The framework is essential for:
 
@@ -351,7 +357,7 @@ Analyzing use cases such as the "Incremental Application of the GREEN Framework"
 - **Simplified Implementation**: Streamlining the deployment of energy-efficient measures to minimize service disruptions.
 - **Security**: Protecting sensitive operations related to power states and consumption.
 
-## 2. Use Cases Calling for a Framework
+## Use Cases Calling for a Framework
 
 Multiple use cases underscore the need for a framework, including:
 
@@ -368,7 +374,7 @@ Multiple use cases underscore the need for a framework, including:
 
 These use cases highlight diverse aspects of energy management that require a cohesive framework for effective implementation.
 
-## 3. Impact on Energy Metrics
+## Impact on Energy Metrics
 
 The framework will significantly enhance the creation of energy metrics with actionable insights by:
 
@@ -378,11 +384,11 @@ The framework will significantly enhance the creation of energy metrics with act
 - **Integration Across Devices**: Ensuring interoperability for network-wide data analysis.
 - **Providing Actionable Insights**: Translating raw data into meaningful information for decision-making.
 
-## 4. Current Device Readiness
+## Current Device Readiness
 
 While many modern networking devices have basic energy monitoring capabilities, these are often proprietary. The framework will define requirements to enhance these capabilities, enabling standardized metric production and meaningful data contributions for energy management goals.
 
-## 5. Why Now?
+## Why Now?
 
 The decision to define the framework now, rather than later, is driven by:
 
