@@ -206,6 +206,7 @@ A general workflow is as follows:
 This section describes the deployment of a network configuration within a secure video meeting context. The scheduling agent is deployed to the Service Orchestrator, while the worker agent is deployed to the network controller. Registered on the Service Orchestrator, the agent card formally defines a worker agent's capabilities, interfaces, and operational characteristics within network management systems.
 
 See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
+
 ~~~~
 {
     "name": "QoSAgent",
@@ -238,7 +239,6 @@ Automatically configure network security policies",
         }
     ]
 }
-
 ~~~~
 
 Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:
@@ -256,8 +256,8 @@ Suppose a user submits a natural language request such as "The meeting will have
 ~~~~
 
 The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for `set_qos` and `enable_encryption` are structured as follows:
-~~~~
 
+~~~~
 {
     "taskId": "task-multi-001",
     "subTasks": [
@@ -289,10 +289,10 @@ The Service Orchestrator sends subtasks in a structured format to the Network Co
         }
     ]
 }
-
 ~~~~
 
 The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
+
 ~~~~
 
 {
@@ -304,7 +304,6 @@ The network controller executes network management operations on network devices
         "secure_level": "Top Secret",
     }
 }
-
 {
   "taskId": "subtask-qos-001",
   "status": "completed",
@@ -315,8 +314,6 @@ The network controller executes network management operations on network devices
   "status": "completed",
   "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
 }
-
-
 ~~~~
 
 # Impact of integrating A2A on Network Management
