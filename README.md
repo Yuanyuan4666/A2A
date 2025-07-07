@@ -9,6 +9,10 @@ This is the working area for the individual Internet-Draft, "Applicability of A2
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-yang-a2a-nm)
 * [Compare Editor's Copy to Individual Draft](https://Yuanyuan4666.github.io/A2A/#go.draft-yang-a2a-nm.diff)
 
+* [Editor's Copy](https://Yuanyuan4666.github.io/A2A/#go.draft-yang-nmrg-a2a-nm.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-yang-nmrg-a2a-nm)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-yang-nmrg-a2a-nm)
+* [Compare Editor's Copy to Individual Draft](https://Yuanyuan4666.github.io/A2A/#go.draft-yang-nmrg-a2a-nm.diff)
 
 ## Contributing
 
