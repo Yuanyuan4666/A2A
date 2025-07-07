@@ -208,6 +208,7 @@ This section describes the deployment of a network configuration within a secure
 See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
 
 ~~~~
+# Work Agents Capabilities
 {
     "name": "QoSAgent",
     "description": "Automatically configure QoS policies",
@@ -243,6 +244,7 @@ See the following Agent card examples for two worker agents (QoS Agent and Secur
 Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:
 
 ~~~~
+# Requested Service Configuration
 {
     "taskId": "task-multi-001",
     "action": "deploy_network_configuration",
@@ -257,6 +259,7 @@ Suppose a user submits a natural language request such as "The meeting will have
 The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for `set_qos` and `enable_encryption` are structured as follows:
 
 ~~~~
+# Set QoS and Enable Encryption Subtasks
 {
     "taskId": "task-multi-001",
     "subTasks": [
@@ -293,6 +296,7 @@ The Service Orchestrator sends subtasks in a structured format to the Network Co
 The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
 
 ~~~~
+# Network Configuration Feedback Results
 {
     "taskId": "task-multi-001",
     "action": "deploy_network_configuration",
