@@ -1443,6 +1443,7 @@ subordinate agents based on their capabilities.<a href="#section-5.1-8.3.1" clas
 <p id="section-5.2-2">See the following Agent card examples for two worker agents (QoS Agent and Security Agent):<a href="#section-5.2-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-5.2-3">
 <pre>
+# Work Agents Capabilities
 {
     "name": "QoSAgent",
     "description": "Automatically configure QoS policies",
@@ -1478,6 +1479,7 @@ subordinate agents based on their capabilities.<a href="#section-5.1-8.3.1" clas
 <p id="section-5.2-4">Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:<a href="#section-5.2-4" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-5.2-5">
 <pre>
+# Requested Service Configuration
 {
     "taskId": "task-multi-001",
     "action": "deploy_network_configuration",
@@ -1492,6 +1494,7 @@ subordinate agents based on their capabilities.<a href="#section-5.1-8.3.1" clas
 <p id="section-5.2-6">The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for <code>set_qos</code> and <code>enable_encryption</code> are structured as follows:<a href="#section-5.2-6" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-5.2-7">
 <pre>
+# Set QoS and Enable Encryption Subtasks
 {
     "taskId": "task-multi-001",
     "subTasks": [
@@ -1528,6 +1531,7 @@ subordinate agents based on their capabilities.<a href="#section-5.1-8.3.1" clas
 <p id="section-5.2-8">The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:<a href="#section-5.2-8" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-5.2-9">
 <pre>
+# Network Configuration Feedback Results
 {
     "taskId": "task-multi-001",
     "action": "deploy_network_configuration",
