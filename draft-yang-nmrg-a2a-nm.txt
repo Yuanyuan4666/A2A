@@ -324,37 +324,36 @@ Table of Contents
    See the following Agent card examples for two worker agents (QoS
    Agent and Security Agent):
 
-   {
-       "name": "QoSAgent",
-       "description": "Automatically configure QoS policies",
-       "url": "https://qos-agent.example.com/tasks/send",
-       "capabilities": ["QoS_Policy"],
-       "skills": [
-           {
-               "id": "set_qos",
-               "name": "QoS configuration",
-               "description": "QoS configuration",
-               "inputModes": ["text/structured"],
-               "outputModes": ["text/status"]
-           }
-       ]
-   }
-   {
-       "name": "SecurityAgent",
-       "description": "
-   Automatically configure network security policies",
-       "url": "https://security-agent.example.com/tasks/send",
-       "capabilities": ["IPSEC", "DTLS"],
-       "skills": [
-           {
-               "id": "enable_encryption",
-               "name": "Encryption method configuration",
-               "description": "Encryption method configuration",
-               "inputModes": ["text/structured"],
-               "outputModes": ["text/status"]
-           }
-       ]
-   }
+ {
+     "name": "QoSAgent",
+     "description": "Automatically configure QoS policies",
+     "url": "https://qos-agent.example.com/tasks/send",
+     "capabilities": ["QoS_Policy"],
+     "skills": [
+         {
+             "id": "set_qos",
+             "name": "QoS configuration",
+             "description": "QoS configuration",
+             "inputModes": ["text/structured"],
+             "outputModes": ["text/status"]
+         }
+     ]
+ }
+ {
+     "name": "SecurityAgent",
+     "description": "Automatically configure network security policies",
+     "url": "https://security-agent.example.com/tasks/send",
+     "capabilities": ["IPSEC", "DTLS"],
+     "skills": [
+         {
+             "id": "enable_encryption",
+             "name": "Encryption method configuration",
+             "description": "Encryption method configuration",
+             "inputModes": ["text/structured"],
+             "outputModes": ["text/status"]
+         }
+     ]
+ }
 
    Suppose a user submits a natural language request such as "The
    meeting will have 100 participants.  The security level is Top
