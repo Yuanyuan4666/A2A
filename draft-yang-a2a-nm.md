@@ -232,6 +232,92 @@ the network element and the management system.
 If YANG2CLI script has been deployed in the network element, this script can be used to
 translate YANG schema into CLI command and mange the 3rd party network device.
 
+# Operational Considerations
+
+The introduction of A2A-based agent interactions into network management has several operational implications that MUST be considered when deploying the architecture in large-scale or multi-domain networks. This section highlights key aspects related to performance, scalability, reliability, latency, and agent lifecycle operations.
+
+## Scalability
+
+Large operational networks may contain tens of thousands of devices, multiple administrative domains, and a distributed set of controllers and orchestrators. The use of conversational, context-rich A2A messaging increases message volume compared to static RPC-based interfaces such as NETCONF or RESTCONF.
+
+Operators should evaluate:
+
+- The number of agents required per domain or per function.
+
+- The expected message growth as workflows involve multiple agents performing negotiation, capability discovery, and state exchange.
+
+- The impact of concurrent multi-agent workflows on control-plane stability.
+
+- Whether hierarchical or federated agent structures are needed to avoid message storms and to localize decisions.
+
+Mechanisms for rate-limiting, backoff, and prioritization may be needed to prevent overload.
+
+## Latency and Performance Constraints
+
+Task decomposition and negotiation across multiple agents can introduce non-trivial latency, especially when agents rely on external AI inference engines or large language models (LLMs).
+
+Operational environments may impose strict timing requirements, for example during:
+
+- Service activation with customer-facing SLAs.
+
+- Fault detection and automated remediation loops.
+
+- Real-time telemetry-driven control such as congestion mitigation.
+
+Implementations SHOULD define performance envelopes, including:
+
+- Maximum agent-to-agent message processing latency.
+
+- Timeout and retry behavior for workflow steps.
+
+- Acceptable degradation under load or partial failures.
+
+Fallback mechanisms (e.g., reverting to direct controller APIs or static policies) SHOULD be provided when A2A interactions cannot meet timing constraints.
+
+## Reliability and Failure Handling
+
+A2A workflows may involve long-lived tasks that span multiple agents and systems. Operational networks require predictable and safe behavior under partial failures.
+
+Operators SHOULD consider:
+
+- How workflow state is checkpointed or restored if an agent becomes unreachable.
+
+- How to detect and mitigate inconsistent or stale agent state.
+
+- Whether workflows can be retried idempotently.
+
+- Requirements for transactionality or rollback comparable to NETCONF confirmed-commit semantics.
+
+Implementations SHOULD include mechanisms for workflow monitoring, circuit-breakers, and automatic escalation to human operators in case of sustained failure.
+
+## Agent Lifecycle and Resource Management
+
+Production deployment of A2A-based systems requires active management of agent lifecycles, including:
+
+- Agent onboarding and registration.
+
+- Updates and model re-training (for AI-driven agents).
+
+- Decommissioning and revocation of compromised agents.
+
+- Resource consumption limits for CPU, memory, and inference workloads.
+
+Operators SHOULD maintain visibility into the operational state of all agents and their dependencies, including telemetry on message rates, errors, and workflow completion metrics.
+
+## Inter-Domain Operational Challenges
+
+In multi-domain scenarios (e.g., between business units, operators, or federated networks), operational concerns are amplified due to:
+
+- Differences in local policies or SLAs.
+
+- Variations in controller capabilities and data models.
+
+- Latency and reliability across administrative boundaries.
+
+- Need for shared or interoperable agent capability descriptions.
+
+Standardized operational practices MAY be required for agent discovery, trust establishment, conflict resolution, and accountability.
+
 # Security Considerations
 
 The communication between Agents for the exchange of context information, capability information
