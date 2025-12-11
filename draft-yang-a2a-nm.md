@@ -73,13 +73,13 @@ configuration generation, and API development.
 A2A provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
 process, regardless of their underlying technologies. Agents can advertise their capabilities using an 'Agent Card' in JSON format, or send
 messages to communicate context, replies, artifacts, or user instructions, which make it easier to build AI applications that can interact
-with heterogeneous AI ecosystems in specific domain.
+with heterogeneous AI ecosystems in specific domains.
 
-With significant adoption of AI Agents across the Internet,Agent to Agent Communication protocol may become the foundation for the next wave
+With significant adoption of AI Agents across the Internet, Agent to Agent Communication protocol may become the foundation for the next wave
 of Internet communication technologies across domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field
 is meant to develop various rich AI driven network applications, realize intent based networks management automation in the multi-vendor
 heterogeneous network environment. By establishing standard interfaces for dynamic Capability Discovery, intelligent message routing, heterogeneous
-AI ecosystems interaction,cross-platform collaboration, A2A enables AI Agents to:
+AI ecosystems interaction, cross-platform collaboration, A2A enables AI Agents to:
 
 o Understand contextual nuances
 
@@ -110,10 +110,10 @@ heterogeneous network environment which can lead to the following issues:
 
 ## Limitations of 3rd Party Management in Heterogeneous Network Environments
 
-In the multi-vendor heterogeneous environment,vendors implementations of YANG models and NETCONF/RESTCONF protocols {{!RFC6241}}{{!RFC8040}} exhibit
+In the multi-vendor heterogeneous environment, vendors implementations of YANG models and NETCONF/RESTCONF protocols {{!RFC6241}}{{!RFC8040}} exhibit
 significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
-partially support standard Network management protocols while Other vendors might choose non-stanard network management protocol or telemetry protocol
-such as gnmi {{?I-D.openconfig-rtgwg-gnmi-spec}}, grpc {{?I-D.kumar-rtgwg-grpc-protocol}}. Without standard protocol or open programmable framework with
+partially support standard Network management protocols while Other vendors might choose non-standard network management protocol or telemetry protocol
+such as gNMI {{?I-D.openconfig-rtgwg-gnmi-spec}}, gRPC {{?I-D.kumar-rtgwg-grpc-protocol}}. Without standard protocol or open programmable framework with
 multi-vendors integration drivers, integration various different data models and management protocols and allowing quickly adapt to different device are
 still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
 
@@ -136,13 +136,13 @@ YANG model ecosystem are both built as silo and lack integration or mapping betw
 This section outlines operational aspects of A2A with Network management requirements as follows:
 
 - *Dynamic Capability Discovery and Negotiation*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive
-  interactions, e.g.,client and remote agents can negotiate the correct format needed.
+  interactions, e.g., client and remote agents can negotiate the correct format needed.
 
 - *Task Management*: The communication between a client and remote agent is oriented towards task completion and agents work to fulfill end-user requests.
   The task object is defined by the protocol and has a lifecycle. Each of the agents can communicate to stay in sync with each other on the latest status of
   completing a task.
 
-- *Automated Workflow Coordination*: Agents comprehend high-level user intent,execute extended workflow sequences. In addition, they enable more
+- *Automated Workflow Coordination*: Agents comprehend high-level user intent, execute extended workflow sequences. In addition, they enable more
   intelligent, context-aware agent interactions, e.g., Agents send each other messages to communicate context, replies, artifacts, or user instructions.
 
 # Architecture Overview
@@ -176,7 +176,7 @@ Large language models (LLMs) inherently excel at understanding complex user inst
              +--------------------------------------------------+
 ~~~~
 
-In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer,e.g.,
+In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer, e.g.,
 both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent
 within the service orchestrator can provide registry database for other service agents within the network controller to
 register its location.
@@ -230,12 +230,12 @@ is sufficient for network management. There is no impact on management protocol 
 the network element and the management system.
 
 If YANG2CLI script has been deployed in the network element, this script can be used to
-translate YANG schema into CLI command and mange the 3rd party network device.
+translate YANG schema into CLI command and manage the 3rd party network device.
 
 # Security Considerations
 
 The communication between Agents for the exchange of context information, capability information
-and user instruction is security sensitive and requires authentication,authorization and integrity
+and user instruction is security sensitive and requires authentication, authorization, and integrity
 protection. Legacy communication protocols such as HTTPS/TLS, designed for human-centric interactions,
 simply cannot withstand the high-speed exchanges between intelligent agents.  Key security challenges
 in AI agent communication include:
