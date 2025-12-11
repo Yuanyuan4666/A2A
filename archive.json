@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-09T02:00:59.827604+00:00",
+  "timestamp": "2025-12-11T02:04:50.818055+00:00",
   "repo": "Yuanyuan4666/A2A",
   "labels": [
     {
@@ -49,7 +49,24 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 6,
+      "id": "I_kwDOOwDY887dboSp",
+      "title": "Proposal to Add an Operational Considerations Section for Large-Scale Network Deployments",
+      "url": "https://github.com/Yuanyuan4666/A2A/issues/6",
+      "state": "OPEN",
+      "author": "shaileshprabhu95",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This issue proposes an enhancement to introduce an Operational Considerations section to the draft. As A2A-based network management may operate across large-scale, multi-domain environments, describing operational aspects can help readers better understand performance expectations, deployment characteristics, and practical considerations.\n\nLink to the PR: https://github.com/Yuanyuan4666/A2A/pull/5\n\ncc: @billwuqin @Yuanyuan4666 ",
+      "createdAt": "2025-12-10T12:29:48Z",
+      "updatedAt": "2025-12-10T12:29:48Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": [
     {
       "number": 1,
@@ -159,6 +176,40 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOOwDY8864IRnr",
+      "title": "Adding New Section on Operational Considerations for using A2A in Network Management",
+      "url": "https://github.com/Yuanyuan4666/A2A/pull/5",
+      "state": "OPEN",
+      "author": "shaileshprabhu95",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Resolves https://github.com/Yuanyuan4666/A2A/issues/6",
+      "createdAt": "2025-12-10T12:26:05Z",
+      "updatedAt": "2025-12-10T12:30:01Z",
+      "baseRepository": "Yuanyuan4666/A2A",
+      "baseRefName": "main",
+      "baseRefOid": "39822f93f397bb3ff7b30e260675de23841bab02",
+      "headRepository": "shaileshprabhu95/A2A",
+      "headRefName": "op_considerations",
+      "headRefOid": "e00c086d5fb935f32acc36b6ab3cc75e59835639",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "shaileshprabhu95",
+          "authorAssociation": "NONE",
+          "body": "@Yuanyuan4666 @billwuqin - please review this proposal, thanks!",
+          "createdAt": "2025-12-10T12:26:47Z",
+          "updatedAt": "2025-12-10T12:26:47Z"
+        }
+      ],
       "reviews": []
     }
   ]
