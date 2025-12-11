@@ -114,13 +114,13 @@ In the multi-vendor heterogeneous environment, vendors implementations of YANG m
 significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
 partially support standard Network management protocols while other vendors might choose non-standard network management protocol or telemetry protocol
 such as gNMI {{?I-D.openconfig-rtgwg-gnmi-spec}}, gRPC {{?I-D.kumar-rtgwg-grpc-protocol}}. Without standard protocol or open programmable framework with
-multi-vendors integration drivers, integration various different data models and management protocols and allowing quickly adapt to different device are
+multi-vendors integration drivers, integration various different data models and management protocols and allowing to quickly adapt to different device are
 still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
 
 ## Static Data Format or Data Model for Management Interface, Unable to Adapt to the Speed of Service Roll Out
 
 The IETF is currently working on and also publishing a set of YANG models for network service configuration. Network Service configurations are built from a combination of network element and protocol configuration, but are specified to service users in more abstract terms, which enables service agility to speed
-service creation and delivery and allows the deployment of innovative new services across networks. However Network service model provide static interface
+service creation and delivery and allows the deployment of innovative new services across networks. However Network service models provide static interface
 with a fixed, unchanging format, it is unable to adapt to new service requirements, e.g., when some new service attributes are introduced and correlated with
 the specific network service model A or knowledge graph B using RDF, it is hard to expose these new attributes or capability through the same management
 interface which is using network service model A.
@@ -129,7 +129,7 @@ interface which is using network service model A.
 
 Today, Open API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
 the northbound interface of the network controller or the southbound interface of the network controller. However Open API ecosystem and
-YANG model ecosystem are both built as silo and lack integration or mapping between them.
+YANG model ecosystem are both built as silos and lack integration or mapping between them.
 
 # Operational Consideration
 
@@ -181,7 +181,7 @@ both service orchestrator and network controller can introduce AI Agent and allo
 within the service orchestrator can provide registry database for other service agents within the network controller to
 register its location.
 
-The interaction in the multi-agent communication deployment scenario can be break down into:
+The interaction in the multi-agent communication deployment scenario can be broken down into:
 
 - *AI Agent to Agent interaction*
 
@@ -208,7 +208,7 @@ This section describes the deployment of a network configuration within a secure
 See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
 
 ~~~~
-# Work Agents Capabilities
+# Worker Agents Capabilities
 {
     "name": "QoSAgent",
     "description": "Automatically configure QoS policies",
