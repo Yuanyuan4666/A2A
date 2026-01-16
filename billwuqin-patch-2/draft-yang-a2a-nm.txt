@@ -370,14 +370,6 @@ Table of Contents
 
    This document has no IANA actions.
 
-   In conclusion, establishing the framework for energy efficiency
-   management now is strategic and timely, leveraging the current
-   momentum of use cases and requirements to drive meaningful progress
-   in energy efficiency management.  Delaying its development could
-   result in missed opportunities for immediate benefits, increased
-   costs, and challenges in adapting to future technological and
-   regulatory landscapes.
-
 9.  References
 
 9.1.  Normative References
