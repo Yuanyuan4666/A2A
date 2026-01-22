@@ -5,7 +5,7 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 8 January 2026                                         D. Lopez
+Expires: 26 July 2026                                           D. Lopez
                                                               Telefonica
                                                             N. R. Moreno
                                                         Deutsche Telekom
@@ -13,7 +13,7 @@ Expires: 8 January 2026                                         D. Lopez
                                   Orange ResearchAdd commentMore actions
                                                                 H. Chihi
                                                         InnovCOM Sup'COM
-                                                             7 July 2025
+                                                         22 January 2026
 
 
              Applicability of A2A to the Network Management
@@ -54,11 +54,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2026.
+   This Internet-Draft will expire on 26 July 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -111,9 +111,9 @@ Table of Contents
    format, or send messages to communicate context, replies, artifacts,
    or user instructions, which make it easier to build AI applications
    that can interact with heterogeneous AI ecosystems in specific
-   domain.
+   domains.
 
-   With significant adoption of AI Agents across the Internet,Agent to
+   With significant adoption of AI Agents across the Internet, Agent to
    Agent Communication protocol may become the foundation for the next
    wave of Internet communication technologies across domains
    [I-D.rosenberg-ai-protocols].  The application of A2A in the network
@@ -121,7 +121,7 @@ Table of Contents
    applications, realize intent based networks management automation in
    the multi-vendor heterogeneous network environment.  By establishing
    standard interfaces for dynamic Capability Discovery, intelligent
-   message routing, heterogeneous AI ecosystems interaction,cross-
+   message routing, heterogeneous AI ecosystems interaction, cross-
    platform collaboration, A2A enables AI Agents to:
 
    o Understand contextual nuances
@@ -163,18 +163,18 @@ Table of Contents
 3.1.  Limitations of 3rd Party Management in Heterogeneous Network
       Environments
 
-   In the multi-vendor heterogeneous environment,vendors implementations
-   of YANG models and NETCONF/RESTCONF protocols [RFC6241][RFC8040]
-   exhibit significant divergence.  Different vendors implement
-   different YANG models such as IETF YANG, Openconfig YANG, Vendor
-   specific YANG.  Some vendors only partially support standard Network
-   management protocols while Other vendors might choose non-stanard
-   network management protocol or telemetry protocol such as gnmi
-   [I-D.openconfig-rtgwg-gnmi-spec], grpc
+   In the multi-vendor heterogeneous environment, vendors
+   implementations of YANG models and NETCONF/RESTCONF protocols
+   [RFC6241][RFC8040] exhibit significant divergence.  Different vendors
+   implement different YANG models such as IETF YANG, Openconfig YANG,
+   Vendor specific YANG.  Some vendors only partially support standard
+   Network management protocols while other vendors might choose non-
+   standard network management protocol or telemetry protocol such as
+   gNMI [I-D.openconfig-rtgwg-gnmi-spec], gRPC
    [I-D.kumar-rtgwg-grpc-protocol].  Without standard protocol or open
    programmable framework with multi-vendors integration drivers,
    integration various different data models and management protocols
-   and allowing quickly adapt to different device are still big
+   and allowing to quickly adapt to different device are still big
    challenges.  The same challenge is applied to multi-domain
    heterogeneous environment.
 
@@ -187,7 +187,7 @@ Table of Contents
    protocol configuration, but are specified to service users in more
    abstract terms, which enables service agility to speed service
    creation and delivery and allows the deployment of innovative new
-   services across networks.  However Network service model provide
+   services across networks.  However Network service models provide
    static interface with a fixed, unchanging format, it is unable to
    adapt to new service requirements, e.g., when some new service
    attributes are introduced and correlated with the specific network
@@ -201,7 +201,7 @@ Table of Contents
    of OSS/BSS or Network orchestrator while YANG data models have been
    widely adopted by the northbound interface of the network controller
    or the southbound interface of the network controller.  However Open
-   API ecosystem and YANG model ecosystem are both built as silo and
+   API ecosystem and YANG model ecosystem are both built as silos and
    lack integration or mapping between them.
 
 4.  Operational Consideration
@@ -211,7 +211,7 @@ Table of Contents
 
    *  _Dynamic Capability Discovery and Negotiation_: Agent can
       automatically detect and understand each other's capabilities,
-      enabling more intelligent and adaptive interactions, e.g.,client
+      enabling more intelligent and adaptive interactions, e.g., client
       and remote agents can negotiate the correct format needed.
 
    *  _Task Management_: The communication between a client and remote
@@ -222,7 +222,7 @@ Table of Contents
       a task.
 
    *  _Automated Workflow Coordination_: Agents comprehend high-level
-      user intent,execute extended workflow sequences.  In addition,
+      user intent, execute extended workflow sequences.  In addition,
       they enable more intelligent, context-aware agent interactions,
       e.g., Agents send each other messages to communicate context,
       replies, artifacts, or user instructions.
@@ -266,14 +266,14 @@ Table of Contents
                 +--------------------------------------------------+
 
    In the multi-agent communication deployment scenario, AI Agents can
-   be deployed at both service layer and network layer,e.g., both
+   be deployed at both service layer and network layer, e.g., both
    service orchestrator and network controller can introduce AI Agent
    and allow Agent to Agent communication.  AI Agent within the service
    orchestrator can provide registry database for other service agents
    within the network controller to register its location.
 
    The interaction in the multi-agent communication deployment scenario
-   can be break down into:
+   can be broken down into:
 
    *  _AI Agent to Agent interaction_
 
@@ -324,7 +324,7 @@ Table of Contents
    See the following Agent card examples for two worker agents (QoS
    Agent and Security Agent):
 
- # Work Agents Capabilities
+ # Worker Agents Capabilities
  {
      "name": "QoSAgent",
      "description": "Automatically configure QoS policies",
@@ -467,13 +467,13 @@ Table of Contents
 
    If YANG2CLI script has been deployed in the network element, this
    script can be used to translate YANG schema into CLI command and
-   mange the 3rd party network device.
+   manage the 3rd party network device.
 
 7.  Security Considerations
 
    The communication between Agents for the exchange of context
    information, capability information and user instruction is security
-   sensitive and requires authentication,authorization and integrity
+   sensitive and requires authentication, authorization, and integrity
    protection.  Legacy communication protocols such as HTTPS/TLS,
    designed for human-centric interactions, simply cannot withstand the
    high-speed exchanges between intelligent agents.  Key security
