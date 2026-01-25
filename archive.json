@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-18T02:23:02.659168+00:00",
+  "timestamp": "2026-01-25T02:26:28.537652+00:00",
   "repo": "Yuanyuan4666/A2A",
   "labels": [
     {
@@ -219,24 +219,26 @@
       "id": "PR_kwDOOwDY8864TYSX",
       "title": "Editorial review",
       "url": "https://github.com/Yuanyuan4666/A2A/pull/7",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "shaileshprabhu95",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-12-11T08:31:31Z",
-      "updatedAt": "2025-12-11T08:31:31Z",
+      "updatedAt": "2026-01-22T03:59:00Z",
       "baseRepository": "Yuanyuan4666/A2A",
       "baseRefName": "main",
       "baseRefOid": "39822f93f397bb3ff7b30e260675de23841bab02",
       "headRepository": "shaileshprabhu95/A2A",
       "headRefName": "editorial_review",
       "headRefOid": "79274cef131405fa0829f1267f77b1e455a155b2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-01-22T03:59:00Z",
+      "mergedAt": "2026-01-22T03:59:00Z",
+      "mergedBy": "Yuanyuan4666",
+      "mergeCommit": {
+        "oid": "3ccae6d22f3a2b21a7142c014221b37ab2c711d5"
+      },
       "comments": [],
       "reviews": []
     }
