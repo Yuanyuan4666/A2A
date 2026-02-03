@@ -110,18 +110,20 @@ A2A protocol to network management have been listed:
 
 o High Risk Operations of Agent2Agent interaction
 
-  High risk operation can can to large-scale network outages.
+  * High risk operation can can to large-scale network outages.
 
 o The timeliness requirement of Agent2Agent collaboration
 
-"Token-based" generation and reasoning approach, limited by computing power and algorithms, result in  slow reasoning speeds.
-task-oriented "request-response" model without event subscription is unlike to meet time constraints for tasks such as fault
+* "Token-based" generation and reasoning approach, limited by computing power and algorithms, result in  slow reasoning speeds.
+
+* Task-oriented "request-response" model without event subscription is unlike to meet time constraints for tasks such as fault
 diagnosis, complaint handling, and user experience improvement.
 
 o The Agent2agent Collaboration Reliability
 
-Incorrect or outdated network configuration data results in incorrect repair advice when diagnosing network incidents or faults.
-task collaboration is incomplete or not sufficient to handle strategies such as task rejection, missing information during task
+* Incorrect or outdated network configuration data results in incorrect repair advice when diagnosing network incidents or faults.
+
+* Task collaboration is incomplete or not sufficient to handle strategies such as task rejection, missing information during task
 collaboration, and failure to achieve task objectives.
 
 # Architecture Overview
