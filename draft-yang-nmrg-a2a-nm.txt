@@ -75,24 +75,23 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Overview of key challenges for the network management
-   4.  Operational Consideration
-   5.  Architecture Overview
-     5.1.  Multi-Agent Communication Deployment Scenario
-     5.2.  Example
-   6.  Impact of integrating A2A on Network Management
-     6.1.  Agent to Agent Interaction
-     6.2.  Agent to Tools Interaction
-   7.  Operational Considerations
-     7.1.  Scalability
-     7.2.  Latency and Performance Constraints
-     7.3.  Reliability and Failure Handling
-     7.4.  Agent Lifecycle and Resource Management
-     7.5.  Inter-Domain Operational Challenges
-   8.  Security Considerations
-   9.  IANA Considerations
-   10. References
-     10.1.  Normative References
-     10.2.  Informative References
+   4.  Architecture Overview
+     4.1.  Multi-Agent Communication Deployment Scenario
+     4.2.  Example
+   5.  Impact of integrating A2A on Network Management
+     5.1.  Agent to Agent Interaction
+     5.2.  Agent to Tools Interaction
+   6.  Operational Considerations
+     6.1.  Scalability
+     6.2.  Latency and Performance Constraints
+     6.3.  Reliability and Failure Handling
+     6.4.  Agent Lifecycle and Resource Management
+     6.5.  Inter-Domain Operational Challenges
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -176,30 +175,7 @@ Table of Contents
    rejection, missing information during task collaboration, and failure
    to achieve task objectives.
 
-4.  Operational Consideration
-
-   This section outlines operational aspects of A2A with Network
-   management requirements as follows:
-
-   *  _Dynamic Capability Discovery and Negotiation_: Agent can
-      automatically detect and understand each other's capabilities,
-      enabling more intelligent and adaptive interactions, e.g., client
-      and remote agents can negotiate the correct format needed.
-
-   *  _Task Management_: The communication between a client and remote
-      agent is oriented towards task completion and agents work to
-      fulfill end-user requests.  The task object is defined by the
-      protocol and has a lifecycle.  Each of the agents can communicate
-      to stay in sync with each other on the latest status of completing
-      a task.
-
-   *  _Automated Workflow Coordination_: Agents comprehend high-level
-      user intent, execute extended workflow sequences.  In addition,
-      they enable more intelligent, context-aware agent interactions,
-      e.g., Agents send each other messages to communicate context,
-      replies, artifacts, or user instructions.
-
-5.  Architecture Overview
+4.  Architecture Overview
 
    Large language models (LLMs) inherently excel at understanding
    complex user instructions, a capability that becomes even more
@@ -211,7 +187,7 @@ Table of Contents
    management environments for building an intelligent network
    management and control platform.
 
-5.1.  Multi-Agent Communication Deployment Scenario
+4.1.  Multi-Agent Communication Deployment Scenario
 
                                    +-------------+
                                    |    User     |
@@ -283,7 +259,7 @@ Table of Contents
       dynamically adjusts the workflow based on result analysis and
       policy rules.
 
-5.2.  Example
+4.2.  Example
 
    This section describes the deployment of a network configuration
    within a secure video meeting context.  The scheduling agent is
@@ -407,9 +383,9 @@ Table of Contents
   "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
 }
 
-6.  Impact of integrating A2A on Network Management
+5.  Impact of integrating A2A on Network Management
 
-6.1.  Agent to Agent Interaction
+5.1.  Agent to Agent Interaction
 
    A2A leverages advanced machine learning models or knowledge graph
    models and sophisticated communication protocols such as one built on
@@ -424,7 +400,7 @@ Table of Contents
    cues, and make collaborative decisions in real-time.  The cost is
    more context information needs to be kept as states in both sides.
 
-6.2.  Agent to Tools Interaction
+5.2.  Agent to Tools Interaction
 
    In case of collaboration between small AI model in the network
    element and large AI model in the network controller, A2A can be used
@@ -441,7 +417,7 @@ Table of Contents
    script can be used to translate YANG schema into CLI command and
    manage the 3rd party network device.
 
-7.  Operational Considerations
+6.  Operational Considerations
 
    The introduction of A2A-based agent interactions into network
    management has several operational implications that MUST be
@@ -450,7 +426,7 @@ Table of Contents
    performance, scalability, reliability, latency, and agent lifecycle
    operations.
 
-7.1.  Scalability
+6.1.  Scalability
 
    Large operational networks may contain tens of thousands of devices,
    multiple administrative domains, and a distributed set of controllers
@@ -474,7 +450,7 @@ Table of Contents
    Mechanisms for rate-limiting, backoff, and prioritization may be
    needed to prevent overload.
 
-7.2.  Latency and Performance Constraints
+6.2.  Latency and Performance Constraints
 
    Task decomposition and negotiation across multiple agents can
    introduce non-trivial latency, especially when agents rely on
@@ -501,7 +477,7 @@ Table of Contents
    static policies) SHOULD be provided when A2A interactions cannot meet
    timing constraints.
 
-7.3.  Reliability and Failure Handling
+6.3.  Reliability and Failure Handling
 
    A2A workflows may involve long-lived tasks that span multiple agents
    and systems.  Operational networks require predictable and safe
@@ -523,7 +499,7 @@ Table of Contents
    circuit-breakers, and automatic escalation to human operators in case
    of sustained failure.
 
-7.4.  Agent Lifecycle and Resource Management
+6.4.  Agent Lifecycle and Resource Management
 
    Production deployment of A2A-based systems requires active management
    of agent lifecycles, including:
@@ -541,7 +517,7 @@ Table of Contents
    all agents and their dependencies, including telemetry on message
    rates, errors, and workflow completion metrics.
 
-7.5.  Inter-Domain Operational Challenges
+6.5.  Inter-Domain Operational Challenges
 
    In multi-domain scenarios (e.g., between business units, operators,
    or federated networks), operational concerns are amplified due to:
@@ -558,7 +534,7 @@ Table of Contents
    discovery, trust establishment, conflict resolution, and
    accountability.
 
-8.  Security Considerations
+7.  Security Considerations
 
    The communication between Agents for the exchange of context
    information, capability information and user instruction is security
@@ -580,13 +556,13 @@ Table of Contents
    *  Scalable Security: Maintaining robust protection across diverse
       and complex networks
 
-9.  IANA Considerations
+8.  IANA Considerations
 
    This document has no IANA actions.
 
-10.  References
+9.  References
 
-10.1.  Normative References
+9.1.  Normative References
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
@@ -597,7 +573,7 @@ Table of Contents
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/rfc/rfc8040>.
 
-10.2.  Informative References
+9.2.  Informative References
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
