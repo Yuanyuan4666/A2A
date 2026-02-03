@@ -5,7 +5,7 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 26 July 2026                                           D. Lopez
+Expires: 7 August 2026                                          D. Lopez
                                                               Telefonica
                                                             N. R. Moreno
                                                         Deutsche Telekom
@@ -13,7 +13,7 @@ Expires: 26 July 2026                                           D. Lopez
                                   Orange ResearchAdd commentMore actions
                                                                 H. Chihi
                                                         InnovCOM Sup'COM
-                                                         22 January 2026
+                                                         3 February 2026
 
 
              Applicability of A2A to the Network Management
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 July 2026.
+   This Internet-Draft will expire on 7 August 2026.
 
 Copyright Notice
 
@@ -75,11 +75,6 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Overview of key challenges for the network management
-     3.1.  Limitations of 3rd Party Management in Heterogeneous
-           Network Environments
-     3.2.  Static Data Format or Data Model for Management Interface,
-           Unable to Adapt to the Speed of Service Roll Out
-     3.3.  YANG Model Lacks integration with Open APIs
    4.  Operational Consideration
    5.  Architecture Overview
      5.1.  Multi-Agent Communication Deployment Scenario
@@ -155,54 +150,25 @@ Table of Contents
 
 3.  Overview of key challenges for the network management
 
-   In large scale network management environment, a large number of
-   devices from different network vendors need to be uniformly managed,
-   especially in the heterogeneous network environment which can lead to
-   the following issues:
+   As described in [I-D.wmz-nmrg-agent-ndt-arch], 3 key challenges to
+   apply A2A protocol to network management have been listed:
 
-3.1.  Limitations of 3rd Party Management in Heterogeneous Network
-      Environments
+   o High Risk Operations of Agent2Agent interaction High risk operation
+   can can to large-scale network outages.
 
-   In the multi-vendor heterogeneous environment, vendors
-   implementations of YANG models and NETCONF/RESTCONF protocols
-   [RFC6241][RFC8040] exhibit significant divergence.  Different vendors
-   implement different YANG models such as IETF YANG, Openconfig YANG,
-   Vendor specific YANG.  Some vendors only partially support standard
-   Network management protocols while other vendors might choose non-
-   standard network management protocol or telemetry protocol such as
-   gNMI [I-D.openconfig-rtgwg-gnmi-spec], gRPC
-   [I-D.kumar-rtgwg-grpc-protocol].  Without standard protocol or open
-   programmable framework with multi-vendors integration drivers,
-   integration various different data models and management protocols
-   and allowing to quickly adapt to different device are still big
-   challenges.  The same challenge is applied to multi-domain
-   heterogeneous environment.
+   o The timeliness requirement of Agent2Agent collaboration "Token-
+   based" generation and reasoning approach, limited by computing power
+   and algorithms, result in slow reasoning speeds. task-oriented
+   "request-response" model without event subscription is unlike to meet
+   time constraints for tasks such as fault diagnosis, complaint
+   handling, and user experience improvement.
 
-3.2.  Static Data Format or Data Model for Management Interface, Unable
-      to Adapt to the Speed of Service Roll Out
-
-   The IETF is currently working on and also publishing a set of YANG
-   models for network service configuration.  Network Service
-   configurations are built from a combination of network element and
-   protocol configuration, but are specified to service users in more
-   abstract terms, which enables service agility to speed service
-   creation and delivery and allows the deployment of innovative new
-   services across networks.  However Network service models provide
-   static interface with a fixed, unchanging format, it is unable to
-   adapt to new service requirements, e.g., when some new service
-   attributes are introduced and correlated with the specific network
-   service model A or knowledge graph B using RDF, it is hard to expose
-   these new attributes or capability through the same management
-   interface which is using network service model A.
-
-3.3.  YANG Model Lacks integration with Open APIs
-
-   Today, Open API has been widely adopted by the northbound interface
-   of OSS/BSS or Network orchestrator while YANG data models have been
-   widely adopted by the northbound interface of the network controller
-   or the southbound interface of the network controller.  However Open
-   API ecosystem and YANG model ecosystem are both built as silos and
-   lack integration or mapping between them.
+   o The Agent2agent Collaboration Reliability Incorrect or outdated
+   network configuration data results in incorrect repair advice when
+   diagnosing network incidents or faults. task collaboration is
+   incomplete or not sufficient to handle strategies such as task
+   rejection, missing information during task collaboration, and failure
+   to achieve task objectives.
 
 4.  Operational Consideration
 
@@ -510,27 +476,20 @@ Table of Contents
 
 9.2.  Informative References
 
-   [I-D.kumar-rtgwg-grpc-protocol]
-              Kumar, A., Kolhe, J., Ghemawat, S., and L. Ryan, "gRPC
-              Protocol", Work in Progress, Internet-Draft, draft-kumar-
-              rtgwg-grpc-protocol-00, 8 July 2016,
-              <https://datatracker.ietf.org/doc/html/draft-kumar-rtgwg-
-              grpc-protocol-00>.
-
-   [I-D.openconfig-rtgwg-gnmi-spec]
-              Shakir, R., Shaikh, A., Borman, P., Hines, M., Lebsack,
-              C., and C. Morrow, "gRPC Network Management Interface
-              (gNMI)", Work in Progress, Internet-Draft, draft-
-              openconfig-rtgwg-gnmi-spec-01, 5 March 2018,
-              <https://datatracker.ietf.org/doc/html/draft-openconfig-
-              rtgwg-gnmi-spec-01>.
-
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
               and Requirements for AI Agent Protocols", Work in
               Progress, Internet-Draft, draft-rosenberg-ai-protocols-00,
               5 May 2025, <https://datatracker.ietf.org/doc/html/draft-
               rosenberg-ai-protocols-00>.
+
+   [I-D.wmz-nmrg-agent-ndt-arch]
+              Wu, Q., Zhou, C., Contreras, L. M., Han, S., Tailhardat,
+              L., and Y. Hong, "Network Digital Twin based Architecture
+              for AI driven Network Operations", Work in Progress,
+              Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-02, 20
+              October 2025, <https://datatracker.ietf.org/doc/html/
+              draft-wmz-nmrg-agent-ndt-arch-02>.
 
 Authors' Addresses
 

@@ -33,7 +33,7 @@ of integrating A2A into the network management system is also discussed.
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.32.5
-    wcwidth 0.2.14
+    wcwidth 0.3.0
 -->
 <link href="draft-yang-nmrg-a2a-nm.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -574,6 +574,7 @@ aside, blockquote {
 }
 blockquote {
   margin: 1em 0;
+  border-left: 2px var(--pilcrow-strong) solid;
 }
 cite {
   display: block;
@@ -644,7 +645,7 @@ a.pilcrow {
   }
 }
 @media not print {
-  :hover > a.pilcrow {
+  :hover > a.pilcrow, a.pilcrow:focus {
     opacity: 1;
   }
   a.pilcrow[href]:hover {
@@ -1052,11 +1053,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Applicability of A2A to the Network Mana</td>
-<td class="right">January 2026</td>
+<td class="right">February 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Yang, et al.</td>
-<td class="center">Expires 26 July 2026</td>
+<td class="center">Expires 7 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1069,12 +1070,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-yang-nmrg-a2a-nm-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-01-22" class="published">22 January 2026</time>
+<time datetime="2026-02-03" class="published">3 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-07-26">26 July 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-07">7 August 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1142,7 +1143,7 @@ of integrating A2A into the network management system is also discussed.<a href=
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1178,18 +1179,7 @@ of integrating A2A into the network management system is also discussed.<a href=
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-overview-of-key-challenges-" class="internal xref">Overview of key challenges for the network management</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-limitations-of-3rd-party-ma" class="internal xref">Limitations of 3rd Party Management in Heterogeneous Network Environments</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-static-data-format-or-data-" class="internal xref">Static Data Format or Data Model for Management Interface, Unable to Adapt to the Speed of Service Roll Out</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-yang-model-lacks-integratio" class="internal xref">YANG Model Lacks integration with Open APIs</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-overview-of-key-challenges-" class="internal xref">Overview of key challenges for the network management</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-operational-consideration" class="internal xref">Operational Consideration</a></p>
@@ -1275,7 +1265,7 @@ of integrating A2A into the network management system is also discussed.<a href=
       </h2>
 <ul class="normal">
 <li class="normal" id="section-2-1.1">
-          <p id="section-2-1.1.1">AI Agent: A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.<a href="#section-2-1.1.1" class="pilcrow">¶</a></p>
+          <p id="section-2-1.1.1">AI Agent:   A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.<a href="#section-2-1.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-1.2">
           <p id="section-2-1.2.1">Agent Card: A common metadata file that describes an agent's capabilities, skills, interface URLs, and authentication requirements. Clients
@@ -1295,43 +1285,18 @@ of integrating A2A into the network management system is also discussed.<a href=
       <h2 id="name-overview-of-key-challenges-">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-overview-of-key-challenges-" class="section-name selfRef">Overview of key challenges for the network management</a>
       </h2>
-<p id="section-3-1">In large scale network management environment, a large number of devices from different network vendors need to be uniformly managed, especially in the
-heterogeneous network environment which can lead to the following issues:<a href="#section-3-1" class="pilcrow">¶</a></p>
-<div id="limitations-of-3rd-party-management-in-heterogeneous-network-environments">
-<section id="section-3.1">
-        <h3 id="name-limitations-of-3rd-party-ma">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-limitations-of-3rd-party-ma" class="section-name selfRef">Limitations of 3rd Party Management in Heterogeneous Network Environments</a>
-        </h3>
-<p id="section-3.1-1">In the multi-vendor heterogeneous environment, vendors implementations of YANG models and NETCONF/RESTCONF protocols <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span><span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span> exhibit
-significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
-partially support standard Network management protocols while other vendors might choose non-standard network management protocol or telemetry protocol
-such as gNMI <span>[<a href="#I-D.openconfig-rtgwg-gnmi-spec" class="cite xref">I-D.openconfig-rtgwg-gnmi-spec</a>]</span>, gRPC <span>[<a href="#I-D.kumar-rtgwg-grpc-protocol" class="cite xref">I-D.kumar-rtgwg-grpc-protocol</a>]</span>. Without standard protocol or open programmable framework with
-multi-vendors integration drivers, integration various different data models and management protocols and allowing to quickly adapt to different device are
-still big challenges. The same challenge is applied to multi-domain heterogeneous environment.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="static-data-format-or-data-model-for-management-interface-unable-to-adapt-to-the-speed-of-service-roll-out">
-<section id="section-3.2">
-        <h3 id="name-static-data-format-or-data-">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-static-data-format-or-data-" class="section-name selfRef">Static Data Format or Data Model for Management Interface, Unable to Adapt to the Speed of Service Roll Out</a>
-        </h3>
-<p id="section-3.2-1">The IETF is currently working on and also publishing a set of YANG models for network service configuration. Network Service configurations are built from a combination of network element and protocol configuration, but are specified to service users in more abstract terms, which enables service agility to speed
-service creation and delivery and allows the deployment of innovative new services across networks. However Network service models provide static interface
-with a fixed, unchanging format, it is unable to adapt to new service requirements, e.g., when some new service attributes are introduced and correlated with
-the specific network service model A or knowledge graph B using RDF, it is hard to expose these new attributes or capability through the same management
-interface which is using network service model A.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="yang-model-lacks-integration-with-open-apis">
-<section id="section-3.3">
-        <h3 id="name-yang-model-lacks-integratio">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-yang-model-lacks-integratio" class="section-name selfRef">YANG Model Lacks integration with Open APIs</a>
-        </h3>
-<p id="section-3.3-1">Today, Open API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
-the northbound interface of the network controller or the southbound interface of the network controller. However Open API ecosystem and
-YANG model ecosystem are both built as silos and lack integration or mapping between them.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-</section>
-</div>
+<p id="section-3-1">As described in <span>[<a href="#I-D.wmz-nmrg-agent-ndt-arch" class="cite xref">I-D.wmz-nmrg-agent-ndt-arch</a>]</span>, 3 key challenges to apply
+A2A protocol to network management have been listed:<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">o High Risk Operations of Agent2Agent interaction
+  High risk operation can can to large-scale network outages.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">o The timeliness requirement of Agent2Agent collaboration
+"Token-based" generation and reasoning approach, limited by computing power and algorithms, result in  slow reasoning speeds.
+task-oriented "request-response" model without event subscription is unlike to meet time constraints for tasks such as fault
+diagnosis, complaint handling, and user experience improvement.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">o The Agent2agent Collaboration Reliability
+Incorrect or outdated network configuration data results in incorrect repair advice when diagnosing network incidents or faults.
+task collaboration is incomplete or not sufficient to handle strategies such as task rejection, missing information during task
+collaboration, and failure to achieve task objectives.<a href="#section-3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="operational-consideration">
@@ -1657,17 +1622,13 @@ in AI agent communication include:<a href="#section-7-1" class="pilcrow">¶</a><
 <a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.kumar-rtgwg-grpc-protocol">[I-D.kumar-rtgwg-grpc-protocol]</dt>
-        <dd>
-<span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Kolhe, J.</span>, <span class="refAuthor">Ghemawat, S.</span>, and <span class="refAuthor">L. Ryan</span>, <span class="refTitle">"gRPC Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-kumar-rtgwg-grpc-protocol-00</span>, <time datetime="2016-07-08" class="refDate">8 July 2016</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-kumar-rtgwg-grpc-protocol-00">https://datatracker.ietf.org/doc/html/draft-kumar-rtgwg-grpc-protocol-00</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.openconfig-rtgwg-gnmi-spec">[I-D.openconfig-rtgwg-gnmi-spec]</dt>
-        <dd>
-<span class="refAuthor">Shakir, R.</span>, <span class="refAuthor">Shaikh, A.</span>, <span class="refAuthor">Borman, P.</span>, <span class="refAuthor">Hines, M.</span>, <span class="refAuthor">Lebsack, C.</span>, and <span class="refAuthor">C. Morrow</span>, <span class="refTitle">"gRPC Network Management Interface (gNMI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-openconfig-rtgwg-gnmi-spec-01</span>, <time datetime="2018-03-05" class="refDate">5 March 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-openconfig-rtgwg-gnmi-spec-01">https://datatracker.ietf.org/doc/html/draft-openconfig-rtgwg-gnmi-spec-01</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.rosenberg-ai-protocols">[I-D.rosenberg-ai-protocols]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">C. F. Jennings</span>, <span class="refTitle">"Framework, Use Cases and Requirements for AI Agent Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-rosenberg-ai-protocols-00</span>, <time datetime="2025-05-05" class="refDate">5 May 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-rosenberg-ai-protocols-00">https://datatracker.ietf.org/doc/html/draft-rosenberg-ai-protocols-00</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.wmz-nmrg-agent-ndt-arch">[I-D.wmz-nmrg-agent-ndt-arch]</dt>
+      <dd>
+<span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Zhou, C.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Han, S.</span>, <span class="refAuthor">Tailhardat, L.</span>, and <span class="refAuthor">Y. Hong</span>, <span class="refTitle">"Network Digital Twin based Architecture for AI driven Network Operations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-02</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-wmz-nmrg-agent-ndt-arch-02">https://datatracker.ietf.org/doc/html/draft-wmz-nmrg-agent-ndt-arch-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
