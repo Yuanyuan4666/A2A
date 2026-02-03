@@ -178,122 +178,6 @@ A general workflow is as follows:
 - Iteration continues until all tasks reach executable leaf tier agents in the hierarchy.
 - Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
-## Example
-This section describes the deployment of a network configuration within a secure video meeting context. The scheduling agent is deployed to the Service Orchestrator, while the worker agent is deployed to the network controller. Registered on the Service Orchestrator, the agent card formally defines a worker agent's capabilities, interfaces, and operational characteristics within network management systems.
-
-See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
-
-~~~~
-# Worker Agents Capabilities
-{
-    "name": "QoSAgent",
-    "description": "Automatically configure QoS policies",
-    "url": "https://qos-agent.example.com/tasks/send",
-    "capabilities": ["QoS_Policy"],
-    "skills": [
-        {
-            "id": "set_qos",
-            "name": "QoS configuration",
-            "description": "QoS configuration",
-            "inputModes": ["text/structured"],
-            "outputModes": ["text/status"]
-        }
-    ]
-}
-{
-    "name": "SecurityAgent",
-    "description": "Automatically configure network security policies",
-    "url": "https://security-agent.example.com/tasks/send",
-    "capabilities": ["IPSEC", "DTLS"],
-    "skills": [
-        {
-            "id": "enable_encryption",
-            "name": "Encryption method configuration",
-            "description": "Encryption method configuration",
-            "inputModes": ["text/structured"],
-            "outputModes": ["text/status"]
-        }
-    ]
-}
-~~~~
-
-Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:
-
-~~~~
-# Requested Service Configuration
-{
-    "taskId": "task-multi-001",
-    "action": "deploy_network_configuration",
-    "parameters": {
-        "context": "secure_video_meeting",
-        "scope": "100",
-        "secure_level": "Top Secret",
-    }
-}
-~~~~
-
-The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for `set_qos` and `enable_encryption` are structured as follows:
-
-~~~~
-# Set QoS and Enable Encryption Subtasks
-{
-    "taskId": "task-multi-001",
-    "subTasks": [
-        {
-            "agent": "QoSAgent",
-            "action": "set_qos",
-            "parameters": {
-	            "configuration": {
-		            "acceptedOutputModes": [
-			            "text/status"
-                    ]
-	            },
-	            "minimum_bandwidth": "100Mbps",
-	            "priority": "0"
-            }
-        },
-        {
-            "agent": "SecurityAgent",
-            "action": "enable_encryption",
-            "parameters": {
-	            "configuration": {
-		            "acceptedOutputModes": [
-			            "text/status"
-                    ]
-	            },
-	            "encryption_method": "ipsec",
-	            "key_management": "dtls",
-            }
-        }
-    ]
-}
-~~~~
-
-The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
-
-~~~~
-# Network Configuration Feedback Results
-{
-    "taskId": "task-multi-001",
-    "action": "deploy_network_configuration",
-    "parameters": {
-        "context": "secure_video_meeting",
-        "scope": "100",
-        "secure_level": "Top Secret",
-    }
-}
-{
-  "taskId": "subtask-qos-001",
-  "status": "completed",
-  "artifacts": [{"type": "text", "content": "QoS setup completed"}]
-}
-{
-  "taskId": "subtask-sec-001",
-  "status": "completed",
-  "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
-}
-~~~~
-
 # Impact of integrating A2A on Network Management
 
 ## Agent to Agent Interaction
@@ -433,3 +317,123 @@ This document has no IANA actions.
 
 
 --- back
+
+# Usage Example
+
+This section describes the deployment of a network configuration within a secure video meeting context.
+The scheduling agent is deployed to the Service Orchestrator, while the worker agent is deployed to the
+network controller. Registered on the Service Orchestrator, the agent card formally defines a worker
+agent's capabilities, interfaces, and operational characteristics within network management systems.
+
+See the following Agent card examples for two worker agents (QoS Agent and Security Agent):
+
+~~~~
+# Worker Agents Capabilities
+{
+    "name": "QoSAgent",
+    "description": "Automatically configure QoS policies",
+    "url": "https://qos-agent.example.com/tasks/send",
+    "capabilities": ["QoS_Policy"],
+    "skills": [
+        {
+            "id": "set_qos",
+            "name": "QoS configuration",
+            "description": "QoS configuration",
+            "inputModes": ["text/structured"],
+            "outputModes": ["text/status"]
+        }
+    ]
+}
+{
+    "name": "SecurityAgent",
+    "description": "Automatically configure network security policies",
+    "url": "https://security-agent.example.com/tasks/send",
+    "capabilities": ["IPSEC", "DTLS"],
+    "skills": [
+        {
+            "id": "enable_encryption",
+            "name": "Encryption method configuration",
+            "description": "Encryption method configuration",
+            "inputModes": ["text/structured"],
+            "outputModes": ["text/status"]
+        }
+    ]
+}
+~~~~
+
+Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:
+
+~~~~
+# Requested Service Configuration
+{
+    "taskId": "task-multi-001",
+    "action": "deploy_network_configuration",
+    "parameters": {
+        "context": "secure_video_meeting",
+        "scope": "100",
+        "secure_level": "Top Secret",
+    }
+}
+~~~~
+
+The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for `set_qos` and `enable_encryption` are structured as follows:
+
+~~~~
+# Set QoS and Enable Encryption Subtasks
+{
+    "taskId": "task-multi-001",
+    "subTasks": [
+        {
+            "agent": "QoSAgent",
+            "action": "set_qos",
+            "parameters": {
+	            "configuration": {
+		            "acceptedOutputModes": [
+			            "text/status"
+                    ]
+	            },
+	            "minimum_bandwidth": "100Mbps",
+	            "priority": "0"
+            }
+        },
+        {
+            "agent": "SecurityAgent",
+            "action": "enable_encryption",
+            "parameters": {
+	            "configuration": {
+		            "acceptedOutputModes": [
+			            "text/status"
+                    ]
+	            },
+	            "encryption_method": "ipsec",
+	            "key_management": "dtls",
+            }
+        }
+    ]
+}
+~~~~
+
+The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
+
+~~~~
+# Network Configuration Feedback Results
+{
+    "taskId": "task-multi-001",
+    "action": "deploy_network_configuration",
+    "parameters": {
+        "context": "secure_video_meeting",
+        "scope": "100",
+        "secure_level": "Top Secret",
+    }
+}
+{
+  "taskId": "subtask-qos-001",
+  "status": "completed",
+  "artifacts": [{"type": "text", "content": "QoS setup completed"}]
+}
+{
+  "taskId": "subtask-sec-001",
+  "status": "completed",
+  "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
+}
+~~~~
