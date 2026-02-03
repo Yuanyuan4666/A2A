@@ -97,7 +97,7 @@ of integrating A2A into the network management system is also discussed.
 
 # Conventions and Definitions
 
-- AI Agent: A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.
+- AI Agent:   A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.
 - Agent Card: A common metadata file that describes an agent's capabilities, skills, interface URLs, and authentication requirements. Clients
               discover and identify the agent through this file.
 - A2A Server: An AI agent that receives requests and performs tasks
@@ -105,31 +105,21 @@ of integrating A2A into the network management system is also discussed.
 
 # Overview of key challenges for the network management
 
-In large scale network management environment, a large number of devices from different network vendors need to be uniformly managed, especially in the
-heterogeneous network environment which can lead to the following issues:
+As described in {{?I-D.wmz-nmrg-agent-ndt-arch}}, 3 key challenges to apply
+A2A protocol to network management have been listed:
 
-## Limitations of 3rd Party Management in Heterogeneous Network Environments
+o High Risk Operations of Agent2Agent interaction
+  High risk operation can can to large-scale network outages.
 
-In the multi-vendor heterogeneous environment, vendors implementations of YANG models and NETCONF/RESTCONF protocols {{!RFC6241}}{{!RFC8040}} exhibit
-significant divergence. Different vendors implement different YANG models such as IETF YANG, Openconfig YANG, Vendor specific YANG. Some vendors only
-partially support standard Network management protocols while other vendors might choose non-standard network management protocol or telemetry protocol
-such as gNMI {{?I-D.openconfig-rtgwg-gnmi-spec}}, gRPC {{?I-D.kumar-rtgwg-grpc-protocol}}. Without standard protocol or open programmable framework with
-multi-vendors integration drivers, integration various different data models and management protocols and allowing to quickly adapt to different device are
-still big challenges. The same challenge is applied to multi-domain heterogeneous environment.
+o The timeliness requirement of Agent2Agent collaboration
+"Token-based" generation and reasoning approach, limited by computing power and algorithms, result in  slow reasoning speeds.
+task-oriented "request-response" model without event subscription is unlike to meet time constraints for tasks such as fault
+diagnosis, complaint handling, and user experience improvement.
 
-## Static Data Format or Data Model for Management Interface, Unable to Adapt to the Speed of Service Roll Out
-
-The IETF is currently working on and also publishing a set of YANG models for network service configuration. Network Service configurations are built from a combination of network element and protocol configuration, but are specified to service users in more abstract terms, which enables service agility to speed
-service creation and delivery and allows the deployment of innovative new services across networks. However Network service models provide static interface
-with a fixed, unchanging format, it is unable to adapt to new service requirements, e.g., when some new service attributes are introduced and correlated with
-the specific network service model A or knowledge graph B using RDF, it is hard to expose these new attributes or capability through the same management
-interface which is using network service model A.
-
-## YANG Model Lacks integration with Open APIs
-
-Today, Open API has been widely adopted by the northbound interface of OSS/BSS or Network orchestrator while YANG data models have been widely adopted by
-the northbound interface of the network controller or the southbound interface of the network controller. However Open API ecosystem and
-YANG model ecosystem are both built as silos and lack integration or mapping between them.
+o The Agent2agent Collaboration Reliability
+Incorrect or outdated network configuration data results in incorrect repair advice when diagnosing network incidents or faults.
+task collaboration is incomplete or not sufficient to handle strategies such as task rejection, missing information during task
+collaboration, and failure to achieve task objectives.
 
 # Operational Consideration
 
