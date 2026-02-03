@@ -178,36 +178,6 @@ A general workflow is as follows:
 - Iteration continues until all tasks reach executable leaf tier agents in the hierarchy.
 - Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
-# Impact of integrating A2A on Network Management
-
-## Agent to Agent Interaction
-
-A2A leverages advanced machine learning models or knowledge graph
-models and sophisticated communication protocols such as one built
-on top of HTTP, SSE, JSON-RPC.
-
-Unlike REST or NETCONF/RESTCONF {{!RFC6241}}{{!RFC8040}}, other open API that follow predefined,
-static request-response patterns, A2A introduces a more adaptive communication
-model which transforms these interactions into dynamic, context-aware conversations.
-
-In addition, Agents can now negotiate, interpret subtle contextual cues, and make
-collaborative decisions in real-time. The cost is more context information needs to
-be kept as states in both sides.
-
-## Agent to Tools Interaction
-
-In case of collaboration between small AI model in the network element and large AI model
-in the network controller, A2A can be used to negotiate more context related information
-and invoke the tools. The cost is more context information needs to be kept as states in
-both sides.
-
-In case of no lightweight AI in the network element, REST or NETCONF/RESTCONF, other open API
-is sufficient for network management. There is no impact on management protocol used between
-the network element and the management system.
-
-If YANG2CLI script has been deployed in the network element, this script can be used to
-translate YANG schema into CLI command and manage the 3rd party network device.
-
 # Operational Considerations
 
 The introduction of A2A-based agent interactions into network management has several operational implications that MUST be considered when deploying the architecture in large-scale or multi-domain networks. This section highlights key aspects related to performance, scalability, reliability, latency, and agent lifecycle operations.
