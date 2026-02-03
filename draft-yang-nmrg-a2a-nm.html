@@ -1182,12 +1182,7 @@ of integrating A2A into the network management system is also discussed.<a href=
             <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-overview-of-key-challenges-" class="internal xref">Overview of key challenges for the network management</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-architecture-overview" class="internal xref">Architecture Overview</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-multi-agent-communication-d" class="internal xref">Multi-Agent Communication Deployment Scenario</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-agent2agent-architecture-de" class="internal xref">Agent2Agent Architecture Design for Network Management</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-operational-considerations" class="internal xref">Operational Considerations</a></p>
@@ -1313,82 +1308,90 @@ collaboration, and failure to achieve task objectives.<a href="#section-3-7.2.1"
       </ul>
 </section>
 </div>
-<div id="architecture-overview">
+<div id="agent2agent-architecture-design-for-network-management">
 <section id="section-4">
-      <h2 id="name-architecture-overview">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-architecture-overview" class="section-name selfRef">Architecture Overview</a>
+      <h2 id="name-agent2agent-architecture-de">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-agent2agent-architecture-de" class="section-name selfRef">Agent2Agent Architecture Design for Network Management</a>
       </h2>
-<p id="section-4-1">Large language models (LLMs) inherently excel at understanding complex user instructions, a capability that becomes even more pronounced in an AI agent-to-agent (A2A) architecture. Beyond merely comprehending sophisticated requirements, they can autonomously orchestrate lengthy network management workflows, making them particularly suitable for large-scale network management scenarios. Therefore, we have introduced the A2A protocol in the network management environments for building an intelligent network management and control platform.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<div id="multi-agent-communication-deployment-scenario">
-<section id="section-4.1">
-        <h3 id="name-multi-agent-communication-d">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-multi-agent-communication-d" class="section-name selfRef">Multi-Agent Communication Deployment Scenario</a>
-        </h3>
-<div class="alignLeft art-text artwork" id="section-4.1-1">
+<div class="alignLeft art-text artwork" id="section-4-1">
 <pre>
-                                +-------------+
-                                |    User     |
-                                +-----+-------+
-                                      |
-                                +-----+-------+
-                              Service Orchestrator
-                                | (AI Agent)  |
-                                +-----+-------+
-                                      |Agent to Agent
-                  +-------------------+------------------+
-                  |                   |                  |
-             +----+-------+     +-----+-------+     +----+------+
-           Network Controller  Network Controller  Network Controller
-             |(AI Agent)  |     | (AI Agent)  |     |(AI Agent) |
-             +----+-------+     +-----+-------+     +----+------+
-                  |                   |                  |
-                  |                   |                  |
-           Agent to tools       Agent to  tools      Agent to tools
-                  |                   |                  |
-             +----+-------------------+------------------+------+
-             |                     Network                      |
-             |                     Devices                      |
-             +--------------------------------------------------+
-</pre><a href="#section-4.1-1" class="pilcrow">¶</a>
+Service Level:
+ +----------------------------------------------------------------+
+ |  +----------------+  +----------------+   +----------------+   |
+ |  |Service AI Agent|  |Service AI Agent|   |Service AI Agent|   |
+ |  +---------+------+  +----------------+   +-------+--------+   |
+ +------------+--------------------------------------+------------+
+Network Level:|                                      |
+ +------------+----------------+ +-------------------+-----------+
+ |            |                | |                   |           |
+ |            |                | |                   |           |
+ |    +------------------+     | |     +-------------+------+    |
+ |    | Network AI Agent |     | |     |  Network AI Agent  |    |
+ |    +------------------+     | |     +--------------------+    |
+ |                             | |                               |
+ |                             | |                               |
+ |   +-----+      +-----+      | |      +-----+      +-----+     |
+ |   |Task |      |Task |      | |      |Task |      |Task |     |
+ |   |Agent|      |Agent|      | |      |Agent|      |Agent|     |
+ |   +--+--+      +--+--+      | |      +--+--+      +--+--+     |
+ +------+------------+---------+ +---------+------------+--------+
+ Device Level:       |                     |            |
+        +-----+------------------+-------------------+--+
+       +------+-------+   +------+-------+    +------+-------+
+       | +----+-----+ |   |+------------+|    |+------------+|
+       | | NE  Agent| |   ||  NE  Agent ||    ||  NE  Agent ||
+       | |  +---+   | |   ||+----------+||    ||+----------+||
+       | |  |SLM|   | |   |||MCP Server|||    |||MCP Server|||
+       | |  +---+   | |   ||+----------+||    ||+----------+||
+       | +----------+ |   |+-----------++|    |+-----------++|
+       +--------------+   +--------------+    +--------------+
+                       Smart Network Element
+
+</pre><a href="#section-4-1" class="pilcrow">¶</a>
 </div>
-<p id="section-4.1-2">In the multi-agent communication deployment scenario, AI Agents can be deployed at both service layer and network layer, e.g.,
-both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. AI Agent
-within the service orchestrator can provide registry database for other service agents within the network controller to
-register its location.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1-3">The interaction in the multi-agent communication deployment scenario can be broken down into:<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4-2">As described in <span>[<a href="#I-D.wmz-nmrg-agent-ndt-arch" class="cite xref">I-D.wmz-nmrg-agent-ndt-arch</a>]</span>, in the multi-agent communication deployment scenario, AI Agents can be
+deployed at both service layer,network layer and Network Element Level, e.g.,
+both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. Service
+AI Agent within the service orchestrator can provide registration center for other network AI agents and task agents within
+the network controller to register its location. In the meanwhile Network AI Agent within the network Controller can
+provide registration center for task agents at the network level and Network element level AI agent within the smart network
+element.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">The interaction in the multi-agent communication deployment scenario can be broken down into:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1-4.1">
-            <p id="section-4.1-4.1.1"><em>AI Agent to Agent interaction</em><a href="#section-4.1-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4-4.1">
+          <p id="section-4-4.1.1"><em>AI Agent to Agent interaction</em><a href="#section-4-4.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-4.2">
-            <p id="section-4.1-4.2.1"><em>AI Agent to Tools interaction</em><a href="#section-4.1-4.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-4.2">
+          <p id="section-4-4.2.1"><em>AI Agent to Tools/APIs/Models interaction</em><a href="#section-4-4.2.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-4.1-5">For AI Agent to Tools interaction, to enable comprehensive functionality, additional protocol extensions are required to address two critical aspects:
- (1) standardized tool invocation mechanisms for agent-tool interoperability, and (2) monitoring frameworks for tool usage tracking and auditing.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
-<p id="section-4.1-6">AI Agent to Agent interaction, users require a real-time monitoring interface for long-running workflows or tasks requiring continuous supervision with dual
-capabilities: (1) live network state observation and (2) validation of agent-proposed remediation actions during anomaly resolution scenarios.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
-<p id="section-4.1-7">A general workflow is as follows:<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+      </ul>
+<p id="section-4-5">For AI Agent to Tools/APIs/Models interaction, to enable comprehensive functionality (e.g., large AI model
+and small AI model collaboration, network AI agent and Network element AI agent collaboration
+for routing protocol troubleshooting), additional protocol extensions are required to address two critical aspects:
+ (1) standardized tool invocation mechanisms for agent-tool/api/model interoperability, and (2) monitoring frameworks
+ for tool usage tracking and auditing.<a href="#section-4-5" class="pilcrow">¶</a></p>
+<p id="section-4-6">AI Agent to Agent interaction, human operators require a real-time monitoring interface for long-running workflows or tasks
+requiring continuous supervision with dual capabilities: (1) live network state observation and (2) validation of agent-proposed
+remediation actions during anomaly resolution scenarios.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-7">A general workflow is as follows:<a href="#section-4-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1-8.1">
-            <p id="section-4.1-8.1.1">User Input Submission: An operator submits a natural language request to a central AI agent.<a href="#section-4.1-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4-8.1">
+          <p id="section-4-8.1.1">User Input Submission: An operator submits a natural language request to a Service AI agent.<a href="#section-4-8.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-8.2">
-            <p id="section-4.1-8.2.1">Agent Intent Processing: The central AI agent processes natural language inputs by parsing instructions into structured tasks.<a href="#section-4.1-8.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-8.2">
+          <p id="section-4-8.2.1">Agent Intent Processing: The service AI agent processes natural language inputs by parsing instructions into structured tasks.<a href="#section-4-8.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-8.3">
-            <p id="section-4.1-8.3.1">Workflow Graph Decision: The central AI agent decomposing tasks into workflow graphs, and distributes subtasks via an Agent Card Registry to specialized
-subordinate agents based on their capabilities.<a href="#section-4.1-8.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-8.3">
+          <p id="section-4-8.3.1">Autonomous Close Loop Workflow Management: The service AI agent decomposing tasks into workflow map with subtasks, and
+distributes subtasks via an Agent Card Registry to specialized task agents based on their capabilities.<a href="#section-4-8.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-8.4">
-            <p id="section-4.1-8.4.1">Iteration continues until all tasks reach executable leaf tier agents in the hierarchy.<a href="#section-4.1-8.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-8.4">
+          <p id="section-4-8.4.1">Task Execution: Iteration continues until all tasks reach executable task agents in the hierarchy.<a href="#section-4-8.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-8.5">
-            <p id="section-4.1-8.5.1">Leaf agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.<a href="#section-4.1-8.5.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-8.5">
+          <p id="section-4-8.5.1">Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.<a href="#section-4-8.5.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-</section>
-</div>
+      </ul>
 </section>
 </div>
 <div id="operational-considerations">

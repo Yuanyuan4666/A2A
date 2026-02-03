@@ -75,8 +75,7 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Overview of key challenges for the network management
-   4.  Architecture Overview
-     4.1.  Multi-Agent Communication Deployment Scenario
+   4.  Agent2Agent Architecture Design for Network Management
    5.  Operational Considerations
      5.1.  Scalability
      5.2.  Latency and Performance Constraints
@@ -176,89 +175,93 @@ Table of Contents
       strategies such as task rejection, missing information during task
       collaboration, and failure to achieve task objectives.
 
-4.  Architecture Overview
+4.  Agent2Agent Architecture Design for Network Management
 
-   Large language models (LLMs) inherently excel at understanding
-   complex user instructions, a capability that becomes even more
-   pronounced in an AI agent-to-agent (A2A) architecture.  Beyond merely
-   comprehending sophisticated requirements, they can autonomously
-   orchestrate lengthy network management workflows, making them
-   particularly suitable for large-scale network management scenarios.
-   Therefore, we have introduced the A2A protocol in the network
-   management environments for building an intelligent network
-   management and control platform.
+   Service Level:
+    +----------------------------------------------------------------+
+    |  +----------------+  +----------------+   +----------------+   |
+    |  |Service AI Agent|  |Service AI Agent|   |Service AI Agent|   |
+    |  +---------+------+  +----------------+   +-------+--------+   |
+    +------------+--------------------------------------+------------+
+   Network Level:|                                      |
+    +------------+----------------+ +-------------------+-----------+
+    |            |                | |                   |           |
+    |            |                | |                   |           |
+    |    +------------------+     | |     +-------------+------+    |
+    |    | Network AI Agent |     | |     |  Network AI Agent  |    |
+    |    +------------------+     | |     +--------------------+    |
+    |                             | |                               |
+    |                             | |                               |
+    |   +-----+      +-----+      | |      +-----+      +-----+     |
+    |   |Task |      |Task |      | |      |Task |      |Task |     |
+    |   |Agent|      |Agent|      | |      |Agent|      |Agent|     |
+    |   +--+--+      +--+--+      | |      +--+--+      +--+--+     |
+    +------+------------+---------+ +---------+------------+--------+
+    Device Level:       |                     |            |
+           +-----+------------------+-------------------+--+
+          +------+-------+   +------+-------+    +------+-------+
+          | +----+-----+ |   |+------------+|    |+------------+|
+          | | NE  Agent| |   ||  NE  Agent ||    ||  NE  Agent ||
+          | |  +---+   | |   ||+----------+||    ||+----------+||
+          | |  |SLM|   | |   |||MCP Server|||    |||MCP Server|||
+          | |  +---+   | |   ||+----------+||    ||+----------+||
+          | +----------+ |   |+-----------++|    |+-----------++|
+          +--------------+   +--------------+    +--------------+
+                          Smart Network Element
 
-4.1.  Multi-Agent Communication Deployment Scenario
-
-                                   +-------------+
-                                   |    User     |
-                                   +-----+-------+
-                                         |
-                                   +-----+-------+
-                                 Service Orchestrator
-                                   | (AI Agent)  |
-                                   +-----+-------+
-                                         |Agent to Agent
-                     +-------------------+------------------+
-                     |                   |                  |
-                +----+-------+     +-----+-------+     +----+------+
-              Network Controller  Network Controller  Network Controller
-                |(AI Agent)  |     | (AI Agent)  |     |(AI Agent) |
-                +----+-------+     +-----+-------+     +----+------+
-                     |                   |                  |
-                     |                   |                  |
-              Agent to tools       Agent to  tools      Agent to tools
-                     |                   |                  |
-                +----+-------------------+------------------+------+
-                |                     Network                      |
-                |                     Devices                      |
-                +--------------------------------------------------+
-
-   In the multi-agent communication deployment scenario, AI Agents can
-   be deployed at both service layer and network layer, e.g., both
+   As described in [I-D.wmz-nmrg-agent-ndt-arch], in the multi-agent
+   communication deployment scenario, AI Agents can be deployed at both
+   service layer,network layer and Network Element Level, e.g., both
    service orchestrator and network controller can introduce AI Agent
-   and allow Agent to Agent communication.  AI Agent within the service
-   orchestrator can provide registry database for other service agents
-   within the network controller to register its location.
+   and allow Agent to Agent communication.  Service AI Agent within the
+   service orchestrator can provide registration center for other
+   network AI agents and task agents within the network controller to
+   register its location.  In the meanwhile Network AI Agent within the
+   network Controller can provide registration center for task agents at
+   the network level and Network element level AI agent within the smart
+   network element.
 
    The interaction in the multi-agent communication deployment scenario
    can be broken down into:
 
    *  _AI Agent to Agent interaction_
 
-   *  _AI Agent to Tools interaction_
+   *  _AI Agent to Tools/APIs/Models interaction_
 
-   For AI Agent to Tools interaction, to enable comprehensive
-   functionality, additional protocol extensions are required to address
-   two critical aspects: (1) standardized tool invocation mechanisms for
-   agent-tool interoperability, and (2) monitoring frameworks for tool
-   usage tracking and auditing.
+   For AI Agent to Tools/APIs/Models interaction, to enable
+   comprehensive functionality (e.g., large AI model and small AI model
+   collaboration, network AI agent and Network element AI agent
+   collaboration for routing protocol troubleshooting), additional
+   protocol extensions are required to address two critical aspects: (1)
+   standardized tool invocation mechanisms for agent-tool/api/model
+   interoperability, and (2) monitoring frameworks for tool usage
+   tracking and auditing.
 
-   AI Agent to Agent interaction, users require a real-time monitoring
-   interface for long-running workflows or tasks requiring continuous
-   supervision with dual capabilities: (1) live network state
+   AI Agent to Agent interaction, human operators require a real-time
+   monitoring interface for long-running workflows or tasks requiring
+   continuous supervision with dual capabilities: (1) live network state
    observation and (2) validation of agent-proposed remediation actions
    during anomaly resolution scenarios.
 
    A general workflow is as follows:
 
    *  User Input Submission: An operator submits a natural language
-      request to a central AI agent.
+      request to a Service AI agent.
 
-   *  Agent Intent Processing: The central AI agent processes natural
+   *  Agent Intent Processing: The service AI agent processes natural
       language inputs by parsing instructions into structured tasks.
 
-   *  Workflow Graph Decision: The central AI agent decomposing tasks
-      into workflow graphs, and distributes subtasks via an Agent Card
-      Registry to specialized subordinate agents based on their
-      capabilities.
+   *  Autonomous Close Loop Workflow Management: The service AI agent
+      decomposing tasks into workflow map with subtasks, and distributes
+      subtasks via an Agent Card Registry to specialized task agents
+      based on their capabilities.
 
-   *  Iteration continues until all tasks reach executable leaf tier
-      agents in the hierarchy.
+   *  Task Execution: Iteration continues until all tasks reach
+      executable task agents in the hierarchy.
 
-   *  Leaf agents report outcomes to the central agent, which
-      dynamically adjusts the workflow based on result analysis and
-      policy rules.
+   *  Task Report: Task agents report outcomes to the central agent,
+      which dynamically adjusts the workflow based on result analysis
+      and policy rules.
 
 5.  Operational Considerations
 
