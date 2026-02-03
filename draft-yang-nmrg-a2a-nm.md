@@ -121,20 +121,6 @@ Incorrect or outdated network configuration data results in incorrect repair adv
 task collaboration is incomplete or not sufficient to handle strategies such as task rejection, missing information during task
 collaboration, and failure to achieve task objectives.
 
-# Operational Consideration
-
-This section outlines operational aspects of A2A with Network management requirements as follows:
-
-- *Dynamic Capability Discovery and Negotiation*: Agent can automatically detect and understand each other's capabilities, enabling more intelligent and adaptive
-  interactions, e.g., client and remote agents can negotiate the correct format needed.
-
-- *Task Management*: The communication between a client and remote agent is oriented towards task completion and agents work to fulfill end-user requests.
-  The task object is defined by the protocol and has a lifecycle. Each of the agents can communicate to stay in sync with each other on the latest status of
-  completing a task.
-
-- *Automated Workflow Coordination*: Agents comprehend high-level user intent, execute extended workflow sequences. In addition, they enable more
-  intelligent, context-aware agent interactions, e.g., Agents send each other messages to communicate context, replies, artifacts, or user instructions.
-
 # Architecture Overview
 
 Large language models (LLMs) inherently excel at understanding complex user instructions, a capability that becomes even more pronounced in an AI agent-to-agent (A2A) architecture. Beyond merely comprehending sophisticated requirements, they can autonomously orchestrate lengthy network management workflows, making them particularly suitable for large-scale network management scenarios. Therefore, we have introduced the A2A protocol in the network management environments for building an intelligent network management and control platform.
