@@ -44,15 +44,15 @@ author:
    organization: Huawei
    email: bill.wu@huawei.com
  -
+    fullname: Yuanyuan Yang
+    organization: Huawei
+    email: yangyuanyuan55@huawei.com
+ -
    fullname: Shailesh Prabhu
    organization: Nokia
    email: shailesh.prabhu@nokia.com
 
 contributor:
- -
-    fullname: Yuanyuan Yang
-    organization: Huawei
-    email: yangyuanyuan55@huawei.com
  -
    fullname: Houda Chihi
    organization: InnovCOM Sup'COM
