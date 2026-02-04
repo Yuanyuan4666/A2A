@@ -10,6 +10,7 @@ Expires: 8 August 2026                                  Deutsche Telekom
                                   Orange ResearchAdd commentMore actions
                                                                    Q. Ma
                                                                    Q. Wu
+                                                                 Y. Yang
                                                                   Huawei
                                                                S. Prabhu
                                                                    Nokia
@@ -553,11 +554,6 @@ Appendix A.  Usage Example
 
 Contributors
 
-   Yuanyuan Yang
-   Huawei
-   Email: yangyuanyuan55@huawei.com
-
-
    Houda Chihi
    InnovCOM Sup'COM
    Email: houda.chihi@supcom.tn
@@ -588,6 +584,11 @@ Authors' Addresses
    Qin Wu
    Huawei
    Email: bill.wu@huawei.com
+
+
+   Yuanyuan Yang
+   Huawei
+   Email: yangyuanyuan55@huawei.com
 
 
    Shailesh Prabhu
