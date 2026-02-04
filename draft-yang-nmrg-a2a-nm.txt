@@ -2,15 +2,15 @@
 
 
 
-Network Working Group                                              Q. Ma
-Internet-Draft                                                     Q. Wu
-Intended status: Informational                                    Huawei
-Expires: 8 August 2026                                          D. Lopez
-                                                              Telefonica
-                                                            N. R. Moreno
-                                                        Deutsche Telekom
+Network Working Group                                           D. Lopez
+Internet-Draft                                                Telefonica
+Intended status: Informational                              N. R. Moreno
+Expires: 8 August 2026                                  Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
+                                                                   Q. Ma
+                                                                   Q. Wu
+                                                                  Huawei
                                                                S. Prabhu
                                                                    Nokia
                                                          4 February 2026
@@ -565,16 +565,6 @@ Contributors
 
 Authors' Addresses
 
-   Qiufang Ma
-   Huawei
-   Email: maqiufang1@huawei.com
-
-
-   Qin Wu
-   Huawei
-   Email: bill.wu@huawei.com
-
-
    Diego Lopez
    Telefonica
    Email: diego.r.lopez@telefonica.com
@@ -588,6 +578,16 @@ Authors' Addresses
    Lionel Tailhardat
    Orange ResearchAdd commentMore actions
    Email: lionel.tailhardat@orange.com
+
+
+   Qiufang Ma
+   Huawei
+   Email: maqiufang1@huawei.com
+
+
+   Qin Wu
+   Huawei
+   Email: bill.wu@huawei.com
 
 
    Shailesh Prabhu
