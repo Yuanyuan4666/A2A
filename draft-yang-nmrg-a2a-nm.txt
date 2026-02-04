@@ -2,7 +2,7 @@
 
 
 
-Network Working Group                                            Y. Yang
+Network Working Group                                              Q. Ma
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
 Expires: 8 August 2026                                          D. Lopez
@@ -11,8 +11,6 @@ Expires: 8 August 2026                                          D. Lopez
                                                         Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
-                                                                H. Chihi
-                                                        InnovCOM Sup'COM
                                                                S. Prabhu
                                                                    Nokia
                                                          4 February 2026
@@ -88,6 +86,7 @@ Table of Contents
    7.  IANA Considerations
    8.  Informative References
    Appendix A.  Usage Example
+   Contributors
    Authors' Addresses
 
 1.  Introduction
@@ -552,11 +551,23 @@ Appendix A.  Usage Example
   "artifacts": [{"type": "text", "content": "IPSEC encryption enabled"}]
 }
 
-Authors' Addresses
+Contributors
 
    Yuanyuan Yang
    Huawei
    Email: yangyuanyuan55@huawei.com
+
+
+   Houda Chihi
+   InnovCOM Sup'COM
+   Email: houda.chihi@supcom.tn
+
+
+Authors' Addresses
+
+   Qiufang Ma
+   Huawei
+   Email: maqiufang1@huawei.com
 
 
    Qin Wu
@@ -577,11 +588,6 @@ Authors' Addresses
    Lionel Tailhardat
    Orange ResearchAdd commentMore actions
    Email: lionel.tailhardat@orange.com
-
-
-   Houda Chihi
-   InnovCOM Sup'COM
-   Email: houda.chihi@supcom.tn
 
 
    Shailesh Prabhu
