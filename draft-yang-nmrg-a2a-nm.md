@@ -24,9 +24,9 @@ venue:
 
 author:
  -
-    fullname: Yuanyuan Yang
+    fullname: Qiufang Ma
     organization: Huawei
-    email: "yangyuanyuan55@huawei.com"
+    email: maqiufang1@huawei.com
  -
    fullname: Qin Wu
    organization: Huawei
@@ -44,13 +44,19 @@ author:
   organization: Orange ResearchAdd commentMore actions
   email: lionel.tailhardat@orange.com
  -
-   fullname: Houda Chihi
-   organization: InnovCOM Sup'COM
-   email: houda.chihi@supcom.tn
- -
    fullname: Shailesh Prabhu
    organization: Nokia
    email: shailesh.prabhu@nokia.com
+
+contributor:
+ -
+    fullname: Yuanyuan Yang
+    organization: Huawei
+    email: yangyuanyuan55@huawei.com
+ -
+   fullname: Houda Chihi
+   organization: InnovCOM Sup'COM
+   email: houda.chihi@supcom.tn
 
 normative:
 
