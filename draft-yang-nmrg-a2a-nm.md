@@ -300,6 +300,27 @@ In multi-domain scenarios (e.g., between business units, operators, or federated
 
 Standardized operational practices MAY be required for agent discovery, trust establishment, conflict resolution, and accountability.
 
+# Event-driven Agent to Agent Communication
+
+The event-driven Agent to Agent communication enhances the task-based A2A procotol to support proactive and real-time communication based on network events. By leveraging the Message Broker such as Apache Kafka to facilitate the exchange of event messages among different AI agents, it allows the real-time response to maintain network reliability and service assurance in network management and operations. {{event-arch}} gives an overview of the architecure.
+
+~~~~
++---------+                               +----------+
+|         |      Agent to Agent           |          |
+|AI Agent <-------------------------------> AI Agent |
+|         |                               |          |
++---+-----+                               +-----^----+
+    |                                           |
+    | Events                                    | Events
+    |           +----------------+              |
+    +----------->Messaging topics|--------------+
+                +----------------+
+~~~~
+{: #event-arch title="An Architecture for Event-driven A2A" artwork-align="center"}
+
+The event-driven extension introduces a publish/subscribe paradigm alongside the primary task-driven interaction. For example, a "Fault Agent" identifies a
+link failure by data analyzing and publishes a message to the Message Broker, the "recovery agent" subscribes to the topic and it could initiate a task to generate recovery strategies such as link switching and traffic rerouting and submit to the operator for approval upon consuming the message.
+
 # Security Considerations
 
 The communication between Agents for the exchange of context information, capability information
