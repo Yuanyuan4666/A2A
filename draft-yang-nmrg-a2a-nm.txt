@@ -5,7 +5,7 @@
 Network Working Group                                            Y. Yang
 Internet-Draft                                                     Q. Wu
 Intended status: Informational                                    Huawei
-Expires: 7 August 2026                                          D. Lopez
+Expires: 8 August 2026                                          D. Lopez
                                                               Telefonica
                                                             N. R. Moreno
                                                         Deutsche Telekom
@@ -13,7 +13,9 @@ Expires: 7 August 2026                                          D. Lopez
                                   Orange ResearchAdd commentMore actions
                                                                 H. Chihi
                                                         InnovCOM Sup'COM
-                                                         3 February 2026
+                                                               S. Prabhu
+                                                                   Nokia
+                                                         4 February 2026
 
 
              Applicability of A2A to the Network Management
@@ -54,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 August 2026.
+   This Internet-Draft will expire on 8 August 2026.
 
 Copyright Notice
 
@@ -580,3 +582,8 @@ Authors' Addresses
    Houda Chihi
    InnovCOM Sup'COM
    Email: houda.chihi@supcom.tn
+
+
+   Shailesh Prabhu
+   Nokia
+   Email: shailesh.prabhu@nokia.com
