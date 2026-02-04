@@ -62,6 +62,11 @@ normative:
 
 informative:
 
+  Agent-skills:
+    title: Agent Skills
+    target: https://agentskills.io/home
+    date: 2025
+
 
 --- abstract
 
@@ -217,6 +222,12 @@ A general workflow is as follows:
 # Operational Considerations
 
 The introduction of A2A-based agent interactions into network management has several operational implications that MUST be considered when deploying the architecture in large-scale or multi-domain networks. This section highlights key aspects related to performance, scalability, reliability, latency, and agent lifecycle operations.
+
+# Agent Skills: Expertise Expansion of AI Agents in Network Management
+
+While AI agents have intelligence and capabilities, they may not always have expertise that we expect when performing specific network management and operation tasks. Agent Skills {{Agent-skills}}, introduced by Anthropic, is an open standard that allows developers to package specialized knowledge, workflow, and scripts and empowers a general AI Agent to become an expert in a specified field. Each skill is organized as a seperate folder that consists of a "skill.md" to define the basic information of the skill, and other files such as scripts, reference documents, etc. Agent Skills use progressive disclosure as a design pattern to load these resources to reduce token consumption and use less of the context window.
+
+Network operators could encode their domain expertise (e.g., troubleshooting workflow logic for fault scenarios) into structured skills, e.g., by defining the fault_diagnose_link skill to organize the logic of "checking link connectivity → analyzing error syslogs → verifying hardware status → outputting a resolution solution"), it quickly equips AI Agents with domain expertise.
 
 ## Scalability
 
