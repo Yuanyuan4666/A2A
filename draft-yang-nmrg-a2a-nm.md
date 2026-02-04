@@ -24,14 +24,6 @@ venue:
 
 author:
  -
-    fullname: Qiufang Ma
-    organization: Huawei
-    email: maqiufang1@huawei.com
- -
-   fullname: Qin Wu
-   organization: Huawei
-   email: bill.wu@huawei.com
- -
   fullname: Diego Lopez
   organization: Telefonica
   email: diego.r.lopez@telefonica.com
@@ -43,6 +35,14 @@ author:
   fullname: Lionel Tailhardat
   organization: Orange ResearchAdd commentMore actions
   email: lionel.tailhardat@orange.com
+ -
+    fullname: Qiufang Ma
+    organization: Huawei
+    email: maqiufang1@huawei.com
+ -
+   fullname: Qin Wu
+   organization: Huawei
+   email: bill.wu@huawei.com
  -
    fullname: Shailesh Prabhu
    organization: Nokia
