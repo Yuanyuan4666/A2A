@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-05T02:37:15.377504+00:00",
+  "timestamp": "2026-02-08T03:16:00.621198+00:00",
   "repo": "Yuanyuan4666/A2A",
   "labels": [
     {
@@ -81,6 +81,24 @@
       "body": "",
       "createdAt": "2026-02-04T08:17:35Z",
       "updatedAt": "2026-02-05T01:43:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOOwDY887oeckx",
+      "title": "add an example to populate YANG instance as A2A message data part",
+      "url": "https://github.com/Yuanyuan4666/A2A/issues/15",
+      "state": "OPEN",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "QiufangMa"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-05T08:21:01Z",
+      "updatedAt": "2026-02-05T08:21:01Z",
       "closedAt": null,
       "comments": []
     }
