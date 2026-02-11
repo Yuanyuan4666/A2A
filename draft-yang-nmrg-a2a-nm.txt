@@ -5,7 +5,7 @@
 Network Working Group                                           D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                              N. R. Moreno
-Expires: 8 August 2026                                  Deutsche Telekom
+Expires: 15 August 2026                                 Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
                                                                    Q. Ma
@@ -14,7 +14,7 @@ Expires: 8 August 2026                                  Deutsche Telekom
                                                                   Huawei
                                                                S. Prabhu
                                                                    Nokia
-                                                         4 February 2026
+                                                        11 February 2026
 
 
              Applicability of A2A to the Network Management
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 August 2026.
+   This Internet-Draft will expire on 15 August 2026.
 
 Copyright Notice
 
@@ -78,14 +78,17 @@ Table of Contents
    3.  Overview of key challenges for the network management
    4.  Agent2Agent Architecture Design for Network Management
    5.  Operational Considerations
-     5.1.  Scalability
-     5.2.  Latency and Performance Constraints
-     5.3.  Reliability and Failure Handling
-     5.4.  Agent Lifecycle and Resource Management
-     5.5.  Inter-Domain Operational Challenges
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Informative References
+     5.1.  Agent Skills: Expertise Expansion of AI Agents in Network
+           Management
+     5.2.  Scalability
+     5.3.  Latency and Performance Constraints
+     5.4.  Reliability and Failure Handling
+     5.5.  Agent Lifecycle and Resource Management
+     5.6.  Inter-Domain Operational Challenges
+   6.  Event-driven Agent to Agent Communication
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Informative References
    Appendix A.  Usage Example
    Contributors
    Authors' Addresses
@@ -277,7 +280,29 @@ Table of Contents
    performance, scalability, reliability, latency, and agent lifecycle
    operations.
 
-5.1.  Scalability
+5.1.  Agent Skills: Expertise Expansion of AI Agents in Network
+      Management
+
+   While AI agents have intelligence and capabilities, they may not
+   always have expertise that we expect when performing specific network
+   management and operation tasks.  Agent Skills [Agent-skills],
+   introduced by Anthropic, is an open standard that allows developers
+   to package specialized knowledge, workflow, and scripts and empowers
+   a general AI Agent to become an expert in a specified field.  Each
+   skill is organized as a seperate folder that consists of a "skill.md"
+   to define the basic information of the skill, and other files such as
+   scripts, reference documents, etc.  Agent Skills use progressive
+   disclosure as a design pattern to load these resources to reduce
+   token consumption and use less of the context window.
+
+   Network operators could encode their domain expertise (e.g.,
+   troubleshooting workflow logic for fault scenarios) into structured
+   skills, e.g., by defining the fault_diagnose_link skill to organize
+   the logic of "checking link connectivity → analyzing error syslogs →
+   verifying hardware status → outputting a resolution solution"), it
+   quickly equips AI Agents with domain expertise.
+
+5.2.  Scalability
 
    Large operational networks may contain tens of thousands of devices,
    multiple administrative domains, and a distributed set of controllers
@@ -301,7 +326,7 @@ Table of Contents
    Mechanisms for rate-limiting, backoff, and prioritization may be
    needed to prevent overload.
 
-5.2.  Latency and Performance Constraints
+5.3.  Latency and Performance Constraints
 
    Task decomposition and negotiation across multiple agents can
    introduce non-trivial latency, especially when agents rely on
@@ -328,7 +353,7 @@ Table of Contents
    static policies) SHOULD be provided when A2A interactions cannot meet
    timing constraints.
 
-5.3.  Reliability and Failure Handling
+5.4.  Reliability and Failure Handling
 
    A2A workflows may involve long-lived tasks that span multiple agents
    and systems.  Operational networks require predictable and safe
@@ -350,7 +375,7 @@ Table of Contents
    circuit-breakers, and automatic escalation to human operators in case
    of sustained failure.
 
-5.4.  Agent Lifecycle and Resource Management
+5.5.  Agent Lifecycle and Resource Management
 
    Production deployment of A2A-based systems requires active management
    of agent lifecycles, including:
@@ -368,7 +393,7 @@ Table of Contents
    all agents and their dependencies, including telemetry on message
    rates, errors, and workflow completion metrics.
 
-5.5.  Inter-Domain Operational Challenges
+5.6.  Inter-Domain Operational Challenges
 
    In multi-domain scenarios (e.g., between business units, operators,
    or federated networks), operational concerns are amplified due to:
@@ -385,7 +410,38 @@ Table of Contents
    discovery, trust establishment, conflict resolution, and
    accountability.
 
-6.  Security Considerations
+6.  Event-driven Agent to Agent Communication
+
+   The event-driven Agent to Agent communication enhances the task-based
+   A2A procotol to support proactive and real-time communication based
+   on network events.  By leveraging the Message Broker such as Apache
+   Kafka to facilitate the exchange of event messages among different AI
+   agents, it allows the real-time response to maintain network
+   reliability and service assurance in network management and
+   operations.  Figure 1 gives an overview of the architecure.
+
+         +---------+                               +----------+
+         |         |      Agent to Agent           |          |
+         |AI Agent <-------------------------------> AI Agent |
+         |         |                               |          |
+         +---+-----+                               +-----^----+
+             |                                           |
+             | Events                                    | Events
+             |           +----------------+              |
+             +----------->Messaging topics|--------------+
+                         +----------------+
+
+               Figure 1: An Architecture for Event-driven A2A
+
+   The event-driven extension introduces a publish/subscribe paradigm
+   alongside the primary task-driven interaction.  For example, a "Fault
+   Agent" identifies a link failure by data analyzing and publishes a
+   message to the Message Broker, the "recovery agent" subscribes to the
+   topic and it could initiate a task to generate recovery strategies
+   such as link switching and traffic rerouting and submit to the
+   operator for approval upon consuming the message.
+
+7.  Security Considerations
 
    The communication between Agents for the exchange of context
    information, capability information and user instruction is security
@@ -407,11 +463,14 @@ Table of Contents
    *  Scalable Security: Maintaining robust protection across diverse
       and complex networks
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  Informative References
+9.  Informative References
+
+   [Agent-skills]
+              "Agent Skills", 2025, <https://agentskills.io/home>.
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
