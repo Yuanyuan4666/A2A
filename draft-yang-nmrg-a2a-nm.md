@@ -223,11 +223,40 @@ A general workflow is as follows:
 
 The introduction of A2A-based agent interactions into network management has several operational implications that MUST be considered when deploying the architecture in large-scale or multi-domain networks. This section highlights key aspects related to performance, scalability, reliability, latency, and agent lifecycle operations.
 
-## Agent Skills: Expertise Expansion of AI Agents in Network Management
+## Agent Skills as Expertise Expansion of AI Agents
 
 While AI agents have intelligence and capabilities, they may not always have expertise that we expect when performing specific network management and operation tasks. Agent Skills {{Agent-skills}}, introduced by Anthropic, is an open standard that allows developers to package specialized knowledge, workflow, and scripts and empowers a general AI Agent to become an expert in a specified field. Each skill is organized as a seperate folder that consists of a "skill.md" to define the basic information of the skill, and other files such as scripts, reference documents, etc. Agent Skills use progressive disclosure as a design pattern to load these resources to reduce token consumption and use less of the context window.
 
 Network operators could encode their domain expertise (e.g., troubleshooting workflow logic for fault scenarios) into structured skills, e.g., by defining the fault_diagnose_link skill to organize the logic of "checking link connectivity → analyzing error syslogs → verifying hardware status → outputting a resolution solution"), it quickly equips AI Agents with domain expertise.
+
+## Knowledge Base as Ground Truth Data
+
+Another critical operational consideration for Agent-to-Agent (A2A) communication in network management is addressing the hallucination of Large Language Models (LLMs), which primarily stems from knowledge gaps within the models themselves. To mitigate this, a dedicated and machine-interpretable knowledge base can be constructed using unstructured product documents, maintenance manuals, historical fault tickets, network topology diagrams, configuration specifications, and expert experience, etc. The knowledge base enables LLMs to retrieve accurate, network operation and maintenance-specific information for reliable responses while ensuring data privacy and security, supporting domain knowledge plug-in to supplement knowledge Q&A. A shared knowledge base helps eliminate information asymmetry between heterogeneous Agents, ensuring that all Agents across the entire A2A system base their judgments and actions on consistent knowledge standards to avoid miscommunication or inconsistent operations.
+Throughout the entire A2A operational lifecycle, the knowledge base is not a static resource but a dynamic core that permeates Agent initialization, communication and interaction, task execution, and result feedback, making knowledge base management a prerequisite for effective A2A system operational design.
+
+Notably, The emerging Model Context Protocol (MCP) can facilitate the efficient updates and queries of the knowledge base by providing standardized interfaces, and build a standardized external knowledge base for multi-Agent system.
+
+## Event-driven Agent to Agent Communication
+
+The event-driven Agent to Agent communication enhances the task-based A2A procotol to support proactive and real-time communication based on network events. By leveraging the Message Broker such as Apache Kafka to facilitate the exchange of event messages among different AI agents, it allows the real-time response to maintain network reliability and service assurance in network management and operations. {{event-arch}} gives an overview of the architecure.
+
+~~~~
++---------+                               +----------+
+|         |      Agent to Agent           |          |
+|AI Agent <-------------------------------> AI Agent |
+|         |                               |          |
++---+-----+                               +-----^----+
+    |                                           |
+    | Events                                    | Events
+    |           +----------------+              |
+    +----------->Messaging topics|--------------+
+                +----------------+
+~~~~
+{: #event-arch title="An Architecture for Event-driven A2A" artwork-align="center"}
+
+The event-driven extension introduces a publish/subscribe paradigm alongside the primary task-driven interaction. For example, a "Fault Agent" identifies a
+link failure by data analyzing and publishes a message to the Message Broker, the "recovery agent" subscribes to the topic and it could initiate a task to generate recovery strategies such as link switching and traffic rerouting and submit to the operator for approval upon consuming the message.
+
 
 ## Scalability
 
@@ -310,27 +339,6 @@ In multi-domain scenarios (e.g., between business units, operators, or federated
 - Need for shared or interoperable agent capability descriptions.
 
 Standardized operational practices MAY be required for agent discovery, trust establishment, conflict resolution, and accountability.
-
-# Event-driven Agent to Agent Communication
-
-The event-driven Agent to Agent communication enhances the task-based A2A procotol to support proactive and real-time communication based on network events. By leveraging the Message Broker such as Apache Kafka to facilitate the exchange of event messages among different AI agents, it allows the real-time response to maintain network reliability and service assurance in network management and operations. {{event-arch}} gives an overview of the architecure.
-
-~~~~
-+---------+                               +----------+
-|         |      Agent to Agent           |          |
-|AI Agent <-------------------------------> AI Agent |
-|         |                               |          |
-+---+-----+                               +-----^----+
-    |                                           |
-    | Events                                    | Events
-    |           +----------------+              |
-    +----------->Messaging topics|--------------+
-                +----------------+
-~~~~
-{: #event-arch title="An Architecture for Event-driven A2A" artwork-align="center"}
-
-The event-driven extension introduces a publish/subscribe paradigm alongside the primary task-driven interaction. For example, a "Fault Agent" identifies a
-link failure by data analyzing and publishes a message to the Message Broker, the "recovery agent" subscribes to the topic and it could initiate a task to generate recovery strategies such as link switching and traffic rerouting and submit to the operator for approval upon consuming the message.
 
 # Security Considerations
 
