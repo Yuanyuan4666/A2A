@@ -22,11 +22,12 @@ Expires: 16 August 2026                                 Deutsche Telekom
 
 Abstract
 
-   This document discusses the applicability of A2A to the network
-   management in the multi-domain heterogeneous network environment that
-   utilizes IETF technologies.  It explores operational aspect, key
-   components, generic workflow and deployment scenarios.  The impact of
-   integrating A2A into the network management system is also discussed.
+   This document discusses the applicability of A2A protocol to the
+   network management in the multi-domain heterogeneous network
+   environment that utilizes IETF technologies.  It explores operational
+   aspect, key components, generic workflow and deployment scenarios.
+   The impact of integrating A2A into the network management system is
+   also discussed.
 
 About This Document
 
@@ -77,18 +78,19 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Overview of key challenges for the network management
    4.  Agent2Agent Architecture Design for Network Management
-   5.  Operational Considerations
-     5.1.  Agent Skills as Expertise Expansion of AI Agents
-     5.2.  Knowledge Base as Ground Truth Data
-     5.3.  Event-driven Agent to Agent Communication
-     5.4.  Scalability
-     5.5.  Latency and Performance Constraints
-     5.6.  Reliability and Failure Handling
-     5.7.  Agent Lifecycle and Resource Management
-     5.8.  Inter-Domain Operational Challenges
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Informative References
+   5.  YANG-based Structured Data for A2A Communication
+   6.  Operational Considerations
+     6.1.  Agent Skills as Expertise Expansion of AI Agents
+     6.2.  Knowledge Base as Ground Truth Data
+     6.3.  Event-driven Agent to Agent Communication
+     6.4.  Scalability
+     6.5.  Latency and Performance Constraints
+     6.6.  Reliability and Failure Handling
+     6.7.  Agent Lifecycle and Resource Management
+     6.8.  Inter-Domain Operational Challenges
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Informative References
    Appendix A.  Usage Example
    Contributors
    Authors' Addresses
@@ -103,14 +105,14 @@ Table of Contents
    other domain-specific agents to complete diverse tasks such as
    translation, configuration generation, and API development.
 
-   A2A provides a standardized way for AI agents to communicate and
-   collaborate across different platforms and frameworks through a
-   structured process, regardless of their underlying technologies.
-   Agents can advertise their capabilities using an 'Agent Card' in JSON
-   format, or send messages to communicate context, replies, artifacts,
-   or user instructions, which make it easier to build AI applications
-   that can interact with heterogeneous AI ecosystems in specific
-   domains.
+   A2A protocol [A2A] provides a standardized way for AI agents to
+   communicate and collaborate across different platforms and frameworks
+   through a structured process, regardless of their underlying
+   technologies.  Agents can advertise their capabilities using an
+   'Agent Card' in JSON format, or send messages to communicate context,
+   replies, artifacts, or user instructions, which make it easier to
+   build AI applications that can interact with heterogeneous AI
+   ecosystems in specific domains.
 
    With significant adoption of AI Agents across the Internet, Agent to
    Agent Communication protocol may become the foundation for the next
@@ -151,6 +153,23 @@ Table of Contents
    *  A2A Server: An AI agent that receives requests and performs tasks
 
    *  A2A Client: An AI agent that sends requests to servers
+
+   *  message: An A2A message represents a single turn of communication
+      between a client and a server Agent.  A message contains one or
+      more Part objects.
+
+   *  part: A part object is a granular container for the actual
+      content, which can hold different types of content using exactly
+      one of the following content fields:
+
+      -  text: A string containing plain textual content.
+
+      -  raw: A byte array containing binary file data (inline).
+
+      -  url: A string URI referencing external file content.
+
+      -  data: A structured JSON value (e.g., object, array) for
+         machine-readable data.
 
 3.  Overview of key challenges for the network management
 
@@ -271,7 +290,118 @@ Table of Contents
       which dynamically adjusts the workflow based on result analysis
       and policy rules.
 
-5.  Operational Considerations
+5.  YANG-based Structured Data for A2A Communication
+
+   While the A2A framework natively supports unstructured textual
+   content for agent-to-agent data exchange, network management and
+   operation scenarios usually demand rigorous clarity, unambiguous
+   intent transmission and machine-interpretable data
+   interaction—attributes that natural language cannot reliably provide
+   due to its inherent ambiguity, contextual variability and lack of
+   standardized syntax.  Natural language expressions of network
+   operational intent may have incomplete information, leading to
+   incorrect task execution, inconsistent configuration deployment and
+   potential large-scale network outages, which are unacceptable in the
+   high-reliability requirements of network management.  YANG [RFC7950],
+   as a standardized data modeling language defined by the IETF for
+   network management, provides a extensible way to structure network
+   management data and operational service and network intent; using
+   YANG-modeled structured data to populate A2A communication payloads
+   could help eliminate the ambiguity of natural language, and align A2A
+   communication with the existing IETF-based network management
+   ecosystem, enabling seamless integration with traditional network
+   management protocols such as NETCONF [RFC6241] and RESTCONF
+   [RFC8040].  The well-defined hierarchies and structures of YANG data
+   models also enable Agents to quickly parse, validate and process
+   communication data and support the definition of service or network
+   intent for specific multi-domain and multi-vendor heterogeneous
+   network scenarios.  In addition, YANG-structured data can serve as a
+   precise supplement to natural language input, where implicit
+   parameters, missing constraints, or detailed operational conditions
+   that are not fully expressed in natural language can be explicitly
+   defined and carried in the YANG data part.
+
+   The following example illustrates a A2A [A2A] message with both a
+   YANG-based structured data and natural language parts to balance
+   human readability and machine parse-ability.  The message could be
+   sent from a network AI Agent, after receving the intent from the
+   operator to diagnose a specific network incident, to a incident
+   diagnosis task Agent.  The data part complies with the Network
+   Incident YANG data model defined in
+   [I-D.ietf-nmop-network-incident-yang].
+
+POST /agents/network-ai-agent HTTP/1.1
+Host: example.com
+Content-Type: application/json
+{
+  "jsonrpc": "2.0",
+  "method": "message/send",
+  "params": {
+    "message": {
+      "message_id": "123e4567-e89b-12d3-a456-426614174000",
+      "context_id": "conversation-12345",
+      "role": "ROLE_USER",
+      "parts": [
+        {
+          "text": "Please diagnose the service degeneration incident for 'optical-svc-A' in 'FAN' domain. Provide root cause, severity level, and resolution recommendations.",
+          "media_type": "text/plain"
+        },
+        {
+          "data": {
+            "incident": {
+              "name": "Service Degradation",
+              "type": "network_problem",
+              "incident_id": "56433218",
+              "service_instances": ["optical-svc-A"],
+              "domain": "FAN",
+              "priority": "critical",
+              "status": "raised",
+              "occurrence_time": "2026-02-10T04:01:12Z",
+              "last_updated": "2026-02-10T04:01:12Z",
+              "probable_events": [
+                {
+                  "event_id": "8921834",
+                  "type": "alarm"
+                }
+              ],
+              "related_events": [
+                {
+                  "event_id": "8921832",
+                  "type": "alarm"
+                },
+                {
+                  "event_id": "8921833",
+                  "type": "alarm"
+                },
+                {
+                  "event_id": "8921834",
+                  "type": "alarm"
+                }
+              ]
+            }
+          },
+          "media_type": "application/json",
+          "metadata": {
+            "yang_module": "ietf-incident",
+            "revision": "2025-09-16"
+          }
+        }
+      ]
+    },
+    "configuration": {
+      "accepted_output_modes": ["application/json"],
+      "blocking": false,
+      "history_length": 3
+    },
+    "metadata": {
+      "request_type": "incident_diagnosis",
+      "priority": "critical",
+      "response_deadline": "2026-02-10T06:00:00Z"
+    }
+  }
+}
+
+6.  Operational Considerations
 
    The introduction of A2A-based agent interactions into network
    management has several operational implications that MUST be
@@ -280,7 +410,7 @@ Table of Contents
    performance, scalability, reliability, latency, and agent lifecycle
    operations.
 
-5.1.  Agent Skills as Expertise Expansion of AI Agents
+6.1.  Agent Skills as Expertise Expansion of AI Agents
 
    While AI agents have intelligence and capabilities, they may not
    always have expertise that we expect when performing specific network
@@ -301,7 +431,7 @@ Table of Contents
    verifying hardware status → outputting a resolution solution"), it
    quickly equips AI Agents with domain expertise.
 
-5.2.  Knowledge Base as Ground Truth Data
+6.2.  Knowledge Base as Ground Truth Data
 
    Another critical operational consideration for Agent-to-Agent (A2A)
    communication in network management is addressing the hallucination
@@ -329,7 +459,7 @@ Table of Contents
    standardized interfaces, and build a standardized external knowledge
    base for multi-Agent system.
 
-5.3.  Event-driven Agent to Agent Communication
+6.3.  Event-driven Agent to Agent Communication
 
    The event-driven Agent to Agent communication enhances the task-based
    A2A procotol to support proactive and real-time communication based
@@ -360,7 +490,7 @@ Table of Contents
    such as link switching and traffic rerouting and submit to the
    operator for approval upon consuming the message.
 
-5.4.  Scalability
+6.4.  Scalability
 
    Large operational networks may contain tens of thousands of devices,
    multiple administrative domains, and a distributed set of controllers
@@ -384,7 +514,7 @@ Table of Contents
    Mechanisms for rate-limiting, backoff, and prioritization may be
    needed to prevent overload.
 
-5.5.  Latency and Performance Constraints
+6.5.  Latency and Performance Constraints
 
    Task decomposition and negotiation across multiple agents can
    introduce non-trivial latency, especially when agents rely on
@@ -411,7 +541,7 @@ Table of Contents
    static policies) SHOULD be provided when A2A interactions cannot meet
    timing constraints.
 
-5.6.  Reliability and Failure Handling
+6.6.  Reliability and Failure Handling
 
    A2A workflows may involve long-lived tasks that span multiple agents
    and systems.  Operational networks require predictable and safe
@@ -433,7 +563,7 @@ Table of Contents
    circuit-breakers, and automatic escalation to human operators in case
    of sustained failure.
 
-5.7.  Agent Lifecycle and Resource Management
+6.7.  Agent Lifecycle and Resource Management
 
    Production deployment of A2A-based systems requires active management
    of agent lifecycles, including:
@@ -451,7 +581,7 @@ Table of Contents
    all agents and their dependencies, including telemetry on message
    rates, errors, and workflow completion metrics.
 
-5.8.  Inter-Domain Operational Challenges
+6.8.  Inter-Domain Operational Challenges
 
    In multi-domain scenarios (e.g., between business units, operators,
    or federated networks), operational concerns are amplified due to:
@@ -468,7 +598,7 @@ Table of Contents
    discovery, trust establishment, conflict resolution, and
    accountability.
 
-6.  Security Considerations
+7.  Security Considerations
 
    The communication between Agents for the exchange of context
    information, capability information and user instruction is security
@@ -490,14 +620,26 @@ Table of Contents
    *  Scalable Security: Maintaining robust protection across diverse
       and complex networks
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  Informative References
+9.  Informative References
+
+   [A2A]      "Agent2Agent (A2A) protocol", April 2025, <https://google-
+              a2a.github.io/A2A/#/documentation?id=agent2agent-protocol-
+              a2a>.
 
    [Agent-skills]
               "Agent Skills", 2025, <https://agentskills.io/home>.
+
+   [I-D.ietf-nmop-network-incident-yang]
+              Hu, T., Contreras, L. M., Wu, Q., Davis, N., and C. Feng,
+              "A YANG Data Model for Network Incident Management", Work
+              in Progress, Internet-Draft, draft-ietf-nmop-network-
+              incident-yang-07, 3 January 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
+              network-incident-yang-07>.
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
@@ -513,6 +655,19 @@ Table of Contents
               Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-02, 20
               October 2025, <https://datatracker.ietf.org/doc/html/
               draft-wmz-nmrg-agent-ndt-arch-02>.
+
+   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
+              and A. Bierman, Ed., "Network Configuration Protocol
+              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6241>.
+
+   [RFC7950]  Bjorklund, M., Ed., "The YANG 1.1 Data Modeling Language",
+              RFC 7950, DOI 10.17487/RFC7950, August 2016,
+              <https://www.rfc-editor.org/rfc/rfc7950>.
+
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8040>.
 
 Appendix A.  Usage Example
 
