@@ -302,24 +302,25 @@ Table of Contents
    operational intent may have incomplete information, leading to
    incorrect task execution, inconsistent configuration deployment and
    potential large-scale network outages, which are unacceptable in the
-   high-reliability requirements of network management.  YANG [RFC7950],
-   as a standardized data modeling language defined by the IETF for
-   network management, provides a extensible way to structure network
-   management data and operational service and network intent; using
-   YANG-modeled structured data to populate A2A communication payloads
-   could help eliminate the ambiguity of natural language, and align A2A
-   communication with the existing IETF-based network management
-   ecosystem, enabling seamless integration with traditional network
-   management protocols such as NETCONF [RFC6241] and RESTCONF
-   [RFC8040].  The well-defined hierarchies and structures of YANG data
-   models also enable Agents to quickly parse, validate and process
-   communication data and support the definition of service or network
-   intent for specific multi-domain and multi-vendor heterogeneous
-   network scenarios.  In addition, YANG-structured data can serve as a
-   precise supplement to natural language input, where implicit
-   parameters, missing constraints, or detailed operational conditions
-   that are not fully expressed in natural language can be explicitly
-   defined and carried in the YANG data part.
+   high-reliability requirements of network management.
+
+   YANG [RFC7950], as a standardized data modeling language defined by
+   the IETF for network management, provides a extensible way to
+   structure network management data and operational service and network
+   intent; using YANG-modeled structured data to populate A2A
+   communication payloads could help eliminate the ambiguity of natural
+   language, and align A2A communication with the existing IETF-based
+   network management ecosystem, enabling seamless integration with
+   traditional network management protocols such as NETCONF [RFC6241]
+   and RESTCONF [RFC8040].  The well-defined hierarchies and structures
+   of YANG data models also enable Agents to quickly parse, validate and
+   process communication data and support the definition of service or
+   network intent for specific multi-domain and multi-vendor
+   heterogeneous network scenarios.  In addition, YANG-structured data
+   can serve as a precise supplement to natural language input, where
+   implicit parameters, missing constraints, or detailed operational
+   conditions that are not fully expressed in natural language can be
+   explicitly defined and carried in the YANG data part.
 
    The following example illustrates a A2A [A2A] message with both a
    YANG-based structured data and natural language parts to balance
@@ -330,76 +331,79 @@ Table of Contents
    Incident YANG data model defined in
    [I-D.ietf-nmop-network-incident-yang].
 
-POST /agents/network-ai-agent HTTP/1.1
-Host: example.com
-Content-Type: application/json
-{
-  "jsonrpc": "2.0",
-  "method": "message/send",
-  "params": {
-    "message": {
-      "message_id": "123e4567-e89b-12d3-a456-426614174000",
-      "context_id": "conversation-12345",
-      "role": "ROLE_USER",
-      "parts": [
-        {
-          "text": "Please diagnose the service degeneration incident for 'optical-svc-A' in 'FAN' domain. Provide root cause, severity level, and resolution recommendations.",
-          "media_type": "text/plain"
-        },
-        {
-          "data": {
-            "incident": {
-              "name": "Service Degradation",
-              "type": "network_problem",
-              "incident_id": "56433218",
-              "service_instances": ["optical-svc-A"],
-              "domain": "FAN",
-              "priority": "critical",
-              "status": "raised",
-              "occurrence_time": "2026-02-10T04:01:12Z",
-              "last_updated": "2026-02-10T04:01:12Z",
-              "probable_events": [
-                {
-                  "event_id": "8921834",
-                  "type": "alarm"
-                }
-              ],
-              "related_events": [
-                {
-                  "event_id": "8921832",
-                  "type": "alarm"
-                },
-                {
-                  "event_id": "8921833",
-                  "type": "alarm"
-                },
-                {
-                  "event_id": "8921834",
-                  "type": "alarm"
-                }
-              ]
-            }
-          },
-          "media_type": "application/json",
-          "metadata": {
-            "yang_module": "ietf-incident",
-            "revision": "2025-09-16"
-          }
-        }
-      ]
-    },
-    "configuration": {
-      "accepted_output_modes": ["application/json"],
-      "blocking": false,
-      "history_length": 3
-    },
-    "metadata": {
-      "request_type": "incident_diagnosis",
-      "priority": "critical",
-      "response_deadline": "2026-02-10T06:00:00Z"
-    }
-  }
-}
+   POST /agents/network-ai-agent HTTP/1.1
+   Host: example.com
+   Content-Type: application/json
+   {
+     "jsonrpc": "2.0",
+     "method": "message/send",
+     "params": {
+       "message": {
+         "message_id": "123e4567-e89b-12d3-a456-426614174000",
+         "context_id": "conversation-12345",
+         "role": "ROLE_USER",
+         "parts": [
+           {
+             "text": "Please diagnose the service degeneration incident
+                      for 'optical-svc-A' in 'FAN' domain. Provide root
+                      cause, severity level, and resolution
+                      recommendations.",
+             "media_type": "text/plain"
+           },
+           {
+             "data": {
+               "incident": {
+                 "name": "Service Degradation",
+                 "type": "network_problem",
+                 "incident_id": "56433218",
+                 "service_instances": ["optical-svc-A"],
+                 "domain": "FAN",
+                 "priority": "critical",
+                 "status": "raised",
+                 "occurrence_time": "2026-02-10T04:01:12Z",
+                 "last_updated": "2026-02-10T04:01:12Z",
+                 "probable_events": [
+                   {
+                     "event_id": "8921834",
+                     "type": "alarm"
+                   }
+                 ],
+                 "related_events": [
+                   {
+                     "event_id": "8921832",
+                     "type": "alarm"
+                   },
+                   {
+                     "event_id": "8921833",
+                     "type": "alarm"
+                   },
+                   {
+                     "event_id": "8921834",
+                     "type": "alarm"
+                   }
+                 ]
+               }
+             },
+             "media_type": "application/json",
+             "metadata": {
+               "yang_module": "ietf-incident",
+               "revision": "2025-09-16"
+             }
+           }
+         ]
+       },
+       "configuration": {
+         "accepted_output_modes": ["application/json"],
+         "blocking": false,
+         "history_length": 3
+       },
+       "metadata": {
+         "request_type": "incident_diagnosis",
+         "priority": "critical",
+         "response_deadline": "2026-02-10T06:00:00Z"
+       }
+     }
+   }
 
 6.  Operational Considerations
 

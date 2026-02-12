@@ -1443,9 +1443,10 @@ distributes subtasks via an Agent Card Registry to specialized task agents based
       <h2 id="name-yang-based-structured-data-">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-yang-based-structured-data-" class="section-name selfRef">YANG-based Structured Data for A2A Communication</a>
       </h2>
-<p id="section-5-1">While the A2A framework natively supports unstructured textual content for agent-to-agent data exchange, network management and operation scenarios usually demand rigorous clarity, unambiguous intent transmission and machine-interpretable data interaction—attributes that natural language cannot reliably provide due to its inherent ambiguity, contextual variability and lack of standardized syntax. Natural language expressions of network operational intent may have incomplete information, leading to incorrect task execution, inconsistent configuration deployment and potential large-scale network outages, which are unacceptable in the high-reliability requirements of network management. YANG <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>, as a standardized data modeling language defined by the IETF for network management, provides a extensible way to structure network management data and operational service and network intent; using YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural language, and align A2A communication with the existing IETF-based network management ecosystem, enabling seamless integration with traditional network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The well-defined hierarchies and structures of YANG data models also enable Agents to quickly parse, validate and process communication data and support the definition of service or network intent for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data can serve as a precise supplement to natural language input, where implicit parameters, missing constraints, or detailed operational conditions that are not fully expressed in natural language can be explicitly defined and carried in the YANG data part.<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2">The following example illustrates a A2A <span>[<a href="#A2A" class="cite xref">A2A</a>]</span> message with both a YANG-based structured data and natural language parts to balance human readability and machine parse-ability. The message could be sent from a network AI Agent, after receving the intent from the operator to diagnose a specific network incident, to a incident diagnosis task Agent. The data part complies with the Network Incident YANG data model defined in <span>[<a href="#I-D.ietf-nmop-network-incident-yang" class="cite xref">I-D.ietf-nmop-network-incident-yang</a>]</span>.<a href="#section-5-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-5-3">
+<p id="section-5-1">While the A2A framework natively supports unstructured textual content for agent-to-agent data exchange, network management and operation scenarios usually demand rigorous clarity, unambiguous intent transmission and machine-interpretable data interaction—attributes that natural language cannot reliably provide due to its inherent ambiguity, contextual variability and lack of standardized syntax. Natural language expressions of network operational intent may have incomplete information, leading to incorrect task execution, inconsistent configuration deployment and potential large-scale network outages, which are unacceptable in the high-reliability requirements of network management.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">YANG <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>, as a standardized data modeling language defined by the IETF for network management, provides a extensible way to structure network management data and operational service and network intent; using YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural language, and align A2A communication with the existing IETF-based network management ecosystem, enabling seamless integration with traditional network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The well-defined hierarchies and structures of YANG data models also enable Agents to quickly parse, validate and process communication data and support the definition of service or network intent for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data can serve as a precise supplement to natural language input, where implicit parameters, missing constraints, or detailed operational conditions that are not fully expressed in natural language can be explicitly defined and carried in the YANG data part.<a href="#section-5-2" class="pilcrow">¶</a></p>
+<p id="section-5-3">The following example illustrates a A2A <span>[<a href="#A2A" class="cite xref">A2A</a>]</span> message with both a YANG-based structured data and natural language parts to balance human readability and machine parse-ability. The message could be sent from a network AI Agent, after receving the intent from the operator to diagnose a specific network incident, to a incident diagnosis task Agent. The data part complies with the Network Incident YANG data model defined in <span>[<a href="#I-D.ietf-nmop-network-incident-yang" class="cite xref">I-D.ietf-nmop-network-incident-yang</a>]</span>.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5-4">
 <pre>
 POST /agents/network-ai-agent HTTP/1.1
 Host: example.com
@@ -1460,7 +1461,10 @@ Content-Type: application/json
       "role": "ROLE_USER",
       "parts": [
         {
-          "text": "Please diagnose the service degeneration incident for 'optical-svc-A' in 'FAN' domain. Provide root cause, severity level, and resolution recommendations.",
+          "text": "Please diagnose the service degeneration incident
+                   for 'optical-svc-A' in 'FAN' domain. Provide root
+                   cause, severity level, and resolution
+                   recommendations.",
           "media_type": "text/plain"
         },
         {
@@ -1517,7 +1521,7 @@ Content-Type: application/json
     }
   }
 }
-</pre><a href="#section-5-3" class="pilcrow">¶</a>
+</pre><a href="#section-5-4" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
