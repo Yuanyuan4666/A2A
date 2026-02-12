@@ -5,7 +5,7 @@
 Network Working Group                                           D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                              N. R. Moreno
-Expires: 15 August 2026                                 Deutsche Telekom
+Expires: 16 August 2026                                 Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
                                                                    Q. Ma
@@ -14,7 +14,7 @@ Expires: 15 August 2026                                 Deutsche Telekom
                                                                   Huawei
                                                                S. Prabhu
                                                                    Nokia
-                                                        11 February 2026
+                                                        12 February 2026
 
 
              Applicability of A2A to the Network Management
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 August 2026.
+   This Internet-Draft will expire on 16 August 2026.
 
 Copyright Notice
 
@@ -78,17 +78,17 @@ Table of Contents
    3.  Overview of key challenges for the network management
    4.  Agent2Agent Architecture Design for Network Management
    5.  Operational Considerations
-     5.1.  Agent Skills: Expertise Expansion of AI Agents in Network
-           Management
-     5.2.  Scalability
-     5.3.  Latency and Performance Constraints
-     5.4.  Reliability and Failure Handling
-     5.5.  Agent Lifecycle and Resource Management
-     5.6.  Inter-Domain Operational Challenges
-   6.  Event-driven Agent to Agent Communication
-   7.  Security Considerations
-   8.  IANA Considerations
-   9.  Informative References
+     5.1.  Agent Skills as Expertise Expansion of AI Agents
+     5.2.  Knowledge Base as Ground Truth Data
+     5.3.  Event-driven Agent to Agent Communication
+     5.4.  Scalability
+     5.5.  Latency and Performance Constraints
+     5.6.  Reliability and Failure Handling
+     5.7.  Agent Lifecycle and Resource Management
+     5.8.  Inter-Domain Operational Challenges
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  Informative References
    Appendix A.  Usage Example
    Contributors
    Authors' Addresses
@@ -280,8 +280,7 @@ Table of Contents
    performance, scalability, reliability, latency, and agent lifecycle
    operations.
 
-5.1.  Agent Skills: Expertise Expansion of AI Agents in Network
-      Management
+5.1.  Agent Skills as Expertise Expansion of AI Agents
 
    While AI agents have intelligence and capabilities, they may not
    always have expertise that we expect when performing specific network
@@ -302,115 +301,35 @@ Table of Contents
    verifying hardware status → outputting a resolution solution"), it
    quickly equips AI Agents with domain expertise.
 
-5.2.  Scalability
+5.2.  Knowledge Base as Ground Truth Data
 
-   Large operational networks may contain tens of thousands of devices,
-   multiple administrative domains, and a distributed set of controllers
-   and orchestrators.  The use of conversational, context-rich A2A
-   messaging increases message volume compared to static RPC-based
-   interfaces such as NETCONF or RESTCONF.
+   Another critical operational consideration for Agent-to-Agent (A2A)
+   communication in network management is addressing the hallucination
+   of Large Language Models (LLMs), which primarily stems from knowledge
+   gaps within the models themselves.  To mitigate this, a dedicated and
+   machine-interpretable knowledge base can be constructed using
+   unstructured product documents, maintenance manuals, historical fault
+   tickets, network topology diagrams, configuration specifications, and
+   expert experience, etc.  The knowledge base enables LLMs to retrieve
+   accurate, network operation and maintenance-specific information for
+   reliable responses while ensuring data privacy and security,
+   supporting domain knowledge plug-in to supplement knowledge Q&A.  A
+   shared knowledge base helps eliminate information asymmetry between
+   heterogeneous Agents, ensuring that all Agents across the entire A2A
+   system base their judgments and actions on consistent knowledge
+   standards to avoid miscommunication or inconsistent operations.
+   Throughout the entire A2A operational lifecycle, the knowledge base
+   is not a static resource but a dynamic core that permeates Agent
+   initialization, communication and interaction, task execution, and
+   result feedback, making knowledge base management a prerequisite for
+   effective A2A system operational design.
 
-   Operators should evaluate:
+   Notably, The emerging Model Context Protocol (MCP) can facilitate the
+   efficient updates and queries of the knowledge base by providing
+   standardized interfaces, and build a standardized external knowledge
+   base for multi-Agent system.
 
-   *  The number of agents required per domain or per function.
-
-   *  The expected message growth as workflows involve multiple agents
-      performing negotiation, capability discovery, and state exchange.
-
-   *  The impact of concurrent multi-agent workflows on control-plane
-      stability.
-
-   *  Whether hierarchical or federated agent structures are needed to
-      avoid message storms and to localize decisions.
-
-   Mechanisms for rate-limiting, backoff, and prioritization may be
-   needed to prevent overload.
-
-5.3.  Latency and Performance Constraints
-
-   Task decomposition and negotiation across multiple agents can
-   introduce non-trivial latency, especially when agents rely on
-   external AI inference engines or large language models (LLMs).
-
-   Operational environments may impose strict timing requirements, for
-   example during:
-
-   *  Service activation with customer-facing SLAs.
-
-   *  Fault detection and automated remediation loops.
-
-   *  Real-time telemetry-driven control such as congestion mitigation.
-
-   Implementations SHOULD define performance envelopes, including:
-
-   *  Maximum agent-to-agent message processing latency.
-
-   *  Timeout and retry behavior for workflow steps.
-
-   *  Acceptable degradation under load or partial failures.
-
-   Fallback mechanisms (e.g., reverting to direct controller APIs or
-   static policies) SHOULD be provided when A2A interactions cannot meet
-   timing constraints.
-
-5.4.  Reliability and Failure Handling
-
-   A2A workflows may involve long-lived tasks that span multiple agents
-   and systems.  Operational networks require predictable and safe
-   behavior under partial failures.
-
-   Operators SHOULD consider:
-
-   *  How workflow state is checkpointed or restored if an agent becomes
-      unreachable.
-
-   *  How to detect and mitigate inconsistent or stale agent state.
-
-   *  Whether workflows can be retried idempotently.
-
-   *  Requirements for transactionality or rollback comparable to
-      NETCONF confirmed-commit semantics.
-
-   Implementations SHOULD include mechanisms for workflow monitoring,
-   circuit-breakers, and automatic escalation to human operators in case
-   of sustained failure.
-
-5.5.  Agent Lifecycle and Resource Management
-
-   Production deployment of A2A-based systems requires active management
-   of agent lifecycles, including:
-
-   *  Agent onboarding and registration.
-
-   *  Updates and model re-training (for AI-driven agents).
-
-   *  Decommissioning and revocation of compromised agents.
-
-   *  Resource consumption limits for CPU, memory, and inference
-      workloads.
-
-   Operators SHOULD maintain visibility into the operational state of
-   all agents and their dependencies, including telemetry on message
-   rates, errors, and workflow completion metrics.
-
-5.6.  Inter-Domain Operational Challenges
-
-   In multi-domain scenarios (e.g., between business units, operators,
-   or federated networks), operational concerns are amplified due to:
-
-   *  Differences in local policies or SLAs.
-
-   *  Variations in controller capabilities and data models.
-
-   *  Latency and reliability across administrative boundaries.
-
-   *  Need for shared or interoperable agent capability descriptions.
-
-   Standardized operational practices MAY be required for agent
-   discovery, trust establishment, conflict resolution, and
-   accountability.
-
-6.  Event-driven Agent to Agent Communication
+5.3.  Event-driven Agent to Agent Communication
 
    The event-driven Agent to Agent communication enhances the task-based
    A2A procotol to support proactive and real-time communication based
@@ -441,7 +360,115 @@ Table of Contents
    such as link switching and traffic rerouting and submit to the
    operator for approval upon consuming the message.
 
-7.  Security Considerations
+5.4.  Scalability
+
+   Large operational networks may contain tens of thousands of devices,
+   multiple administrative domains, and a distributed set of controllers
+   and orchestrators.  The use of conversational, context-rich A2A
+   messaging increases message volume compared to static RPC-based
+   interfaces such as NETCONF or RESTCONF.
+
+   Operators should evaluate:
+
+   *  The number of agents required per domain or per function.
+
+   *  The expected message growth as workflows involve multiple agents
+      performing negotiation, capability discovery, and state exchange.
+
+   *  The impact of concurrent multi-agent workflows on control-plane
+      stability.
+
+   *  Whether hierarchical or federated agent structures are needed to
+      avoid message storms and to localize decisions.
+
+   Mechanisms for rate-limiting, backoff, and prioritization may be
+   needed to prevent overload.
+
+5.5.  Latency and Performance Constraints
+
+   Task decomposition and negotiation across multiple agents can
+   introduce non-trivial latency, especially when agents rely on
+   external AI inference engines or large language models (LLMs).
+
+   Operational environments may impose strict timing requirements, for
+   example during:
+
+   *  Service activation with customer-facing SLAs.
+
+   *  Fault detection and automated remediation loops.
+
+   *  Real-time telemetry-driven control such as congestion mitigation.
+
+   Implementations SHOULD define performance envelopes, including:
+
+   *  Maximum agent-to-agent message processing latency.
+
+   *  Timeout and retry behavior for workflow steps.
+
+   *  Acceptable degradation under load or partial failures.
+
+   Fallback mechanisms (e.g., reverting to direct controller APIs or
+   static policies) SHOULD be provided when A2A interactions cannot meet
+   timing constraints.
+
+5.6.  Reliability and Failure Handling
+
+   A2A workflows may involve long-lived tasks that span multiple agents
+   and systems.  Operational networks require predictable and safe
+   behavior under partial failures.
+
+   Operators SHOULD consider:
+
+   *  How workflow state is checkpointed or restored if an agent becomes
+      unreachable.
+
+   *  How to detect and mitigate inconsistent or stale agent state.
+
+   *  Whether workflows can be retried idempotently.
+
+   *  Requirements for transactionality or rollback comparable to
+      NETCONF confirmed-commit semantics.
+
+   Implementations SHOULD include mechanisms for workflow monitoring,
+   circuit-breakers, and automatic escalation to human operators in case
+   of sustained failure.
+
+5.7.  Agent Lifecycle and Resource Management
+
+   Production deployment of A2A-based systems requires active management
+   of agent lifecycles, including:
+
+   *  Agent onboarding and registration.
+
+   *  Updates and model re-training (for AI-driven agents).
+
+   *  Decommissioning and revocation of compromised agents.
+
+   *  Resource consumption limits for CPU, memory, and inference
+      workloads.
+
+   Operators SHOULD maintain visibility into the operational state of
+   all agents and their dependencies, including telemetry on message
+   rates, errors, and workflow completion metrics.
+
+5.8.  Inter-Domain Operational Challenges
+
+   In multi-domain scenarios (e.g., between business units, operators,
+   or federated networks), operational concerns are amplified due to:
+
+   *  Differences in local policies or SLAs.
+
+   *  Variations in controller capabilities and data models.
+
+   *  Latency and reliability across administrative boundaries.
+
+   *  Need for shared or interoperable agent capability descriptions.
+
+   Standardized operational practices MAY be required for agent
+   discovery, trust establishment, conflict resolution, and
+   accountability.
+
+6.  Security Considerations
 
    The communication between Agents for the exchange of context
    information, capability information and user instruction is security
@@ -463,11 +490,11 @@ Table of Contents
    *  Scalable Security: Maintaining robust protection across diverse
       and complex networks
 
-8.  IANA Considerations
+7.  IANA Considerations
 
    This document has no IANA actions.
 
-9.  Informative References
+8.  Informative References
 
    [Agent-skills]
               "Agent Skills", 2025, <https://agentskills.io/home>.
