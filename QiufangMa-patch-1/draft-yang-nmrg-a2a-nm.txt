@@ -5,7 +5,7 @@
 Network Working Group                                           D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                              N. R. Moreno
-Expires: 15 August 2026                                 Deutsche Telekom
+Expires: 16 August 2026                                 Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
                                                                    Q. Ma
@@ -14,7 +14,7 @@ Expires: 15 August 2026                                 Deutsche Telekom
                                                                   Huawei
                                                                S. Prabhu
                                                                    Nokia
-                                                        11 February 2026
+                                                        12 February 2026
 
 
              Applicability of A2A to the Network Management
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 August 2026.
+   This Internet-Draft will expire on 16 August 2026.
 
 Copyright Notice
 
@@ -79,8 +79,7 @@ Table of Contents
    4.  Agent2Agent Architecture Design for Network Management
    5.  Operational Considerations
      5.1.  Agent Skills as Expertise Expansion of AI Agents
-     5.2.  Knowledge Base as Ground Truth Data to Mitigate
-           Hallucination
+     5.2.  Knowledge Base as Ground Truth Data
      5.3.  Event-driven Agent to Agent Communication
      5.4.  Scalability
      5.5.  Latency and Performance Constraints
@@ -302,36 +301,33 @@ Table of Contents
    verifying hardware status → outputting a resolution solution"), it
    quickly equips AI Agents with domain expertise.
 
-5.2.  Knowledge Base as Ground Truth Data to Mitigate Hallucination
+5.2.  Knowledge Base as Ground Truth Data
 
-   The knowledge base for agentic system is a structured, machine-
-   interpretable repository that aggregates all domain knowledge,
-   network rules, operational specifications, expert experience,
-   decision logic, and historical experience related to network
-   management.  Its core role in the A2A operational process is defined
-   by its ability to eliminate information asymmetry between
-   heterogeneous Agents—such as monitoring, control, and analysis
-   Agents—ensuring that all Agents base their judgments and actions on
-   consistent knowledge standards to avoid miscommunication or
-   inconsistent operations stemming from divergent understandings of
-   network rules.  Beyond establishing unified criteria, the KB provides
-   pre-defined decision logic and adaptive inference rules that enable
-   Agents to complete simple decision-making tasks, such as threshold-
-   based anomaly alarms, and collaborate on complex ones, including root
-   cause analysis of network faults, without reliance on centralized
-   control nodes, aligning with the distributed core of the A2A
-   architecture.  Additionally, the KB functions as a driver of
-   continuous operational optimization by integrating historical
-   interaction data, fault handling records, and network evolution
-   information from the A2A system, with iterative knowledge updates
-   achieved through self-learning or manual calibration to adapt the
-   Agent’s operational capabilities to dynamic network changes, such as
-   expansion, service upgrades, and new fault types.  Throughout the
-   entire A2A operational lifecycle, the KB is not a static resource but
-   a dynamic core that permeates Agent initialization, communication
-   interaction, decision execution, and result feedback, making full-
-   link KB management a prerequisite for effective A2A system
-   operational design.
+   Another critical operational consideration for Agent-to-Agent (A2A)
+   communication in network management is addressing the hallucination
+   of Large Language Models (LLMs), which primarily stems from knowledge
+   gaps within the models themselves.  To mitigate this, a dedicated and
+   machine-interpretable knowledge base can be constructed using
+   unstructured product documents, maintenance manuals, historical fault
+   tickets, network topology diagrams, configuration specifications, and
+   expert experience, etc.  The knowledge base enables LLMs to retrieve
+   accurate, network operation and maintenance-specific information for
+   reliable responses while ensuring data privacy and security,
+   supporting domain knowledge plug-in to supplement knowledge Q&A.  A
+   shared knowledge base helps eliminate information asymmetry between
+   heterogeneous Agents, ensuring that all Agents across the entire A2A
+   system base their judgments and actions on consistent knowledge
+   standards to avoid miscommunication or inconsistent operations.
+   Throughout the entire A2A operational lifecycle, the knowledge base
+   is not a static resource but a dynamic core that permeates Agent
+   initialization, communication and interaction, task execution, and
+   result feedback, making knowledge base management a prerequisite for
+   effective A2A system operational design.
+
+   Notably, The emerging Model Context Protocol (MCP) can facilitate the
+   efficient updates and queries of the knowledge base by providing
+   standardized interfaces, and build a standardized external knowledge
+   base for multi-Agent system.
 
 5.3.  Event-driven Agent to Agent Communication
 
