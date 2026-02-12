@@ -67,10 +67,14 @@ informative:
     target: https://agentskills.io/home
     date: 2025
 
+  A2A:
+    title: Agent2Agent (A2A) protocol
+    target: https://google-a2a.github.io/A2A/#/documentation?id=agent2agent-protocol-a2a
+    date: April 2025
 
 --- abstract
 
-This document discusses the applicability of A2A to the network management
+This document discusses the applicability of A2A protocol to the network management
 in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
 aspect, key components, generic workflow and deployment scenarios. The impact
 of integrating A2A into the network management system is also discussed.
@@ -85,7 +89,7 @@ refers to a category of software applications that utilizes LLMs to interact wit
 a multimodal AI agent as an example, it can collaborate with other domain-specific agents to complete diverse tasks such as translation,
 configuration generation, and API development.
 
-A2A provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
+A2A protocol {{A2A}} provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
 process, regardless of their underlying technologies. Agents can advertise their capabilities using an 'Agent Card' in JSON format, or send
 messages to communicate context, replies, artifacts, or user instructions, which make it easier to build AI applications that can interact
 with heterogeneous AI ecosystems in specific domains.
@@ -117,6 +121,12 @@ of integrating A2A into the network management system is also discussed.
               discover and identify the agent through this file.
 - A2A Server: An AI agent that receives requests and performs tasks
 - A2A Client: An AI agent that sends requests to servers
+- message: An A2A message represents a single turn of communication between a client and a server Agent. A message contains one or more Part objects.
+- part: A part object is a granular container for the actual content, which can hold different types of content using exactly one of the following content fields:
+  - text: A string containing plain textual content.
+  - raw: A byte array containing binary file data (inline).
+  - url: A string URI referencing external file content.
+  - data: A structured JSON value (e.g., object, array) for machine-readable data.
 
 # Overview of key challenges for the network management
 
@@ -218,6 +228,85 @@ A general workflow is as follows:
 - Task Execution: Iteration continues until all tasks reach executable task agents in the hierarchy.
 
 - Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
+
+# YANG-based Structured Data for A2A Communication
+
+While the A2A framework natively supports unstructured textual content for agent-to-agent data exchange, network management and operation scenarios usually demand rigorous clarity, unambiguous intent transmission and machine-interpretable data interaction—attributes that natural language cannot reliably provide due to its inherent ambiguity, contextual variability and lack of standardized syntax. Natural language expressions of network operational intent may have incomplete information, leading to incorrect task execution, inconsistent configuration deployment and potential large-scale network outages, which are unacceptable in the high-reliability requirements of network management. YANG {{?RFC7950}}, as a standardized data modeling language defined by the IETF for network management, provides a extensible way to structure network management data and operational service and network intent; using YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural language, and align A2A communication with the existing IETF-based network management ecosystem, enabling seamless integration with traditional network management protocols such as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. The well-defined hierarchies and structures of YANG data models also enable Agents to quickly parse, validate and process communication data and support the definition of service or network intent for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data can serve as a precise supplement to natural language input, where implicit parameters, missing constraints, or detailed operational conditions that are not fully expressed in natural language can be explicitly defined and carried in the YANG data part.
+
+The following example illustrates a A2A {{A2A}} message with both a YANG-based structured data and natural language parts to balance human readability and machine parse-ability. The message could be sent from a network AI Agent, after receving the intent from the operator to diagnose a specific network incident, to a incident diagnosis task Agent. The data part complies with the Network Incident YANG data model defined in {{?I-D.ietf-nmop-network-incident-yang}}.
+
+~~~~
+POST /agents/network-ai-agent HTTP/1.1
+Host: example.com
+Content-Type: application/json
+{
+  "jsonrpc": "2.0",
+  "method": "message/send",
+  "params": {
+    "message": {
+      "message_id": "123e4567-e89b-12d3-a456-426614174000",
+      "context_id": "conversation-12345",
+      "role": "ROLE_USER",
+      "parts": [
+        {
+          "text": "Please diagnose the service degeneration incident for 'optical-svc-A' in 'FAN' domain. Provide root cause, severity level, and resolution recommendations.",
+          "media_type": "text/plain"
+        },
+        {
+          "data": {
+            "incident": {
+              "name": "Service Degradation",
+              "type": "network_problem",
+              "incident_id": "56433218",
+              "service_instances": ["optical-svc-A"],
+              "domain": "FAN",
+              "priority": "critical",
+              "status": "raised",
+              "occurrence_time": "2026-02-10T04:01:12Z",
+              "last_updated": "2026-02-10T04:01:12Z",
+              "probable_events": [
+                {
+                  "event_id": "8921834",
+                  "type": "alarm"
+                }
+              ],
+              "related_events": [
+                {
+                  "event_id": "8921832",
+                  "type": "alarm"
+                },
+                {
+                  "event_id": "8921833",
+                  "type": "alarm"
+                },
+                {
+                  "event_id": "8921834",
+                  "type": "alarm"
+                }
+              ]
+            }
+          },
+          "media_type": "application/json",
+          "metadata": {
+            "yang_module": "ietf-incident",
+            "revision": "2025-09-16"
+          }
+        }
+      ]
+    },
+    "configuration": {
+      "accepted_output_modes": ["application/json"],
+      "blocking": false,
+      "history_length": 3
+    },
+    "metadata": {
+      "request_type": "incident_diagnosis",
+      "priority": "critical",
+      "response_deadline": "2026-02-10T06:00:00Z"
+    }
+  }
+}
+~~~~
 
 # Operational Considerations
 
