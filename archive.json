@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-12T02:47:06.264468+00:00",
+  "timestamp": "2026-02-15T02:48:34.732937+00:00",
   "repo": "Yuanyuan4666/A2A",
   "labels": [
     {
@@ -89,7 +89,7 @@
       "id": "I_kwDOOwDY887oeckx",
       "title": "add an example to populate YANG instance as A2A message data part",
       "url": "https://github.com/Yuanyuan4666/A2A/issues/15",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "QiufangMa",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -98,8 +98,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-02-05T08:21:01Z",
-      "updatedAt": "2026-02-05T08:21:01Z",
-      "closedAt": null,
+      "updatedAt": "2026-02-12T06:55:01Z",
+      "closedAt": "2026-02-12T06:55:01Z",
       "comments": []
     }
   ],
@@ -348,7 +348,7 @@
       "labels": [],
       "body": "\u2026ment",
       "createdAt": "2026-02-03T12:54:33Z",
-      "updatedAt": "2026-02-03T12:55:04Z",
+      "updatedAt": "2026-02-13T22:51:46Z",
       "baseRepository": "Yuanyuan4666/A2A",
       "baseRefName": "main",
       "baseRefOid": "01860661c0af97d9e7489f7527e88cd6f26f9b28",
@@ -480,6 +480,34 @@
       "mergedBy": "QiufangMa",
       "mergeCommit": {
         "oid": "fe0a1d30eee64c78daf985c2da30c399116b2fc5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOOwDY887DMM2B",
+      "title": "add yang-structured a2a message data part",
+      "url": "https://github.com/Yuanyuan4666/A2A/pull/17",
+      "state": "MERGED",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-12T06:49:40Z",
+      "updatedAt": "2026-02-12T06:55:00Z",
+      "baseRepository": "Yuanyuan4666/A2A",
+      "baseRefName": "main",
+      "baseRefOid": "fe0a1d30eee64c78daf985c2da30c399116b2fc5",
+      "headRepository": "Yuanyuan4666/A2A",
+      "headRefName": "QiufangMa-patch-2",
+      "headRefOid": "df1f5a95297bfa3d9a002176093c9344cf6f0e8c",
+      "closedAt": "2026-02-12T06:55:00Z",
+      "mergedAt": "2026-02-12T06:55:00Z",
+      "mergedBy": "QiufangMa",
+      "mergeCommit": {
+        "oid": "a39c5d5c8acaf70dc79571216ecf4956398f76b5"
       },
       "comments": [],
       "reviews": []
