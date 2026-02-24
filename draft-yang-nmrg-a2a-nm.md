@@ -142,7 +142,8 @@ The impact of integrating A2A into the network management system is also discuss
         - text: A string containing plain textual content.
         - raw: A byte array containing binary file data (inline).
         - url: A string URI referencing external file content.
-        - data: A structured JSON value (e.g., object, array) for machine-readable data.
+        - data: A structured JSON value (e.g., object, array) for
+          machine-readable data.
 
 # Overview of key challenges for the network management
 
