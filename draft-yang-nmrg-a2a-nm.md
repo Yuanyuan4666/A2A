@@ -116,6 +116,7 @@ of integrating A2A into the network management system is also discussed.
 
 # Conventions and Definitions
 
+{::boilerplate bcp14-tagged}
 - AI Agent:   A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.
 - Agent Card: A common metadata file that describes an agent's capabilities, skills, interface URLs, and authentication requirements. Clients
               discover and identify the agent through this file.
@@ -315,7 +316,7 @@ Content-Type: application/json
 
 # Operational Considerations
 
-The introduction of A2A-based agent interactions into network management has several operational implications that MUST be considered when deploying the architecture in large-scale or multi-domain networks. This section highlights key aspects related to performance, scalability, reliability, latency, and agent lifecycle operations.
+The introduction of A2A-based agent interactions into network management has several operational implications that must be considered when deploying the architecture in large-scale or multi-domain networks. This section highlights key aspects related to performance, scalability, reliability, latency, and agent lifecycle operations.
 
 ## Agent Skills as Expertise Expansion of AI Agents
 
@@ -380,7 +381,7 @@ Operational environments may impose strict timing requirements, for example duri
 
 - Real-time telemetry-driven control such as congestion mitigation.
 
-Implementations SHOULD define performance envelopes, including:
+Implementations should define performance envelopes, including:
 
 - Maximum agent-to-agent message processing latency.
 
@@ -388,13 +389,13 @@ Implementations SHOULD define performance envelopes, including:
 
 - Acceptable degradation under load or partial failures.
 
-Fallback mechanisms (e.g., reverting to direct controller APIs or static policies) SHOULD be provided when A2A interactions cannot meet timing constraints.
+Fallback mechanisms (e.g., reverting to direct controller APIs or static policies) should be provided when A2A interactions cannot meet timing constraints.
 
 ## Reliability and Failure Handling
 
 A2A workflows may involve long-lived tasks that span multiple agents and systems. Operational networks require predictable and safe behavior under partial failures.
 
-Operators SHOULD consider:
+Operators should consider:
 
 - How workflow state is checkpointed or restored if an agent becomes unreachable.
 
@@ -404,7 +405,7 @@ Operators SHOULD consider:
 
 - Requirements for transactionality or rollback comparable to NETCONF confirmed-commit semantics.
 
-Implementations SHOULD include mechanisms for workflow monitoring, circuit-breakers, and automatic escalation to human operators in case of sustained failure.
+Implementations should include mechanisms for workflow monitoring, circuit-breakers, and automatic escalation to human operators in case of sustained failure.
 
 ## Agent Lifecycle and Resource Management
 
@@ -418,7 +419,7 @@ Production deployment of A2A-based systems requires active management of agent l
 
 - Resource consumption limits for CPU, memory, and inference workloads.
 
-Operators SHOULD maintain visibility into the operational state of all agents and their dependencies, including telemetry on message rates, errors, and workflow completion metrics.
+Operators should maintain visibility into the operational state of all agents and their dependencies, including telemetry on message rates, errors, and workflow completion metrics.
 
 ## Inter-Domain Operational Challenges
 
@@ -432,7 +433,7 @@ In multi-domain scenarios (e.g., between business units, operators, or federated
 
 - Need for shared or interoperable agent capability descriptions.
 
-Standardized operational practices MAY be required for agent discovery, trust establishment, conflict resolution, and accountability.
+Standardized operational practices may be required for agent discovery, trust establishment, conflict resolution, and accountability.
 
 # Security Considerations
 
