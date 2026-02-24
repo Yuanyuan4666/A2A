@@ -1433,9 +1433,10 @@ and small AI model collaboration, network AI agent and Network element AI agent 
 for routing protocol troubleshooting), additional protocol extensions are required to address two critical aspects:
  (1) standardized tool invocation mechanisms for agent-tool/api/model interoperability, and (2) monitoring frameworks
  for tool usage tracking and auditing.<a href="#section-4-5" class="pilcrow">¶</a></p>
-<p id="section-4-6">AI Agent to Agent interaction, human operators require a real-time monitoring interface for long-running workflows or tasks
-requiring continuous supervision with dual capabilities: (1) live network state observation and (2) validation of agent-proposed
-remediation actions during anomaly resolution scenarios.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-6">AI Agent to Agent interaction, human operators require a real-time monitoring interface for
+long-running workflows or tasks requiring continuous supervision with dual capabilities: (1)
+live network state observation and (2) validation of agent-proposed remediation actions during
+anomaly resolution scenarios.<a href="#section-4-6" class="pilcrow">¶</a></p>
 <p id="section-4-7">A general workflow is as follows:<a href="#section-4-7" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-8.1">
@@ -1452,7 +1453,8 @@ distributes subtasks via an Agent Card Registry to specialized task agents based
           <p id="section-4-8.4.1">Task Execution: Iteration continues until all tasks reach executable task agents in the hierarchy.<a href="#section-4-8.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-8.5">
-          <p id="section-4-8.5.1">Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.<a href="#section-4-8.5.1" class="pilcrow">¶</a></p>
+          <p id="section-4-8.5.1">Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based
+on result analysis and policy rules.<a href="#section-4-8.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1473,12 +1475,13 @@ requirements of network management.<a href="#section-5-1" class="pilcrow">¶</a>
 a extensible way to structure network management data and operational service and network intent; using
 YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural
 language, and align A2A communication with the existing IETF-based network management ecosystem, enabling
-seamless integration with traditional network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>.
-The well-defined hierarchies and structures of YANG data models also enable Agents to quickly parse, validate and
-process communication data and support the definition of service or network intent for specific multi-domain and
-multi-vendor heterogeneous network scenarios. In addition, YANG-structured data can serve as a precise supplement
-to natural language input, where implicit parameters, missing constraints, or detailed operational conditions
-that are not fully expressed in natural language can be explicitly defined and carried in the YANG data part.<a href="#section-5-2" class="pilcrow">¶</a></p>
+seamless integration with traditional network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and
+RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The well-defined hierarchies and structures of YANG data models also enable Agents to
+quickly parse, validate and process communication data and support the definition of service or network intent
+for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data
+can serve as a precise supplement to natural language input, where implicit parameters, missing constraints,
+or detailed operational conditions that are not fully expressed in natural language can be explicitly defined
+and carried in the YANG data part.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">The following example illustrates a A2A <span>[<a href="#A2A" class="cite xref">A2A</a>]</span> message with both a YANG-based structured data and natural
 language parts to balance human readability and machine parse-ability. The message could be sent from a
 network AI Agent, after receving the intent from the operator to diagnose a specific network incident, to
@@ -1788,7 +1791,8 @@ concerns are amplified due to:<a href="#section-6.8-1" class="pilcrow">¶</a></p
             <p id="section-6.8-2.4.1">Need for shared or interoperable agent capability descriptions.<a href="#section-6.8-2.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-6.8-3">Standardized operational practices may be required for agent discovery, trust establishment, conflict resolution, and accountability.<a href="#section-6.8-3" class="pilcrow">¶</a></p>
+<p id="section-6.8-3">Standardized operational practices may be required for agent discovery, trust establishment,
+conflict resolution, and accountability.<a href="#section-6.8-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
