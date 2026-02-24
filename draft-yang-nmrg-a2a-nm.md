@@ -75,29 +75,34 @@ informative:
 --- abstract
 
 This document discusses the applicability of A2A protocol to the network management
-in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
-aspect, key components, generic workflow and deployment scenarios. The impact
-of integrating A2A into the network management system is also discussed.
-
+in the multi-domain heterogeneous network environment that utilizes IETF technologies.
+It explores operational aspect, key components, generic workflow and deployment
+scenarios. The impact of integrating A2A into the network management system is also
+discussed.
 
 --- middle
 
 # Introduction
 
-With the advancement of large language models (LLMs), the concept of AI agents has gradually attracted significant attention. An AI agent
-refers to a category of software applications that utilizes LLMs to interact with users or other agents and accomplish specific tasks. Take
-a multimodal AI agent as an example, it can collaborate with other domain-specific agents to complete diverse tasks such as translation,
-configuration generation, and API development.
+With the advancement of large language models (LLMs), the concept of AI agents has gradually
+attracted significant attention. An AI agent refers to a category of software applications
+that utilizes LLMs to interact with users or other agents and accomplish specific tasks. Take
+a multimodal AI agent as an example, it can collaborate with other domain-specific agents to
+complete diverse tasks such as translation, configuration generation, and API development.
 
-A2A protocol {{A2A}} provides a standardized way for AI agents to communicate and collaborate across different platforms and frameworks through a structured
-process, regardless of their underlying technologies. Agents can advertise their capabilities using an 'Agent Card' in JSON format, or send
-messages to communicate context, replies, artifacts, or user instructions, which make it easier to build AI applications that can interact
-with heterogeneous AI ecosystems in specific domains.
+A2A protocol {{A2A}} provides a standardized way for AI agents to communicate and collaborate
+across different platforms and frameworks through a structured process, regardless of their
+underlying technologies. Agents can advertise their capabilities using an 'Agent Card' in JSON
+format, or send messages to communicate context, replies, artifacts, or user instructions, which
+make it easier to build AI applications that can interact with heterogeneous AI ecosystems in
+specific domains.
 
-With significant adoption of AI Agents across the Internet, Agent to Agent Communication protocol may become the foundation for the next wave
-of Internet communication technologies across domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field
-is meant to develop various rich AI driven network applications, realize intent based networks management automation in the multi-vendor
-heterogeneous network environment. By establishing standard interfaces for dynamic Capability Discovery, intelligent message routing, heterogeneous
+With significant adoption of AI Agents across the Internet, Agent to Agent Communication protocol
+may become the foundation for the next wave of Internet communication technologies across
+domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field
+is meant to develop various rich AI driven network applications, realize intent based networks
+management automation in the multi-vendor heterogeneous network environment. By establishing
+standard interfaces for dynamic Capability Discovery, intelligent message routing, heterogeneous
 AI ecosystems interaction, cross-platform collaboration, A2A enables AI Agents to:
 
 o Understand contextual nuances
@@ -109,25 +114,35 @@ o Make collaborative decisions
 o Maintain persistent, intelligent interactions
 
 This document discusses the applicability of A2A to the network management
-in the multi-domain heterogeneous network environment that utilizes IETF technologies. It explores operational
-aspect, key components, generic workflow and deployment scenarios. The impact
-of integrating A2A into the network management system is also discussed.
+in the multi-domain heterogeneous network environment that utilizes IETF technologies.
+It explores operational aspect, key components, generic workflow and deployment scenarios.
+The impact of integrating A2A into the network management system is also discussed.
 
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
-- AI Agent:   A software system or program that is capable of autonomously performing goals and tasks on behalf of a user or another system.
-- Agent Card: A common metadata file that describes an agent's capabilities, skills, interface URLs, and authentication requirements. Clients
-              discover and identify the agent through this file.
+- AI Agent:   A software system or program that is capable of autonomously performing goals
+              and tasks on behalf of a user or another system.
+
+- Agent Card: A common metadata file that describes an agent's capabilities, skills, interface
+              URLs, and authentication requirements. Clients discover and identify the agent
+              through this file.
+
 - A2A Server: An AI agent that receives requests and performs tasks
+
 - A2A Client: An AI agent that sends requests to servers
-- message: An A2A message represents a single turn of communication between a client and a server Agent. A message contains one or more Part objects.
-- part: A part object is a granular container for the actual content, which can hold different types of content using exactly one of the following content fields:
-  - text: A string containing plain textual content.
-  - raw: A byte array containing binary file data (inline).
-  - url: A string URI referencing external file content.
-  - data: A structured JSON value (e.g., object, array) for machine-readable data.
+
+- message: An A2A message represents a single turn of communication between a client and a server
+           Agent. A message contains one or more Part objects.
+
+- part: A part object is a granular container for the actual content, which can hold different
+        types of content using exactly one of the following content fields:
+
+        - text: A string containing plain textual content.
+        - raw: A byte array containing binary file data (inline).
+        - url: A string URI referencing external file content.
+        - data: A structured JSON value (e.g., object, array) for machine-readable data.
 
 # Overview of key challenges for the network management
 
@@ -140,17 +155,19 @@ o High Risk Operations of Agent2Agent interaction
 
 o The timeliness requirement of Agent2Agent collaboration
 
-* "Token-based" generation and reasoning approach, limited by computing power and algorithms, result in  slow reasoning speeds.
+* "Token-based" generation and reasoning approach, limited by computing power and algorithms, result
+   in slow reasoning speeds.
 
-* Task-oriented "request-response" model without event subscription is unlike to meet time constraints for tasks such as fault
-diagnosis, complaint handling, and user experience improvement.
+* Task-oriented "request-response" model without event subscription is unlike to meet time constraints
+  for tasks such as fault diagnosis, complaint handling, and user experience improvement.
 
 o The Agent2agent Collaboration Reliability
 
-* Incorrect or outdated network configuration data results in incorrect repair advice when diagnosing network incidents or faults.
+* Incorrect or outdated network configuration data results in incorrect repair advice when diagnosing
+  network incidents or faults.
 
-* Task collaboration is incomplete or not sufficient to handle strategies such as task rejection, missing information during task
-collaboration, and failure to achieve task objectives.
+* Task collaboration is incomplete or not sufficient to handle strategies such as task rejection, missing
+  information during task collaboration, and failure to achieve task objectives.
 
 # Agent2Agent Architecture Design for Network Management
 
@@ -193,13 +210,13 @@ collaboration, and failure to achieve task objectives.
 
 ~~~~
 
-As described in {{?I-D.wmz-nmrg-agent-ndt-arch}}, in the multi-agent communication deployment scenario, AI Agents can be
-deployed at both service layer,network layer and Network Element Level, e.g.,
-both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication. Service
-AI Agent within the service orchestrator can provide registration center for other network AI agents and task agents within
-the network controller to register its location. In the meanwhile Network AI Agent within the network Controller can
-provide registration center for task agents at the network level and Network element level AI agent within the smart network
-element.
+As described in {{?I-D.wmz-nmrg-agent-ndt-arch}}, in the multi-agent communication deployment scenario,
+AI Agents can be deployed at both service layer,network layer and Network Element Level, e.g.,
+both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication.
+Service AI Agent within the service orchestrator can provide registration center for other network AI agents
+and task agents within the network controller to register its location. In the meanwhile Network AI Agent
+within the network Controller can provide registration center for task agents at the network level and
+Network element level AI agent within the smart network element.
 
 The interaction in the multi-agent communication deployment scenario can be broken down into:
 
@@ -232,11 +249,30 @@ A general workflow is as follows:
 
 # YANG-based Structured Data for A2A Communication
 
-While the A2A framework natively supports unstructured textual content for agent-to-agent data exchange, network management and operation scenarios usually demand rigorous clarity, unambiguous intent transmission and machine-interpretable data interaction—attributes that natural language cannot reliably provide due to its inherent ambiguity, contextual variability and lack of standardized syntax. Natural language expressions of network operational intent may have incomplete information, leading to incorrect task execution, inconsistent configuration deployment and potential large-scale network outages, which are unacceptable in the high-reliability requirements of network management.
+While the A2A framework natively supports unstructured textual content for agent-to-agent data exchange, network
+management and operation scenarios usually demand rigorous clarity, unambiguous intent transmission and
+machine-interpretable data interaction - attributes that natural language cannot reliably provide due to its
+inherent ambiguity, contextual variability and lack of standardized syntax. Natural language expressions of
+network operational intent may have incomplete information, leading to incorrect task execution, inconsistent
+configuration deployment and potential large-scale network outages, which are unacceptable in the high-reliability
+requirements of network management.
 
-YANG {{?RFC7950}}, as a standardized data modeling language defined by the IETF for network management, provides a extensible way to structure network management data and operational service and network intent; using YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural language, and align A2A communication with the existing IETF-based network management ecosystem, enabling seamless integration with traditional network management protocols such as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. The well-defined hierarchies and structures of YANG data models also enable Agents to quickly parse, validate and process communication data and support the definition of service or network intent for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data can serve as a precise supplement to natural language input, where implicit parameters, missing constraints, or detailed operational conditions that are not fully expressed in natural language can be explicitly defined and carried in the YANG data part.
+YANG {{?RFC7950}}, as a standardized data modeling language defined by the IETF for network management, provides
+a extensible way to structure network management data and operational service and network intent; using
+YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural
+language, and align A2A communication with the existing IETF-based network management ecosystem, enabling
+seamless integration with traditional network management protocols such as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}.
+The well-defined hierarchies and structures of YANG data models also enable Agents to quickly parse, validate and
+process communication data and support the definition of service or network intent for specific multi-domain and
+multi-vendor heterogeneous network scenarios. In addition, YANG-structured data can serve as a precise supplement
+to natural language input, where implicit parameters, missing constraints, or detailed operational conditions
+that are not fully expressed in natural language can be explicitly defined and carried in the YANG data part.
 
-The following example illustrates a A2A {{A2A}} message with both a YANG-based structured data and natural language parts to balance human readability and machine parse-ability. The message could be sent from a network AI Agent, after receving the intent from the operator to diagnose a specific network incident, to a incident diagnosis task Agent. The data part complies with the Network Incident YANG data model defined in {{?I-D.ietf-nmop-network-incident-yang}}.
+The following example illustrates a A2A {{A2A}} message with both a YANG-based structured data and natural
+language parts to balance human readability and machine parse-ability. The message could be sent from a
+network AI Agent, after receving the intent from the operator to diagnose a specific network incident, to
+a incident diagnosis task Agent. The data part complies with the Network Incident YANG data model defined
+in {{?I-D.ietf-nmop-network-incident-yang}}.
 
 ~~~~
 POST /agents/network-ai-agent HTTP/1.1
@@ -316,24 +352,55 @@ Content-Type: application/json
 
 # Operational Considerations
 
-The introduction of A2A-based agent interactions into network management has several operational implications that must be considered when deploying the architecture in large-scale or multi-domain networks. This section highlights key aspects related to performance, scalability, reliability, latency, and agent lifecycle operations.
+The introduction of A2A-based agent interactions into network management has several operational
+implications that must be considered when deploying the architecture in large-scale or multi-domain
+networks. This section highlights key aspects related to performance, scalability, reliability,
+latency, and agent lifecycle operations.
 
 ## Agent Skills as Expertise Expansion of AI Agents
 
-While AI agents have intelligence and capabilities, they may not always have expertise that we expect when performing specific network management and operation tasks. Agent Skills {{Agent-skills}}, introduced by Anthropic, is an open standard that allows developers to package specialized knowledge, workflow, and scripts and empowers a general AI Agent to become an expert in a specified field. Each skill is organized as a seperate folder that consists of a "skill.md" to define the basic information of the skill, and other files such as scripts, reference documents, etc. Agent Skills use progressive disclosure as a design pattern to load these resources to reduce token consumption and use less of the context window.
+While AI agents have intelligence and capabilities, they may not always have expertise that we expect
+when performing specific network management and operation tasks. Agent Skills {{Agent-skills}},
+introduced by Anthropic, is an open standard that allows developers to package specialized knowledge,
+workflow, and scripts and empowers a general AI Agent to become an expert in a specified field. Each
+skill is organized as a seperate folder that consists of a "skill.md" to define the basic information
+of the skill, and other files such as scripts, reference documents, etc. Agent Skills use progressive
+disclosure as a design pattern to load these resources to reduce token consumption and use less of
+the context window.
 
-Network operators could encode their domain expertise (e.g., troubleshooting workflow logic for fault scenarios) into structured skills, e.g., by defining the fault_diagnose_link skill to organize the logic of "checking link connectivity → analyzing error syslogs → verifying hardware status → outputting a resolution solution"), it quickly equips AI Agents with domain expertise.
+Network operators could encode their domain expertise (e.g., troubleshooting workflow logic for fault
+scenarios) into structured skills, e.g., by defining the fault_diagnose_link skill to organize the
+logic of "checking link connectivity -> analyzing error syslogs -> verifying hardware status -> outputting
+a resolution solution"), it quickly equips AI Agents with domain expertise.
 
 ## Knowledge Base as Ground Truth Data
 
-Another critical operational consideration for Agent-to-Agent (A2A) communication in network management is addressing the hallucination of Large Language Models (LLMs), which primarily stems from knowledge gaps within the models themselves. To mitigate this, a dedicated and machine-interpretable knowledge base can be constructed using unstructured product documents, maintenance manuals, historical fault tickets, network topology diagrams, configuration specifications, and expert experience, etc. The knowledge base enables LLMs to retrieve accurate, network operation and maintenance-specific information for reliable responses while ensuring data privacy and security, supporting domain knowledge plug-in to supplement knowledge Q&A. A shared knowledge base helps eliminate information asymmetry between heterogeneous Agents, ensuring that all Agents across the entire A2A system base their judgments and actions on consistent knowledge standards to avoid miscommunication or inconsistent operations.
-Throughout the entire A2A operational lifecycle, the knowledge base is not a static resource but a dynamic core that permeates Agent initialization, communication and interaction, task execution, and result feedback, making knowledge base management a prerequisite for effective A2A system operational design.
+Another critical operational consideration for Agent-to-Agent (A2A) communication in network management
+is addressing the hallucination of Large Language Models (LLMs), which primarily stems from knowledge
+gaps within the models themselves. To mitigate this, a dedicated and machine-interpretable knowledge
+base can be constructed using unstructured product documents, maintenance manuals, historical fault
+tickets, network topology diagrams, configuration specifications, and expert experience, etc. The
+knowledge base enables LLMs to retrieve accurate, network operation and maintenance-specific
+information for reliable responses while ensuring data privacy and security, supporting domain knowledge
+plug-in to supplement knowledge Q&A. A shared knowledge base helps eliminate information asymmetry between
+heterogeneous Agents, ensuring that all Agents across the entire A2A system base their judgments and
+actions on consistent knowledge standards to avoid miscommunication or inconsistent operations.
+Throughout the entire A2A operational lifecycle, the knowledge base is not a static resource but a
+dynamic core that permeates Agent initialization, communication and interaction, task execution,
+and result feedback, making knowledge base management a prerequisite for effective A2A system
+operational design.
 
-Notably, The emerging Model Context Protocol (MCP) can facilitate the efficient updates and queries of the knowledge base by providing standardized interfaces, and build a standardized external knowledge base for multi-Agent system.
+Notably, The emerging Model Context Protocol (MCP) can facilitate the efficient updates and queries
+of the knowledge base by providing standardized interfaces, and build a standardized external
+knowledge base for multi-Agent system.
 
 ## Event-driven Agent to Agent Communication
 
-The event-driven Agent to Agent communication enhances the task-based A2A procotol to support proactive and real-time communication based on network events. By leveraging the Message Broker such as Apache Kafka to facilitate the exchange of event messages among different AI agents, it allows the real-time response to maintain network reliability and service assurance in network management and operations. {{event-arch}} gives an overview of the architecure.
+The event-driven Agent to Agent communication enhances the task-based A2A procotol to support
+proactive and real-time communication based on network events. By leveraging the Message Broker
+such as Apache Kafka to facilitate the exchange of event messages among different AI agents,
+it allows the real-time response to maintain network reliability and service assurance in
+network management and operations. {{event-arch}} gives an overview of the architecure.
 
 ~~~~
 +---------+                               +----------+
@@ -349,29 +416,39 @@ The event-driven Agent to Agent communication enhances the task-based A2A procot
 ~~~~
 {: #event-arch title="An Architecture for Event-driven A2A" artwork-align="center"}
 
-The event-driven extension introduces a publish/subscribe paradigm alongside the primary task-driven interaction. For example, a "Fault Agent" identifies a
-link failure by data analyzing and publishes a message to the Message Broker, the "recovery agent" subscribes to the topic and it could initiate a task to generate recovery strategies such as link switching and traffic rerouting and submit to the operator for approval upon consuming the message.
+The event-driven extension introduces a publish/subscribe paradigm alongside the primary
+task-driven interaction. For example, a "Fault Agent" identifies a link failure by data
+analyzing and publishes a message to the Message Broker, the "recovery agent" subscribes
+to the topic and it could initiate a task to generate recovery strategies such as link
+switching and traffic rerouting and submit to the operator for approval upon consuming
+the message.
 
 
 ## Scalability
 
-Large operational networks may contain tens of thousands of devices, multiple administrative domains, and a distributed set of controllers and orchestrators. The use of conversational, context-rich A2A messaging increases message volume compared to static RPC-based interfaces such as NETCONF or RESTCONF.
+Large operational networks may contain tens of thousands of devices, multiple administrative
+domains, and a distributed set of controllers and orchestrators. The use of conversational,
+context-rich A2A messaging increases message volume compared to static RPC-based interfaces
+such as NETCONF or RESTCONF.
 
 Operators should evaluate:
 
 - The number of agents required per domain or per function.
 
-- The expected message growth as workflows involve multiple agents performing negotiation, capability discovery, and state exchange.
+- The expected message growth as workflows involve multiple agents performing negotiation,
+  capability discovery, and state exchange.
 
 - The impact of concurrent multi-agent workflows on control-plane stability.
 
-- Whether hierarchical or federated agent structures are needed to avoid message storms and to localize decisions.
+- Whether hierarchical or federated agent structures are needed to avoid message storms and
+  to localize decisions.
 
 Mechanisms for rate-limiting, backoff, and prioritization may be needed to prevent overload.
 
 ## Latency and Performance Constraints
 
-Task decomposition and negotiation across multiple agents can introduce non-trivial latency, especially when agents rely on external AI inference engines or large language models (LLMs).
+Task decomposition and negotiation across multiple agents can introduce non-trivial latency,
+especially when agents rely on external AI inference engines or large language models (LLMs).
 
 Operational environments may impose strict timing requirements, for example during:
 
@@ -389,11 +466,13 @@ Implementations should define performance envelopes, including:
 
 - Acceptable degradation under load or partial failures.
 
-Fallback mechanisms (e.g., reverting to direct controller APIs or static policies) should be provided when A2A interactions cannot meet timing constraints.
+Fallback mechanisms (e.g., reverting to direct controller APIs or static policies) should be
+provided when A2A interactions cannot meet timing constraints.
 
 ## Reliability and Failure Handling
 
-A2A workflows may involve long-lived tasks that span multiple agents and systems. Operational networks require predictable and safe behavior under partial failures.
+A2A workflows may involve long-lived tasks that span multiple agents and systems. Operational
+networks require predictable and safe behavior under partial failures.
 
 Operators should consider:
 
@@ -405,7 +484,8 @@ Operators should consider:
 
 - Requirements for transactionality or rollback comparable to NETCONF confirmed-commit semantics.
 
-Implementations should include mechanisms for workflow monitoring, circuit-breakers, and automatic escalation to human operators in case of sustained failure.
+Implementations should include mechanisms for workflow monitoring, circuit-breakers, and automatic
+escalation to human operators in case of sustained failure.
 
 ## Agent Lifecycle and Resource Management
 
@@ -419,11 +499,13 @@ Production deployment of A2A-based systems requires active management of agent l
 
 - Resource consumption limits for CPU, memory, and inference workloads.
 
-Operators should maintain visibility into the operational state of all agents and their dependencies, including telemetry on message rates, errors, and workflow completion metrics.
+Operators should maintain visibility into the operational state of all agents and their dependencies,
+including telemetry on message rates, errors, and workflow completion metrics.
 
 ## Inter-Domain Operational Challenges
 
-In multi-domain scenarios (e.g., between business units, operators, or federated networks), operational concerns are amplified due to:
+In multi-domain scenarios (e.g., between business units, operators, or federated networks), operational
+concerns are amplified due to:
 
 - Differences in local policies or SLAs.
 
@@ -502,7 +584,9 @@ See the following Agent card examples for two worker agents (QoS Agent and Secur
 }
 ~~~~
 
-Suppose a user submits a natural language request such as "The meeting will have 100 participants. The security level is Top Secret" to the platform integrated with the Service Orchestrator. The platform parses the request and converts it into JSON format as follows:
+Suppose a user submits a natural language request such as "The meeting will have 100 participants.
+The security level is Top Secret" to the platform integrated with the Service Orchestrator. The
+platform parses the request and converts it into JSON format as follows:
 
 ~~~~
 # Requested Service Configuration
@@ -517,7 +601,8 @@ Suppose a user submits a natural language request such as "The meeting will have
 }
 ~~~~
 
-The Service Orchestrator sends subtasks in a structured format to the Network Controller. For example, the subtasks for `set_qos` and `enable_encryption` are structured as follows:
+The Service Orchestrator sends subtasks in a structured format to the Network Controller. For
+example, the subtasks for `set_qos` and `enable_encryption` are structured as follows:
 
 ~~~~
 # Set QoS and Enable Encryption Subtasks
@@ -554,7 +639,9 @@ The Service Orchestrator sends subtasks in a structured format to the Network Co
 }
 ~~~~
 
-The network controller executes network management operations on network devices and returns the results to the Service Orchestrator in JSON format. Example responses for the subtasks are shown below:
+The network controller executes network management operations on network devices and returns
+the results to the Service Orchestrator in JSON format. Example responses for the subtasks
+are shown below:
 
 ~~~~
 # Network Configuration Feedback Results
