@@ -230,9 +230,10 @@ for routing protocol troubleshooting), additional protocol extensions are requir
  (1) standardized tool invocation mechanisms for agent-tool/api/model interoperability, and (2) monitoring frameworks
  for tool usage tracking and auditing.
 
-AI Agent to Agent interaction, human operators require a real-time monitoring interface for long-running workflows or tasks
-requiring continuous supervision with dual capabilities: (1) live network state observation and (2) validation of agent-proposed
-remediation actions during anomaly resolution scenarios.
+AI Agent to Agent interaction, human operators require a real-time monitoring interface for
+long-running workflows or tasks requiring continuous supervision with dual capabilities: (1)
+live network state observation and (2) validation of agent-proposed remediation actions during
+anomaly resolution scenarios.
 
 A general workflow is as follows:
 
@@ -245,7 +246,8 @@ A general workflow is as follows:
 
 - Task Execution: Iteration continues until all tasks reach executable task agents in the hierarchy.
 
-- Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
+- Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based
+  on result analysis and policy rules.
 
 # YANG-based Structured Data for A2A Communication
 
@@ -261,12 +263,13 @@ YANG {{?RFC7950}}, as a standardized data modeling language defined by the IETF 
 a extensible way to structure network management data and operational service and network intent; using
 YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural
 language, and align A2A communication with the existing IETF-based network management ecosystem, enabling
-seamless integration with traditional network management protocols such as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}.
-The well-defined hierarchies and structures of YANG data models also enable Agents to quickly parse, validate and
-process communication data and support the definition of service or network intent for specific multi-domain and
-multi-vendor heterogeneous network scenarios. In addition, YANG-structured data can serve as a precise supplement
-to natural language input, where implicit parameters, missing constraints, or detailed operational conditions
-that are not fully expressed in natural language can be explicitly defined and carried in the YANG data part.
+seamless integration with traditional network management protocols such as NETCONF {{?RFC6241}} and
+RESTCONF {{?RFC8040}}. The well-defined hierarchies and structures of YANG data models also enable Agents to
+quickly parse, validate and process communication data and support the definition of service or network intent
+for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data
+can serve as a precise supplement to natural language input, where implicit parameters, missing constraints,
+or detailed operational conditions that are not fully expressed in natural language can be explicitly defined
+and carried in the YANG data part.
 
 The following example illustrates a A2A {{A2A}} message with both a YANG-based structured data and natural
 language parts to balance human readability and machine parse-ability. The message could be sent from a
@@ -515,7 +518,8 @@ concerns are amplified due to:
 
 - Need for shared or interoperable agent capability descriptions.
 
-Standardized operational practices may be required for agent discovery, trust establishment, conflict resolution, and accountability.
+Standardized operational practices may be required for agent discovery, trust establishment,
+conflict resolution, and accountability.
 
 # Security Considerations
 
