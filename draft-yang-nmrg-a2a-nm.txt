@@ -149,31 +149,32 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-*  AI Agent: A software system or program that is capable of
-   autonomously performing goals and tasks on behalf of a user or
-   another system.
+   *  AI Agent: A software system or program that is capable of
+      autonomously performing goals and tasks on behalf of a user or
+      another system.
 
-*  Agent Card: A common metadata file that describes an agent's
-   capabilities, skills, interface URLs, and authentication
-   requirements.  Clients discover and identify the agent through
-   this file.
+   *  Agent Card: A common metadata file that describes an agent's
+      capabilities, skills, interface URLs, and authentication
+      requirements.  Clients discover and identify the agent through
+      this file.
 
-*  A2A Server: An AI agent that receives requests and performs tasks
+   *  A2A Server: An AI agent that receives requests and performs tasks
 
-*  A2A Client: An AI agent that sends requests to servers
+   *  A2A Client: An AI agent that sends requests to servers
 
-*  message: An A2A message represents a single turn of communication
-   between a client and a server Agent.  A message contains one or
-   more Part objects.
+   *  message: An A2A message represents a single turn of communication
+      between a client and a server Agent.  A message contains one or
+      more Part objects.
 
-*  part: A part object is a granular container for the actual
-   content, which can hold different types of content using exactly
-   one of the following content fields:
+   *  part: A part object is a granular container for the actual
+      content, which can hold different types of content using exactly
+      one of the following content fields:
 
-  - text: A string containing plain textual content.
-  - raw: A byte array containing binary file data (inline).
-  - url: A string URI referencing external file content.
-  - data: A structured JSON value (e.g., object, array) for machine-readable data.
+        - text: A string containing plain textual content.
+        - raw: A byte array containing binary file data (inline).
+        - url: A string URI referencing external file content.
+        - data: A structured JSON value (e.g., object, array) for
+          machine-readable data.
 
 3.  Overview of key challenges for the network management
 
