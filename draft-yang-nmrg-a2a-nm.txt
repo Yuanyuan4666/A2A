@@ -5,7 +5,7 @@
 Network Working Group                                           D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                              N. R. Moreno
-Expires: 16 August 2026                                 Deutsche Telekom
+Expires: 28 August 2026                                 Deutsche Telekom
                                                            L. Tailhardat
                                   Orange ResearchAdd commentMore actions
                                                                    Q. Ma
@@ -14,7 +14,7 @@ Expires: 16 August 2026                                 Deutsche Telekom
                                                                   Huawei
                                                                S. Prabhu
                                                                    Nokia
-                                                        12 February 2026
+                                                        24 February 2026
 
 
              Applicability of A2A to the Network Management
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 August 2026.
+   This Internet-Draft will expire on 28 August 2026.
 
 Copyright Notice
 
@@ -90,7 +90,9 @@ Table of Contents
      6.8.  Inter-Domain Operational Challenges
    7.  Security Considerations
    8.  IANA Considerations
-   9.  Informative References
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Appendix A.  Usage Example
    Contributors
    Authors' Addresses
@@ -140,6 +142,12 @@ Table of Contents
    integrating A2A into the network management system is also discussed.
 
 2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
    *  AI Agent: A software system or program that is capable of
       autonomously performing goals and tasks on behalf of a user or
@@ -408,7 +416,7 @@ Table of Contents
 6.  Operational Considerations
 
    The introduction of A2A-based agent interactions into network
-   management has several operational implications that MUST be
+   management has several operational implications that must be
    considered when deploying the architecture in large-scale or multi-
    domain networks.  This section highlights key aspects related to
    performance, scalability, reliability, latency, and agent lifecycle
@@ -533,7 +541,7 @@ Table of Contents
 
    *  Real-time telemetry-driven control such as congestion mitigation.
 
-   Implementations SHOULD define performance envelopes, including:
+   Implementations should define performance envelopes, including:
 
    *  Maximum agent-to-agent message processing latency.
 
@@ -542,7 +550,7 @@ Table of Contents
    *  Acceptable degradation under load or partial failures.
 
    Fallback mechanisms (e.g., reverting to direct controller APIs or
-   static policies) SHOULD be provided when A2A interactions cannot meet
+   static policies) should be provided when A2A interactions cannot meet
    timing constraints.
 
 6.6.  Reliability and Failure Handling
@@ -551,7 +559,7 @@ Table of Contents
    and systems.  Operational networks require predictable and safe
    behavior under partial failures.
 
-   Operators SHOULD consider:
+   Operators should consider:
 
    *  How workflow state is checkpointed or restored if an agent becomes
       unreachable.
@@ -563,7 +571,7 @@ Table of Contents
    *  Requirements for transactionality or rollback comparable to
       NETCONF confirmed-commit semantics.
 
-   Implementations SHOULD include mechanisms for workflow monitoring,
+   Implementations should include mechanisms for workflow monitoring,
    circuit-breakers, and automatic escalation to human operators in case
    of sustained failure.
 
@@ -581,7 +589,7 @@ Table of Contents
    *  Resource consumption limits for CPU, memory, and inference
       workloads.
 
-   Operators SHOULD maintain visibility into the operational state of
+   Operators should maintain visibility into the operational state of
    all agents and their dependencies, including telemetry on message
    rates, errors, and workflow completion metrics.
 
@@ -598,7 +606,7 @@ Table of Contents
 
    *  Need for shared or interoperable agent capability descriptions.
 
-   Standardized operational practices MAY be required for agent
+   Standardized operational practices may be required for agent
    discovery, trust establishment, conflict resolution, and
    accountability.
 
@@ -628,7 +636,20 @@ Table of Contents
 
    This document has no IANA actions.
 
-9.  Informative References
+9.  References
+
+9.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+9.2.  Informative References
 
    [A2A]      "Agent2Agent (A2A) protocol", April 2025, <https://google-
               a2a.github.io/A2A/#/documentation?id=agent2agent-protocol-
@@ -641,9 +662,9 @@ Table of Contents
               Hu, T., Contreras, L. M., Wu, Q., Davis, N., and C. Feng,
               "A YANG Data Model for Network Incident Management", Work
               in Progress, Internet-Draft, draft-ietf-nmop-network-
-              incident-yang-07, 3 January 2026,
+              incident-yang-08, 13 February 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
-              network-incident-yang-07>.
+              network-incident-yang-08>.
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
@@ -653,12 +674,12 @@ Table of Contents
               rosenberg-ai-protocols-00>.
 
    [I-D.wmz-nmrg-agent-ndt-arch]
-              Wu, Q., Zhou, C., Contreras, L. M., Han, S., Tailhardat,
-              L., and Y. Hong, "Network Digital Twin based Architecture
+              Wu, Q., Zhou, C., Contreras, L. M., Han, S., and Y. Hong,
+              "Network Digital Twin and Agentic AI based Architecture
               for AI driven Network Operations", Work in Progress,
-              Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-02, 20
-              October 2025, <https://datatracker.ietf.org/doc/html/
-              draft-wmz-nmrg-agent-ndt-arch-02>.
+              Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-03, 23
+              February 2026, <https://datatracker.ietf.org/doc/html/
+              draft-wmz-nmrg-agent-ndt-arch-03>.
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
