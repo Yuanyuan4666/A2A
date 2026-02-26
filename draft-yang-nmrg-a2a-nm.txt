@@ -5,16 +5,16 @@
 Network Working Group                                           D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                              N. R. Moreno
-Expires: 28 August 2026                                 Deutsche Telekom
+Expires: 30 August 2026                                 Deutsche Telekom
                                                            L. Tailhardat
-                                  Orange ResearchAdd commentMore actions
+                                                                  Orange
                                                                    Q. Ma
                                                                    Q. Wu
                                                                  Y. Yang
                                                                   Huawei
                                                                S. Prabhu
                                                                    Nokia
-                                                        24 February 2026
+                                                        26 February 2026
 
 
              Applicability of A2A to the Network Management
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 August 2026.
+   This Internet-Draft will expire on 30 August 2026.
 
 Copyright Notice
 
@@ -835,7 +835,7 @@ Authors' Addresses
 
 
    Lionel Tailhardat
-   Orange ResearchAdd commentMore actions
+   Orange
    Email: lionel.tailhardat@orange.com
 
 
