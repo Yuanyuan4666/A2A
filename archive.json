@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-15T02:48:34.732937+00:00",
+  "timestamp": "2026-02-26T02:37:11.843069+00:00",
   "repo": "Yuanyuan4666/A2A",
   "labels": [
     {
@@ -508,6 +508,62 @@
       "mergedBy": "QiufangMa",
       "mergeCommit": {
         "oid": "a39c5d5c8acaf70dc79571216ecf4956398f76b5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOOwDY887F2bcJ",
+      "title": "Change language into lower case",
+      "url": "https://github.com/Yuanyuan4666/A2A/pull/18",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-24T07:58:29Z",
+      "updatedAt": "2026-02-24T07:59:04Z",
+      "baseRepository": "Yuanyuan4666/A2A",
+      "baseRefName": "main",
+      "baseRefOid": "d5ca9f57b1133c0361aed7e356962c163656e871",
+      "headRepository": "Yuanyuan4666/A2A",
+      "headRefName": "billwuqin-patch-6",
+      "headRefOid": "75a691b101f9227758182e957ea1a2841077cfd4",
+      "closedAt": "2026-02-24T07:59:04Z",
+      "mergedAt": "2026-02-24T07:59:04Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "32cfeef0afa79af7c3331bf01b88abdf95f0cc50"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOOwDY887F2kSA",
+      "title": "fix long line issues",
+      "url": "https://github.com/Yuanyuan4666/A2A/pull/19",
+      "state": "MERGED",
+      "author": "billwuqin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-24T08:10:14Z",
+      "updatedAt": "2026-02-24T08:10:50Z",
+      "baseRepository": "Yuanyuan4666/A2A",
+      "baseRefName": "main",
+      "baseRefOid": "32cfeef0afa79af7c3331bf01b88abdf95f0cc50",
+      "headRepository": "Yuanyuan4666/A2A",
+      "headRefName": "billwuqin-patch-7",
+      "headRefOid": "183e733806a657fca040bb418787b7506d929b70",
+      "closedAt": "2026-02-24T08:10:50Z",
+      "mergedAt": "2026-02-24T08:10:50Z",
+      "mergedBy": "billwuqin",
+      "mergeCommit": {
+        "oid": "6c481e48a4a9c2a7c204088b065aa43e523616c2"
       },
       "comments": [],
       "reviews": []
