@@ -33,7 +33,7 @@ author:
   email: nathalie.romo-moreno@telekom.de
  -
   fullname: Lionel Tailhardat
-  organization: Orange ResearchAdd commentMore actions
+  organization: Orange
   email: lionel.tailhardat@orange.com
  -
     fullname: Qiufang Ma
