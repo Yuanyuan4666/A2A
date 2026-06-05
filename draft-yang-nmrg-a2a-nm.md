@@ -208,8 +208,8 @@ o The Agent2agent Collaboration Reliability
 |     | +----------+ |   |+-----------++|    |+-----------++|   |
 |     +--------------+   +--------------+    +--------------+   |
 +-------------------  Smart Network Element---------------------+
-
 ~~~~
+{: #arch title="A Reference Agent-to-Agent Architecture for Network Management" artwork-align="center"}
 
 As described in {{?I-D.wmz-nmrg-agent-ndt-arch}}, in the multi-agent communication deployment scenario,
 AI Agents can be deployed at both service layer,network layer and Network Element Level, e.g.,
@@ -249,6 +249,79 @@ A general workflow is as follows:
 
 - Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based
   on result analysis and policy rules.
+
+## Multi-Agent Orchestration Patterns for Network Management
+
+To efficiently coordinate multiple specialized AI Agents across the architecture defined in {{arch}}, different orchestration patterns derived from distributed AI systems may be applied.
+
+### Sequential Pipeline
+
+The sequential pipeline pattern organizes a complex task into a linear, step-by-step execution sequence where each agent completes its execution and then passes the output to the next agent. This pattern is typically applied within the service or network Level to handle tasks with multiple fixed steps and each step requires different expertise and toolsets.
+
+As illustrated in {{seq}}, a configuration generation agent initially translates a network intent to generate network configuration, subsequently handing them over to a configuration validation agent for pre-deployment validation, which finally passes the verified artifacts to a configuration distribution agent for actual deployment. By ensuring that each specialist agent only perceives the direct output of its immediate predecessor, this pattern effectively guarantees deterministic execution workflows for network operations.
+
+~~~~
++----------------+    +---------------------+     +-----------------+
+|Config-Gen Agent+---->Config-Validate Agent|----->Config-Dist Agent|
++----------------+    +---------------------+     +-----------------+
+~~~~
+{: #seq title="An Example Workflow for Sequential Pipeline" artwork-align="center"}
+
+### Fan-Out/Fan-in
+
+The Fan-Out/Fan-In pattern involves a higher-level coordinator agent that dispatches segmented or decomposed sub-tasks to multiple sub-agents in parallel, subsequently collecting and aggregating the results of sub-agents. In the context of network management, this pattern could be applied between the Service Level and the Network Level to achieve multi-domain end-to-end coordination.
+
+As an examaple in {{fan}}, a Service AI Agent acts as the central coordinator that dispatches an end-to-end service provisioning task to an IP Network AI Agent, an Optical Network AI Agent, and a RAN AI Agent at the network layer simultaneously. Once these specialized domain agents execute their parallel tasks, the Service AI Agent gathers and merges their independent results. It is also possible for the service AI agent to deliver an identical task (e.g., a root cause analysis for a network incident) to different domain AI Agents and then combine their results. This pattern significantly mitigates the latency of sequential agentic reasoning and operations.
+
+~~~~
+                                 +-------------------+
+                           +-----+IP Network AI Agent|
+                           |     +-------------------+
+                           |
++----------------------+   |     +------------------------+
+|  Service AI Agent    +---+-----+Optical Network AI Agent|
+|(Dispatches, Merges)  |   |     +------------------------+
++----------------------+   |
+                           |     +-------------+
+                           +-----+RAN AI Agent |
+                                 +-------------+
+~~~~
+{: #fan title="An Example Workflow for Fan-Out/Fan-in" artwork-align="center"}
+
+### Supervisor
+
+Unlike the Fan-Out/Fan-In pattern which focuses on the static, parallel distribution and aggregation of decomposed sub-tasks, the Supervisor pattern establishes a centralized supervisor agent that maintains the overall workflow planning, and dynamic decides which task agent to invoke based on the real-time execution feedback of individual task agents. This pattern inherently drives cross-layer collaboration or a single-domain network autonomy.
+
+As illustrated in the {{supervisor}}, a supervisor Network AI Agent acts as the central brain that fulfills the service assurance intent. Upon receiving a link degradation alert, the supervisor first invokes a Fault Diagnosis Task Agent to identify the root cause. If the diagnosis reports a localized hardware issue, the supervisor dynamically decides to route the task to a Traffic Steering Task Agent to reroute alternative paths. Once the rerouting configuration is applied, the supervisor sequences a Service Verification Task Agent to monitor service statistics. If the statistic metrics indicate that the SLA has still not recovered, the supervisor Network AI Agent dynamically loops back to invoke the diagnosis or steering agents with updated constraints for further iteration. This pattern allows the flexibility necessary for complex, adaptive workflows while keeping the efficiency of underlying agentic reasoning and operations.
+
+~~~~
+                    +----------------+
+                    |Network AI Agent|
+                    |(Decides, Loops)|
+                    +-------+--------+
+                            |
+          +-------- --------+----------------------+
+          |                 |                      |
++---------+-------+ +-------+---------+ +----------+--------+
+|  Task AI Agent  | | Task AI Agent   | |   Task AI Agent   |
+| Fault Diagnosis | |Traffic Steering | |Service Verfication|
++-----------------+ +-----------------+ +-------------------+
+~~~~
+{: #supervisor title="An Example Workflow for Supervisor" artwork-align="center"}
+
+
+### Peer-to-Peer (P2P)
+
+Agents communicate and collaborate directly with each other without a centralized coordinator, using the Agent-to-Agent protocol.
+
+The Peer-to-Peer pattern enables AI agents to communicate, negotiate, and collaborate directly with each other without relying on a centralized coordinator or supervisor. This interaction typically manifests in cross-provider or inter-domain scenarios where autonomous boundaries must be respected. For instance, when establishing an end-to-end network service delivery across heterogeneous infrastructure, a Network AI Agent managing Autonomous Domain A communicates directly via the A2A protocol with a peer Network AI Agent managing Autonomous Domain B to negotiate dynamic bandwidth allocation and policy constraints.
+
+~~~~
++----------------+     +----------------+
+|Network AI Agent<----->Network AI Agent|
+|  Domain A      |     |  Domain B      |
++----------------+     +----------------+
+~~~~
 
 # YANG-based Structured Data for A2A Communication
 
