@@ -292,7 +292,7 @@ As an examaple in {{fan}}, a Service AI Agent acts as the central coordinator th
 
 Unlike the Fan-Out/Fan-In pattern which focuses on the static, parallel distribution and aggregation of decomposed sub-tasks, the Supervisor pattern establishes a centralized supervisor agent that maintains the overall workflow planning, and dynamic decides which task agent to invoke based on the real-time execution feedback of individual task agents. This pattern inherently drives cross-layer collaboration or a single-domain network autonomy.
 
-As illustrated in the {{supervisor}}, a supervisor Network AI Agent acts as the central brain that fulfills the service assurance intent. Upon receiving a link degradation alert, the supervisor first invokes a Fault Diagnosis Task Agent to identify the root cause. If the diagnosis reports a localized hardware issue, the supervisor dynamically decides to route the task to a Traffic Steering Task Agent to reroute alternative paths. Once the rerouting configuration is applied, the supervisor sequences a Service Verification Task Agent to monitor service statistics. If the statistic metrics indicate that the SLA has still not recovered, the supervisor Network AI Agent dynamically loops back to invoke the diagnosis or steering agents with updated constraints for further iteration. This pattern allows the flexibility necessary for complex, adaptive workflows while keeping the efficiency of underlying agentic reasoning and operations.
+As illustrated in {{supervisor-mode}}, a supervisor Network AI Agent acts as the central brain that fulfills the service assurance intent. Upon receiving a link degradation alert, the supervisor first invokes a Fault Diagnosis Task Agent to identify the root cause. If the diagnosis reports a localized hardware issue, the supervisor dynamically decides to route the task to a Traffic Steering Task Agent to reroute alternative paths. Once the rerouting configuration is applied, the supervisor sequences a Service Verification Task Agent to monitor service statistics. If the statistic metrics indicate that the SLA has still not recovered, the supervisor Network AI Agent dynamically loops back to invoke the diagnosis or steering agents with updated constraints for further iteration. This pattern allows the flexibility necessary for complex, adaptive workflows while keeping the efficiency of underlying agentic reasoning and operations.
 
 ~~~~
                     +----------------+
@@ -307,7 +307,7 @@ As illustrated in the {{supervisor}}, a supervisor Network AI Agent acts as the 
 | Fault Diagnosis | |Traffic Steering | |Service Verfication|
 +-----------------+ +-----------------+ +-------------------+
 ~~~~
-{: #supervisor title="An Example Workflow for Supervisor" artwork-align="center"}
+{: #supervisor-mode title="An Example Workflow for Supervisor" artwork-align="center"}
 
 
 ### Peer-to-Peer (P2P)
