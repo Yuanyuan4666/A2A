@@ -5,7 +5,7 @@
 Network Working Group                                           D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                              N. R. Moreno
-Expires: 30 August 2026                                 Deutsche Telekom
+Expires: 7 January 2027                                 Deutsche Telekom
                                                            L. Tailhardat
                                                                   Orange
                                                                    Q. Ma
@@ -14,7 +14,7 @@ Expires: 30 August 2026                                 Deutsche Telekom
                                                                   Huawei
                                                                S. Prabhu
                                                                    Nokia
-                                                        26 February 2026
+                                                             6 July 2026
 
 
              Applicability of A2A to the Network Management
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 August 2026.
+   This Internet-Draft will expire on 7 January 2027.
 
 Copyright Notice
 
@@ -78,6 +78,11 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Overview of key challenges for the network management
    4.  Agent2Agent Architecture Design for Network Management
+     4.1.  Multi-Agent Orchestration Patterns for Network Management
+       4.1.1.  Sequential Pipeline
+       4.1.2.  Fan-Out/Fan-in
+       4.1.3.  Supervisor
+       4.1.4.  Peer-to-Peer (P2P)
    5.  YANG-based Structured Data for A2A Communication
    6.  Operational Considerations
      6.1.  Agent Skills as Expertise Expansion of AI Agents
@@ -206,40 +211,43 @@ Table of Contents
 
 4.  Agent2Agent Architecture Design for Network Management
 
-   +----------------------------------------------------------------+
-   | Service Level                                                  |
-   |  +----------------+  +----------------+   +----------------+   |
-   |  |Service AI Agent|  |Service AI Agent|   |Service AI Agent|   |
-   |  +---------+------+  +----------------+   +-------+--------+   |
-   +------------+--------------------------------------+------------+
-                |                                      |
-   +------------+----------------+ +-------------------+-----------+
-   |Network Level                | |                   |           |
-   |            |                | |                   |           |
-   |    +------------------+     | |     +-------------+------+    |
-   |    | Network AI Agent |     | |     |  Network AI Agent  |    |
-   |    +-------+----------+     | |     +---------+----------+    |
-   |     -+-----+------+-        | |        -+-----+------+        |
-   |      |            |         | |         |            |        |
-   |   +--+--+      +--+--+      | |      +-----+      +--+--+     |
-   |   |Task |      |Task |      | |      |Task |      |Task |     |
-   |   |Agent|      |Agent| ...  | |      |Agent|      |Agent| ... |
-   |   +--+--+      +--+--+      | |      +--+--+      +--+--+     |
-   +------+------------+---------+ +---------+------------+--------+
-          |            |                     |            |
-          +-----+------------------+-------------------+--+
-                |                  |                   |
-   +------------+------------------+-------------------+-----------+
-   |Network Element Level:         |                   |           |
-   |     +------+-------+   +------+-------+    +------+-------+   |
-   |     | +----+-----+ |   |+------------+|    |+------------+|   |
-   |     | | NE  Agent| |   ||  NE  Agent ||    ||  NE  Agent ||   |
-   |     | |  +---+   | |   ||+----------+||    ||+----------+||   |
-   |     | |  |SLM|   | |   |||MCP Server|||    |||MCP Server|||   |
-   |     | |  +---+   | |   ||+----------+||    ||+----------+||   |
-   |     | +----------+ |   |+-----------++|    |+-----------++|   |
-   |     +--------------+   +--------------+    +--------------+   |
-   +-------------------  Smart Network Element---------------------+
+    +----------------------------------------------------------------+
+    | Service Level                                                  |
+    |  +----------------+  +----------------+   +----------------+   |
+    |  |Service AI Agent|  |Service AI Agent|   |Service AI Agent|   |
+    |  +---------+------+  +----------------+   +-------+--------+   |
+    +------------+--------------------------------------+------------+
+                 |                                      |
+    +------------+----------------+ +-------------------+-----------+
+    |Network Level                | |                   |           |
+    |            |                | |                   |           |
+    |    +------------------+     | |     +-------------+------+    |
+    |    | Network AI Agent |     | |     |  Network AI Agent  |    |
+    |    +-------+----------+     | |     +---------+----------+    |
+    |     -+-----+------+-        | |        -+-----+------+        |
+    |      |            |         | |         |            |        |
+    |   +--+--+      +--+--+      | |      +-----+      +--+--+     |
+    |   |Task |      |Task |      | |      |Task |      |Task |     |
+    |   |Agent|      |Agent| ...  | |      |Agent|      |Agent| ... |
+    |   +--+--+      +--+--+      | |      +--+--+      +--+--+     |
+    +------+------------+---------+ +---------+------------+--------+
+           |            |                     |            |
+           +-----+------------------+-------------------+--+
+                 |                  |                   |
+    +------------+------------------+-------------------+-----------+
+    |Network Element Level:         |                   |           |
+    |     +------+-------+   +------+-------+    +------+-------+   |
+    |     | +----+-----+ |   |+------------+|    |+------------+|   |
+    |     | | NE  Agent| |   ||  NE  Agent ||    ||  NE  Agent ||   |
+    |     | |  +---+   | |   ||+----------+||    ||+----------+||   |
+    |     | |  |SLM|   | |   |||MCP Server|||    |||MCP Server|||   |
+    |     | |  +---+   | |   ||+----------+||    ||+----------+||   |
+    |     | +----------+ |   |+-----------++|    |+-----------++|   |
+    |     +--------------+   +--------------+    +--------------+   |
+    +-------------------  Smart Network Element---------------------+
+
+       Figure 1: A Reference Agent-to-Agent Architecture for Network
+                                 Management
 
    As described in [I-D.wmz-nmrg-agent-ndt-arch], in the multi-agent
    communication deployment scenario, AI Agents can be deployed at both
@@ -294,6 +302,132 @@ Table of Contents
    *  Task Report: Task agents report outcomes to the central agent,
       which dynamically adjusts the workflow based on result analysis
       and policy rules.
+
+4.1.  Multi-Agent Orchestration Patterns for Network Management
+
+   To efficiently coordinate multiple specialized AI Agents across the
+   architecture defined in Figure 1, different orchestration patterns
+   derived from distributed AI systems may be applied.
+
+4.1.1.  Sequential Pipeline
+
+   The sequential pipeline pattern organizes a complex task into a
+   linear, step-by-step execution sequence where each agent completes
+   its execution and then passes the output to the next agent.  This
+   pattern is typically applied within the service or network Level to
+   handle tasks with multiple fixed steps and each step requires
+   different expertise and toolsets.
+
+   As illustrated in Figure 2, a configuration generation agent
+   initially translates a network intent to generate network
+   configuration, subsequently handing them over to a configuration
+   validation agent for pre-deployment validation, which finally passes
+   the verified artifacts to a configuration distribution agent for
+   actual deployment.  By ensuring that each specialist agent only
+   perceives the direct output of its immediate predecessor, this
+   pattern effectively guarantees deterministic execution workflows for
+   network operations.
+
+   +----------------+    +---------------------+     +-----------------+
+   |Config-Gen Agent+---->Config-Validate Agent|----->Config-Dist Agent|
+   +----------------+    +---------------------+     +-----------------+
+
+           Figure 2: An Example Workflow for Sequential Pipeline
+
+4.1.2.  Fan-Out/Fan-in
+
+   The Fan-Out/Fan-In pattern involves a higher-level coordinator agent
+   that dispatches segmented or decomposed sub-tasks to multiple sub-
+   agents in parallel, subsequently collecting and aggregating the
+   results of sub-agents.  In the context of network management, this
+   pattern could be applied between the Service Level and the Network
+   Level to achieve multi-domain end-to-end coordination.
+
+   As an examaple in Figure 3, a Service AI Agent acts as the central
+   coordinator that dispatches an end-to-end service provisioning task
+   to an IP Network AI Agent, an Optical Network AI Agent, and a RAN AI
+   Agent at the network layer simultaneously.  Once these specialized
+   domain agents execute their parallel tasks, the Service AI Agent
+   gathers and merges their independent results.  It is also possible
+   for the service AI agent to deliver an identical task (e.g., a root
+   cause analysis for a network incident) to different domain AI Agents
+   and then combine their results.  This pattern significantly mitigates
+   the latency of sequential agentic reasoning and operations.
+
+                                         +-------------------+
+                                   +-----+IP Network AI Agent|
+                                   |     +-------------------+
+                                   |
+        +----------------------+   |     +------------------------+
+        |  Service AI Agent    +---+-----+Optical Network AI Agent|
+        |(Dispatches, Merges)  |   |     +------------------------+
+        +----------------------+   |
+                                   |     +-------------+
+                                   +-----+RAN AI Agent |
+                                         +-------------+
+
+              Figure 3: An Example Workflow for Fan-Out/Fan-in
+
+4.1.3.  Supervisor
+
+   Unlike the Fan-Out/Fan-In pattern which focuses on the static,
+   parallel distribution and aggregation of decomposed sub-tasks, the
+   Supervisor pattern establishes a centralized supervisor agent that
+   maintains the overall workflow planning, and dynamic decides which
+   task agent to invoke based on the real-time execution feedback of
+   individual task agents.  This pattern inherently drives cross-layer
+   collaboration or a single-domain network autonomy.
+
+   As illustrated in Figure 4, a supervisor Network AI Agent acts as the
+   central brain that fulfills the service assurance intent.  Upon
+   receiving a link degradation alert, the supervisor first invokes a
+   Fault Diagnosis Task Agent to identify the root cause.  If the
+   diagnosis reports a localized hardware issue, the supervisor
+   dynamically decides to route the task to a Traffic Steering Task
+   Agent to reroute alternative paths.  Once the rerouting configuration
+   is applied, the supervisor sequences a Service Verification Task
+   Agent to monitor service statistics.  If the statistic metrics
+   indicate that the SLA has still not recovered, the supervisor Network
+   AI Agent dynamically loops back to invoke the diagnosis or steering
+   agents with updated constraints for further iteration.  This pattern
+   allows the flexibility necessary for complex, adaptive workflows
+   while keeping the efficiency of underlying agentic reasoning and
+   operations.
+
+                           +----------------+
+                           |Network AI Agent|
+                           |(Decides, Loops)|
+                           +-------+--------+
+                                   |
+                 +-------- --------+----------------------+
+                 |                 |                      |
+       +---------+-------+ +-------+---------+ +----------+--------+
+       |  Task AI Agent  | | Task AI Agent   | |   Task AI Agent   |
+       | Fault Diagnosis | |Traffic Steering | |Service Verfication|
+       +-----------------+ +-----------------+ +-------------------+
+
+                Figure 4: An Example Workflow for Supervisor
+
+4.1.4.  Peer-to-Peer (P2P)
+
+   Agents communicate and collaborate directly with each other without a
+   centralized coordinator, using the Agent-to-Agent protocol.
+
+   The Peer-to-Peer pattern enables AI agents to communicate, negotiate,
+   and collaborate directly with each other without relying on a
+   centralized coordinator or supervisor.  This interaction typically
+   manifests in cross-provider or inter-domain scenarios where
+   autonomous boundaries must be respected.  For instance, when
+   establishing an end-to-end network service delivery across
+   heterogeneous infrastructure, a Network AI Agent managing Autonomous
+   Domain A communicates directly via the A2A protocol with a peer
+   Network AI Agent managing Autonomous Domain B to negotiate dynamic
+   bandwidth allocation and policy constraints.
+
+   +----------------+     +----------------+
+   |Network AI Agent<----->Network AI Agent|
+   |  Domain A      |     |  Domain B      |
+   +----------------+     +----------------+
 
 5.  YANG-based Structured Data for A2A Communication
 
@@ -476,7 +610,7 @@ Table of Contents
    Kafka to facilitate the exchange of event messages among different AI
    agents, it allows the real-time response to maintain network
    reliability and service assurance in network management and
-   operations.  Figure 1 gives an overview of the architecure.
+   operations.  Figure 5 gives an overview of the architecure.
 
          +---------+                               +----------+
          |         |      Agent to Agent           |          |
@@ -489,7 +623,7 @@ Table of Contents
              +----------->Messaging topics|--------------+
                          +----------------+
 
-               Figure 1: An Architecture for Event-driven A2A
+               Figure 5: An Architecture for Event-driven A2A
 
    The event-driven extension introduces a publish/subscribe paradigm
    alongside the primary task-driven interaction.  For example, a "Fault
@@ -659,9 +793,9 @@ Table of Contents
               Hu, T., Contreras, L. M., Wu, Q., Davis, N., and C. Feng,
               "A YANG Data Model for Network Incident Management", Work
               in Progress, Internet-Draft, draft-ietf-nmop-network-
-              incident-yang-08, 13 February 2026,
+              incident-yang-10, 5 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
-              network-incident-yang-08>.
+              network-incident-yang-10>.
 
    [I-D.rosenberg-ai-protocols]
               Rosenberg, J. and C. F. Jennings, "Framework, Use Cases
@@ -674,9 +808,9 @@ Table of Contents
               Wu, Q., Zhou, C., Contreras, L. M., Han, S., and Y. Hong,
               "Network Digital Twin and Agentic AI based Architecture
               for AI driven Network Operations", Work in Progress,
-              Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-03, 23
-              February 2026, <https://datatracker.ietf.org/doc/html/
-              draft-wmz-nmrg-agent-ndt-arch-03>.
+              Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-04, 21 May
+              2026, <https://datatracker.ietf.org/doc/html/draft-wmz-
+              nmrg-agent-ndt-arch-04>.
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
