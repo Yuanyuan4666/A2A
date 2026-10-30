@@ -338,7 +338,7 @@ in {{?I-D.ietf-nmop-network-incident-yang}}.
 
 The following example uses the JSON-RPC binding of A2A v1.0 {{A2A}}, with text and structured data in the same message. The Network AI Agent acts as the A2A client and sends a diagnosis request to the Incident Diagnosis Task Agent, acting as the A2A server. The request is sent over HTTPS to the server's advertised endpoint.
 The data part carries an incident instance using the ietf-incident module defined
-in {{?I-D.ietf-nmop-network-incident-yang}}. 
+in {{?I-D.ietf-nmop-network-incident-yang}}.
 
 It uses the JSON encoding defined in {{?RFC7951}}. The example uses the module's access domain identity. The A2A fields and the YANG instance data are validated separately.
 The metadata keys yang_module, revision, request_type, priority, and response_deadline are application-defined conventions in this example, not standardized A2A fields. Their interpretation requires agreement between the participating agents.
@@ -589,10 +589,8 @@ conflict resolution, and accountability.
 
 # Security Considerations
 
-The communication between Agents for the exchange of context information, capability information
-and user instruction is security sensitive and requires authentication, authorization, and integrity
-protection. Legacy communication protocols such as HTTPS/TLS, designed for human-centric interactions,
-simply cannot withstand the high-speed exchanges between intelligent agents.  Key security challenges
+The communication between Agents for the exchange of context information, capability information and user instruction is security sensitive and requires authentication, authorization, and integrity protection. A2A deployments use TLS to protect communications and authenticate callers using the configured authentication scheme. Each receiving agent should authorize the requested operation against local policy. Permission to request diagnosis does not imply permission to change network configuration.
+Where operator approval is required, it should be bound to the proposed action and its target resources. Audit records should link the A2A task to the local operations performed and their results. Key security challenges
 in AI agent communication include:
 
 - Identity Verification: Ensuring that agents are who they claim to be
