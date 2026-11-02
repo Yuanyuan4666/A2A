@@ -97,7 +97,19 @@ format, or send messages to communicate context, replies, artifacts, or user ins
 make it easier to build AI applications that can interact with heterogeneous AI ecosystems in
 specific domains.
 
-In network management, A2A can connect agents operated by different vendors or administrative domains. It provides a common interface for exchanging requests, task updates, and results. Task planning, diagnosis, and action selection remain functions of the participating agents.
+In network management field, the application of A2A in the network management field
+is meant to develop various rich AI driven network applications, realize intent based networks
+management automation in the multi-vendor heterogeneous network environment. By establishing
+standard interfaces for dynamic Capability Discovery, heterogeneous AI ecosystems interaction,
+cross-platform collaboration, A2A enables network management Agents to:
+
+o Understand contextual nuances
+
+o Negotiate and adapt in real-time
+
+o Make collaborative decisions
+
+o Maintain persistent, intelligent interactions
 
 This document discusses the applicability of A2A to the network management
 in the multi-domain heterogeneous network environment that utilizes IETF technologies.
