@@ -19,24 +19,24 @@ It explores operational aspect, key components, generic workflow and deployment
 scenarios. The impact of integrating A2A into the network management system is also
 discussed. 
     " name="description">
-<meta content="xml2rfc 3.34.0" name="generator">
+<meta content="xml2rfc 3.34.1" name="generator">
 <meta content="A2A" name="keyword">
 <meta content="Network Management" name="keyword">
 <meta content="draft-yang-nmrg-a2a-nm-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.34.0
-    Python 3.14.5
-    ConfigArgParse 1.7.5
+  xml2rfc 3.34.1
+    Python 3.14.8
+    ConfigArgParse 1.8.0
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.10.0
+    platformdirs 4.13.4
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.2
+    wcwidth 0.9.2
 -->
 <link href="draft-yang-nmrg-a2a-nm.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -72,7 +72,6 @@ discussed.
   src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: italic;
@@ -121,7 +120,6 @@ discussed.
   src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: normal;
@@ -186,7 +184,6 @@ discussed.
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 }
 
 @font-face {
@@ -1055,11 +1052,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Applicability of A2A to the Network Mana</td>
-<td class="right">July 2026</td>
+<td class="right">November 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lopez, et al.</td>
-<td class="center">Expires 7 January 2027</td>
+<td class="center">Expires 6 May 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1072,12 +1069,12 @@ svg {
 <dd class="internet-draft">draft-yang-nmrg-a2a-nm-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-06" class="published">6 July 2026</time>
+<time datetime="2026-11-02" class="published">2 November 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-07">7 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-05-06">6 May 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1150,7 +1147,7 @@ discussed.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 7 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 6 May 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1220,7 +1217,7 @@ discussed.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-agent-skills-as-expertise-e" class="internal xref">Agent Skills as Expertise Expansion of AI Agents</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
-                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-knowledge-base-as-ground-tr" class="internal xref">Knowledge Base as Ground Truth Data</a></p>
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-knowledge-base-and-data-fre" class="internal xref">Knowledge Base and Data Freshness</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-event-driven-agent-to-agent" class="internal xref">Event-driven Agent to Agent Communication</a></p>
@@ -1288,13 +1285,11 @@ underlying technologies. Agents can advertise their capabilities using an 'Agent
 format, or send messages to communicate context, replies, artifacts, or user instructions, which
 make it easier to build AI applications that can interact with heterogeneous AI ecosystems in
 specific domains.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">With significant adoption of AI Agents across the Internet, Agent to Agent Communication protocol
-may become the foundation for the next wave of Internet communication technologies across
-domains <span>[<a href="#I-D.rosenberg-ai-protocols" class="cite xref">I-D.rosenberg-ai-protocols</a>]</span>. The application of A2A in the network management field
+<p id="section-1-3">In network management field, the application of A2A in the network management field
 is meant to develop various rich AI driven network applications, realize intent based networks
 management automation in the multi-vendor heterogeneous network environment. By establishing
-standard interfaces for dynamic Capability Discovery, intelligent message routing, heterogeneous
-AI ecosystems interaction, cross-platform collaboration, A2A enables AI Agents to:<a href="#section-1-3" class="pilcrow">¶</a></p>
+standard interfaces for dynamic Capability Discovery, heterogeneous AI ecosystems interaction,
+cross-platform collaboration, A2A enables network management Agents to:<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">o Understand contextual nuances<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">o Negotiate and adapt in real-time<a href="#section-1-5" class="pilcrow">¶</a></p>
 <p id="section-1-6">o Make collaborative decisions<a href="#section-1-6" class="pilcrow">¶</a></p>
@@ -1360,7 +1355,7 @@ A2A protocol to network management have been listed:<a href="#section-3-1" class
 <p id="section-3-2">o High Risk Operations of Agent2Agent interaction<a href="#section-3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3-3.1">
-          <p id="section-3-3.1.1">High risk operation can can to large-scale network outages.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
+          <p id="section-3-3.1.1">High risk operation can lead to large-scale network outages.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-3-4">o The timeliness requirement of Agent2Agent collaboration<a href="#section-3-4" class="pilcrow">¶</a></p>
@@ -1370,8 +1365,7 @@ A2A protocol to network management have been listed:<a href="#section-3-1" class
  in slow reasoning speeds.<a href="#section-3-5.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-3-5.2">
-          <p id="section-3-5.2.1">Task-oriented "request-response" model without event subscription is unlike to meet time constraints
-for tasks such as fault diagnosis, complaint handling, and user experience improvement.<a href="#section-3-5.2.1" class="pilcrow">¶</a></p>
+          <p id="section-3-5.2.1">Network events need to be correlated with the tasks they trigger. Task update delivery alone does not define how alarms are selected, correlated, or used to initiate diagnosis.<a href="#section-3-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-3-6">o The Agent2agent Collaboration Reliability<a href="#section-3-6" class="pilcrow">¶</a></p>
@@ -1437,48 +1431,48 @@ information during task collaboration, and failure to achieve task objectives.<a
         </figcaption></figure>
 </div>
 <p id="section-4-2">As described in <span>[<a href="#I-D.wmz-nmrg-agent-ndt-arch" class="cite xref">I-D.wmz-nmrg-agent-ndt-arch</a>]</span>, in the multi-agent communication deployment scenario,
-AI Agents can be deployed at both service layer,network layer and Network Element Level, e.g.,
+AI Agents can be deployed at the Service layer, Network layer and Network Element Level, e.g.,
 both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication.
 Service AI Agent within the service orchestrator can provide registration center for other network AI agents
 and task agents within the network controller to register its location. In the meanwhile Network AI Agent
 within the network Controller can provide registration center for task agents at the network level and
 Network element level AI agent within the smart network element.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3">The interaction in the multi-agent communication deployment scenario can be broken down into:<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-3">Figure 1 shows one possible deployment. A2A does not require an agent at every layer or on every network element.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">The interaction in the multi-agent communication deployment scenario can be broken down into:<a href="#section-4-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4-4.1">
-          <p id="section-4-4.1.1"><em>AI Agent to Agent interaction</em><a href="#section-4-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4-5.1">
+          <p id="section-4-5.1.1"><em>AI Agent to Agent interaction</em><a href="#section-4-5.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-4.2">
-          <p id="section-4-4.2.1"><em>AI Agent to Tools/APIs/Models interaction</em><a href="#section-4-4.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-5.2">
+          <p id="section-4-5.2.1"><em>AI Agent to Tools/APIs/Models interaction</em><a href="#section-4-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-4-5">For AI Agent to Tools/APIs/Models interaction, to enable comprehensive functionality (e.g., large AI model
+<p id="section-4-6">For example, an enterprise Service AI Agent may delegate network diagnosis to a vendor-provided Network AI Agent through A2A, while each agent manages access to its own tools.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-7">For AI Agent to Tools/APIs/Models interaction, to enable comprehensive functionality (e.g., large AI model
 and small AI model collaboration, network AI agent and Network element AI agent collaboration
 for routing protocol troubleshooting), additional protocol extensions are required to address two critical aspects:
  (1) standardized tool invocation mechanisms for agent-tool/api/model interoperability, and (2) monitoring frameworks
- for tool usage tracking and auditing.<a href="#section-4-5" class="pilcrow">¶</a></p>
-<p id="section-4-6">AI Agent to Agent interaction, human operators require a real-time monitoring interface for
+ for tool usage tracking and auditing.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<p id="section-4-8">AI Agent to Agent interaction, human operators require a real-time monitoring interface for
 long-running workflows or tasks requiring continuous supervision with dual capabilities: (1)
 live network state observation and (2) validation of agent-proposed remediation actions during
-anomaly resolution scenarios.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<p id="section-4-7">A general workflow is as follows:<a href="#section-4-7" class="pilcrow">¶</a></p>
+anomaly resolution scenarios.<a href="#section-4-8" class="pilcrow">¶</a></p>
+<p id="section-4-9">A general workflow is as follows:<a href="#section-4-9" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4-8.1">
-          <p id="section-4-8.1.1">User Input Submission: An operator submits a natural language request to a Service AI agent.<a href="#section-4-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4-10.1">
+          <p id="section-4-10.1.1">User Input Submission: An operator submits a natural language request to a Service AI agent.<a href="#section-4-10.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-8.2">
-          <p id="section-4-8.2.1">Agent Intent Processing: The service AI agent processes natural language inputs by parsing instructions into structured tasks.<a href="#section-4-8.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-10.2">
+          <p id="section-4-10.2.1">Agent Intent Processing: The service AI agent processes natural language inputs by parsing instructions into structured tasks.<a href="#section-4-10.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-8.3">
-          <p id="section-4-8.3.1">Autonomous Close Loop Workflow Management: The service AI agent decomposing tasks into workflow map with subtasks, and
-distributes subtasks via an Agent Card Registry to specialized task agents based on their capabilities.<a href="#section-4-8.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-10.3">
+          <p id="section-4-10.3.1">Workflow Management: The service AI agent decomposes the request into subtasks, selects task agents using their Agent Cards, and sends requests to their A2A endpoints.<a href="#section-4-10.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-8.4">
-          <p id="section-4-8.4.1">Task Execution: Iteration continues until all tasks reach executable task agents in the hierarchy.<a href="#section-4-8.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-10.4">
+          <p id="section-4-10.4.1">Task Execution: Iteration continues until all tasks reach executable task agents in the hierarchy.<a href="#section-4-10.4.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-8.5">
-          <p id="section-4-8.5.1">Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based
-on result analysis and policy rules.<a href="#section-4-8.5.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-4-10.5">
+          <p id="section-4-10.5.1">Task agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.<a href="#section-4-10.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <div id="multi-agent-orchestration-patterns-for-network-management">
@@ -1493,7 +1487,7 @@ on result analysis and policy rules.<a href="#section-4-8.5.1" class="pilcrow">�
 <a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-sequential-pipeline" class="section-name selfRef">Sequential Pipeline</a>
           </h4>
 <p id="section-4.1.1-1">The sequential pipeline pattern organizes a complex task into a linear, step-by-step execution sequence where each agent completes its execution and then passes the output to the next agent. This pattern is typically applied within the service or network Level to handle tasks with multiple fixed steps and each step requires different expertise and toolsets.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.1-2">As illustrated in <a href="#seq" class="auto internal xref">Figure 2</a>, a configuration generation agent initially translates a network intent to generate network configuration, subsequently handing them over to a configuration validation agent for pre-deployment validation, which finally passes the verified artifacts to a configuration distribution agent for actual deployment. By ensuring that each specialist agent only perceives the direct output of its immediate predecessor, this pattern effectively guarantees deterministic execution workflows for network operations.<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.1-2">As illustrated in <a href="#seq" class="auto internal xref">Figure 2</a>, a configuration generation agent initially translates a network intent to generate network configuration, subsequently handing them over to a configuration validation agent for pre-deployment validation, which finally passes the verified artifacts to a configuration distribution agent for actual deployment. By ensuring that each specialist agent only perceives the direct output of its immediate predecessor. This pattern defines the order of execution; it does not guarantee the correctness of each agent's output.<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
 <span id="name-an-example-workflow-for-seq"></span><div id="seq">
 <figure id="figure-2">
             <div class="alignCenter art-text artwork" id="section-4.1.1-3.1">
@@ -1544,8 +1538,8 @@ on result analysis and policy rules.<a href="#section-4-8.5.1" class="pilcrow">�
           <h4 id="name-supervisor">
 <a href="#section-4.1.3" class="section-number selfRef">4.1.3. </a><a href="#name-supervisor" class="section-name selfRef">Supervisor</a>
           </h4>
-<p id="section-4.1.3-1">Unlike the Fan-Out/Fan-In pattern which focuses on the static, parallel distribution and aggregation of decomposed sub-tasks, the Supervisor pattern establishes a centralized supervisor agent that maintains the overall workflow planning, and dynamic decides which task agent to invoke based on the real-time execution feedback of individual task agents. This pattern inherently drives cross-layer collaboration or a single-domain network autonomy.<a href="#section-4.1.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.3-2">As illustrated in <a href="#supervisor-mode" class="auto internal xref">Figure 4</a>, a supervisor Network AI Agent acts as the central brain that fulfills the service assurance intent. Upon receiving a link degradation alert, the supervisor first invokes a Fault Diagnosis Task Agent to identify the root cause. If the diagnosis reports a localized hardware issue, the supervisor dynamically decides to route the task to a Traffic Steering Task Agent to reroute alternative paths. Once the rerouting configuration is applied, the supervisor sequences a Service Verification Task Agent to monitor service statistics. If the statistic metrics indicate that the SLA has still not recovered, the supervisor Network AI Agent dynamically loops back to invoke the diagnosis or steering agents with updated constraints for further iteration. This pattern allows the flexibility necessary for complex, adaptive workflows while keeping the efficiency of underlying agentic reasoning and operations.<a href="#section-4.1.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.3-1">Unlike the Fan-Out/Fan-In pattern which focuses on the static, parallel distribution and aggregation of decomposed sub-tasks, the Supervisor pattern establishes a centralized supervisor agent that maintains the overall workflow planning, and dynamically decides which task agent to invoke based on the real-time execution feedback of individual task agents. This pattern supports cross-layer collaboration or a single-domain network autonomy.<a href="#section-4.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.3-2">As illustrated in <a href="#supervisor-mode" class="auto internal xref">Figure 4</a>, a supervisor Network AI Agent acts as the central brain that fulfills the service assurance intent. Upon receiving a link degradation alert, the supervisor first invokes a Fault Diagnosis Task Agent to identify the root cause. If the diagnosis reports a localized hardware issue, the supervisor dynamically decides to route the task to a Traffic Steering Task Agent to reroute alternative paths. Once the rerouting configuration is applied, the supervisor sequences a Service Verification Task Agent to monitor service statistics. If the statistic metrics indicate that the SLA has still not recovered, the supervisor Network AI Agent dynamically loops back to invoke the diagnosis or steering agents with updated constraints for further iteration. The supervisor tracks subtask dependencies and outcomes and revises the plan as needed, within the authorized task scope.<a href="#section-4.1.3-2" class="pilcrow">¶</a></p>
 <span id="name-an-example-workflow-for-sup"></span><div id="supervisor-mode">
 <figure id="figure-4">
             <div class="alignCenter art-text artwork" id="section-4.1.3-3.1">
@@ -1603,10 +1597,8 @@ network operational intent may have incomplete information, leading to incorrect
 configuration deployment and potential large-scale network outages, which are unacceptable in the high-reliability
 requirements of network management.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">YANG <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>, as a standardized data modeling language defined by the IETF for network management, provides
-a extensible way to structure network management data and operational service and network intent; using
-YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural
-language, and align A2A communication with the existing IETF-based network management ecosystem, enabling
-seamless integration with traditional network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and
+an extensible way to structure network management data and operational service and network intent; using
+YANG-modeled structured data to populate A2A communication payloads can make parameters and constraints explicit and support their validation, and align A2A communication with the existing IETF-based network management ecosystem, supporting integration with traditional network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and
 RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The well-defined hierarchies and structures of YANG data models also enable Agents to
 quickly parse, validate and process communication data and support the definition of service or network intent
 for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data
@@ -1618,62 +1610,79 @@ language parts to balance human readability and machine parse-ability. The messa
 network AI Agent, after receving the intent from the operator to diagnose a specific network incident, to
 a incident diagnosis task Agent. The data part complies with the Network Incident YANG data model defined
 in <span>[<a href="#I-D.ietf-nmop-network-incident-yang" class="cite xref">I-D.ietf-nmop-network-incident-yang</a>]</span>.<a href="#section-5-3" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-5-4">
+<p id="section-5-4">The following example uses the JSON-RPC binding of A2A v1.0 <span>[<a href="#A2A" class="cite xref">A2A</a>]</span>, with text and structured data in the same message. The Network AI Agent acts as the A2A client and sends a diagnosis request to the Incident Diagnosis Task Agent, acting as the A2A server. The request is sent over HTTPS to the server's advertised endpoint.
+The data part carries an incident instance using the ietf-incident module defined
+in <span>[<a href="#I-D.ietf-nmop-network-incident-yang" class="cite xref">I-D.ietf-nmop-network-incident-yang</a>]</span>.<a href="#section-5-4" class="pilcrow">¶</a></p>
+<p id="section-5-5">It uses the JSON encoding defined in <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span>. The example uses the module's access domain identity. The A2A fields and the YANG instance data are validated separately.
+The metadata keys yang_module, revision, request_type, priority, and response_deadline are application-defined conventions in this example, not standardized A2A fields. Their interpretation requires agreement between the participating agents.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5-6">
 <pre>
 POST /agents/network-ai-agent HTTP/1.1
 Host: example.com
 Content-Type: application/json
+A2A-Version: 1.0
+
 {
   "jsonrpc": "2.0",
-  "method": "message/send",
+  "id": "request-001",
+  "method": "SendMessage",
   "params": {
     "message": {
-      "message_id": "123e4567-e89b-12d3-a456-426614174000",
-      "context_id": "conversation-12345",
+      "messageId": "123e4567-e89b-12d3-a456-426614174000",
       "role": "ROLE_USER",
       "parts": [
         {
-          "text": "Please diagnose the service degeneration incident
-                   for 'optical-svc-A' in 'FAN' domain. Provide root
-                   cause, severity level, and resolution
-                   recommendations.",
-          "media_type": "text/plain"
+          "text": "Diagnose optical-svc-A in the FAN domain. Return the probable cause, severity and recommended actions.",
+          "mediaType": "text/plain"
         },
         {
           "data": {
-            "incident": {
-              "name": "Service Degradation",
-              "type": "network_problem",
-              "incident_id": "56433218",
-              "service_instances": ["optical-svc-A"],
-              "domain": "FAN",
-              "priority": "critical",
-              "status": "raised",
-              "occurrence_time": "2026-02-10T04:01:12Z",
-              "last_updated": "2026-02-10T04:01:12Z",
-              "probable_events": [
+            "ietf-incident:incidents": {
+              "incident": [
                 {
-                  "event_id": "8921834",
-                  "type": "alarm"
-                }
-              ],
-              "related_events": [
-                {
-                  "event_id": "8921832",
-                  "type": "alarm"
-                },
-                {
-                  "event_id": "8921833",
-                  "type": "alarm"
-                },
-                {
-                  "event_id": "8921834",
-                  "type": "alarm"
+                  "incident-no": "56433218",
+                  "name": "Service Degradation",
+                  "type": "ietf-incident:problem",
+                  "incident-id": "56433218",
+                  "service-instance": [
+                    "optical-svc-A"
+                  ],
+                  "domain": "ietf-incident:access",
+                  "priority": "critical",
+                  "status": "raised",
+                  "category": "ietf-incident:network",
+                  "detail": "Service degradation in the FAN domain.",
+                  "occur-time": "2026-02-10T04:01:12Z",
+                  "last-updated": "2026-02-10T04:01:12Z",
+                  "probable-events": {
+                    "probable-event": [
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921834"
+                      }
+                    ]
+                  },
+                  "events": {
+                    "event": [
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921832"
+                      },
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921833"
+                      },
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921834"
+                      }
+                    ]
+                  }
                 }
               ]
             }
           },
-          "media_type": "application/json",
+          "mediaType": "application/yang-data+json",
           "metadata": {
             "yang_module": "ietf-incident",
             "revision": "2025-09-16"
@@ -1682,9 +1691,11 @@ Content-Type: application/json
       ]
     },
     "configuration": {
-      "accepted_output_modes": ["application/json"],
-      "blocking": false,
-      "history_length": 3
+      "acceptedOutputModes": [
+        "application/json"
+      ],
+      "returnImmediately": true,
+      "historyLength": 3
     },
     "metadata": {
       "request_type": "incident_diagnosis",
@@ -1693,7 +1704,7 @@ Content-Type: application/json
     }
   }
 }
-</pre><a href="#section-5-4" class="pilcrow">¶</a>
+</pre><a href="#section-5-6" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -1714,39 +1725,25 @@ latency, and agent lifecycle operations.<a href="#section-6-1" class="pilcrow">�
 <p id="section-6.1-1">While AI agents have intelligence and capabilities, they may not always have expertise that we expect
 when performing specific network management and operation tasks. Agent Skills <span>[<a href="#Agent-skills" class="cite xref">Agent-skills</a>]</span>,
 introduced by Anthropic, is an open standard that allows developers to package specialized knowledge,
-workflow, and scripts and empowers a general AI Agent to become an expert in a specified field. Each
-skill is organized as a seperate folder that consists of a "skill.md" to define the basic information
+workflow, and scripts for use by an AI Agent in a specified field. Each
+skill is organized as a seperate folder that consists of a "SKILL.md" to define the basic information
 of the skill, and other files such as scripts, reference documents, etc. Agent Skills use progressive
 disclosure as a design pattern to load these resources to reduce token consumption and use less of
 the context window.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <p id="section-6.1-2">Network operators could encode their domain expertise (e.g., troubleshooting workflow logic for fault
 scenarios) into structured skills, e.g., by defining the fault_diagnose_link skill to organize the
 logic of "checking link connectivity -&gt; analyzing error syslogs -&gt; verifying hardware status -&gt; outputting
-a resolution solution"), it quickly equips AI Agents with domain expertise.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+a resolution solution"). These resources provide domain-specific guidance for task execution.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.1-3">The Agent Skills packages discussed here are implementation resources, distinct from the skill descriptions advertised in an A2A Agent Card. A generated skill should be reviewed and tested before it is used for network changes.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="knowledge-base-as-ground-truth-data">
+<div id="knowledge-base-and-data-freshness">
 <section id="section-6.2">
-        <h3 id="name-knowledge-base-as-ground-tr">
-<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-knowledge-base-as-ground-tr" class="section-name selfRef">Knowledge Base as Ground Truth Data</a>
+        <h3 id="name-knowledge-base-and-data-fre">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-knowledge-base-and-data-fre" class="section-name selfRef">Knowledge Base and Data Freshness</a>
         </h3>
-<p id="section-6.2-1">Another critical operational consideration for Agent-to-Agent (A2A) communication in network management
-is addressing the hallucination of Large Language Models (LLMs), which primarily stems from knowledge
-gaps within the models themselves. To mitigate this, a dedicated and machine-interpretable knowledge
-base can be constructed using unstructured product documents, maintenance manuals, historical fault
-tickets, network topology diagrams, configuration specifications, and expert experience, etc. The
-knowledge base enables LLMs to retrieve accurate, network operation and maintenance-specific
-information for reliable responses while ensuring data privacy and security, supporting domain knowledge
-plug-in to supplement knowledge Q&amp;A. A shared knowledge base helps eliminate information asymmetry between
-heterogeneous Agents, ensuring that all Agents across the entire A2A system base their judgments and
-actions on consistent knowledge standards to avoid miscommunication or inconsistent operations.
-Throughout the entire A2A operational lifecycle, the knowledge base is not a static resource but a
-dynamic core that permeates Agent initialization, communication and interaction, task execution,
-and result feedback, making knowledge base management a prerequisite for effective A2A system
-operational design.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.2-2">Notably, The emerging Model Context Protocol (MCP) can facilitate the efficient updates and queries
-of the knowledge base by providing standardized interfaces, and build a standardized external
-knowledge base for multi-Agent system.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.2-1">A knowledge base can provide product documentation, troubleshooting procedures, and historical incident records. Current topology, configuration, and operational state should be checked against authoritative management systems. Information exchanged between agents should identify its source and observation time so that the receiver can assess its relevance and freshness.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">MCP may provide interfaces for agents to query a knowledge base. Access remains subject to local policy.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="event-driven-agent-to-agent-communication">
@@ -1779,9 +1776,8 @@ network management and operations. <a href="#event-arch" class="auto internal xr
 <a href="#name-an-architecture-for-event-d" class="selfRef">An Architecture for Event-driven A2A</a>
           </figcaption></figure>
 </div>
-<p id="section-6.3-3">The event-driven extension introduces a publish/subscribe paradigm alongside the primary
-task-driven interaction. For example, a "Fault Agent" identifies a link failure by data
-analyzing and publishes a message to the Message Broker, the "recovery agent" subscribes
+<p id="section-6.3-3">The event-driven integration uses a publish/subscribe paradigm alongside the primary
+task-driven interaction. For example, a "Fault Agent" identifies a link failure by analyzing data and publishes a message to the Message Broker, the "recovery agent" subscribes
 to the topic and it could initiate a task to generate recovery strategies such as link
 switching and traffic rerouting and submit to the operator for approval upon consuming
 the message.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
@@ -1793,9 +1789,7 @@ the message.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
 <a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-scalability" class="section-name selfRef">Scalability</a>
         </h3>
 <p id="section-6.4-1">Large operational networks may contain tens of thousands of devices, multiple administrative
-domains, and a distributed set of controllers and orchestrators. The use of conversational,
-context-rich A2A messaging increases message volume compared to static RPC-based interfaces
-such as NETCONF or RESTCONF.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+domains, and a distributed set of controllers and orchestrators. Conversational, context-rich A2A workflows may require additional message exchanges for task coordination.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.4-2">Operators should evaluate:<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.4-3.1">
@@ -1933,10 +1927,8 @@ conflict resolution, and accountability.<a href="#section-6.8-3" class="pilcrow"
       <h2 id="name-security-considerations">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-7-1">The communication between Agents for the exchange of context information, capability information
-and user instruction is security sensitive and requires authentication, authorization, and integrity
-protection. Legacy communication protocols such as HTTPS/TLS, designed for human-centric interactions,
-simply cannot withstand the high-speed exchanges between intelligent agents.  Key security challenges
+<p id="section-7-1">The communication between Agents for the exchange of context information, capability information and user instruction is security sensitive and requires authentication, authorization, and integrity protection. A2A deployments use TLS to protect communications and authenticate callers using the configured authentication scheme. Each receiving agent should authorize the requested operation against local policy. Permission to request diagnosis does not imply permission to change network configuration.
+Where operator approval is required, it should be bound to the proposed action and its target resources. Audit records should link the A2A task to the local operations performed and their results. Key security challenges
 in AI agent communication include:<a href="#section-7-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7-2.1">
@@ -2000,15 +1992,11 @@ in AI agent communication include:<a href="#section-7-1" class="pilcrow">¶</a><
 <dd class="break"></dd>
 <dt id="I-D.ietf-nmop-network-incident-yang">[I-D.ietf-nmop-network-incident-yang]</dt>
         <dd>
-<span class="refAuthor">Hu, T.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Davis, N.</span>, and <span class="refAuthor">C. Feng</span>, <span class="refTitle">"A YANG Data Model for Network Incident Management"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-nmop-network-incident-yang-10</span>, <time datetime="2026-07-05" class="refDate">5 July 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-network-incident-yang-10">https://datatracker.ietf.org/doc/html/draft-ietf-nmop-network-incident-yang-10</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.rosenberg-ai-protocols">[I-D.rosenberg-ai-protocols]</dt>
-        <dd>
-<span class="refAuthor">Rosenberg, J.</span> and <span class="refAuthor">C. F. Jennings</span>, <span class="refTitle">"Framework, Use Cases and Requirements for AI Agent Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-rosenberg-ai-protocols-00</span>, <time datetime="2025-05-05" class="refDate">5 May 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-rosenberg-ai-protocols-00">https://datatracker.ietf.org/doc/html/draft-rosenberg-ai-protocols-00</a>&gt;</span>. </dd>
+<span class="refAuthor">Hu, T.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Davis, N.</span>, and <span class="refAuthor">C. Feng</span>, <span class="refTitle">"A YANG Data Model for Network Incident Management"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-nmop-network-incident-yang-20</span>, <time datetime="2026-10-16" class="refDate">16 October 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-network-incident-yang-20">https://datatracker.ietf.org/doc/html/draft-ietf-nmop-network-incident-yang-20</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.wmz-nmrg-agent-ndt-arch">[I-D.wmz-nmrg-agent-ndt-arch]</dt>
         <dd>
-<span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Zhou, C.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Han, S.</span>, and <span class="refAuthor">Y. Hong</span>, <span class="refTitle">"Network Digital Twin and Agentic AI based Architecture for AI driven Network Operations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-04</span>, <time datetime="2026-05-21" class="refDate">21 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-wmz-nmrg-agent-ndt-arch-04">https://datatracker.ietf.org/doc/html/draft-wmz-nmrg-agent-ndt-arch-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Zhou, C.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Han, S.</span>, and <span class="refAuthor">Y. Hong</span>, <span class="refTitle">"Network Digital Twin and Agentic AI based Architecture for AI-driven Network Operations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-wmz-nmrg-agent-ndt-arch-06</span>, <time datetime="2026-08-28" class="refDate">28 August 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-wmz-nmrg-agent-ndt-arch-06">https://datatracker.ietf.org/doc/html/draft-wmz-nmrg-agent-ndt-arch-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6241">[RFC6241]</dt>
         <dd>
@@ -2017,6 +2005,10 @@ in AI agent communication include:<a href="#section-7-1" class="pilcrow">¶</a><
 <dt id="RFC7950">[RFC7950]</dt>
         <dd>
 <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refTitle">"The YANG 1.1 Data Modeling Language"</span>, <span class="seriesInfo">RFC 7950</span>, <span class="seriesInfo">DOI 10.17487/RFC7950</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7950">https://www.rfc-editor.org/rfc/rfc7950</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7951">[RFC7951]</dt>
+        <dd>
+<span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7951">https://www.rfc-editor.org/rfc/rfc7951</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8040">[RFC8040]</dt>
       <dd>
