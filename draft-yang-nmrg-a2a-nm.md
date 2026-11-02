@@ -97,13 +97,11 @@ format, or send messages to communicate context, replies, artifacts, or user ins
 make it easier to build AI applications that can interact with heterogeneous AI ecosystems in
 specific domains.
 
-With significant adoption of AI Agents across the Internet, Agent to Agent Communication protocol
-may become the foundation for the next wave of Internet communication technologies across
-domains {{?I-D.rosenberg-ai-protocols}}. The application of A2A in the network management field
+In network management field, the application of A2A in the network management field
 is meant to develop various rich AI driven network applications, realize intent based networks
 management automation in the multi-vendor heterogeneous network environment. By establishing
-standard interfaces for dynamic Capability Discovery, intelligent message routing, heterogeneous
-AI ecosystems interaction, cross-platform collaboration, A2A enables AI Agents to:
+standard interfaces for dynamic Capability Discovery, heterogeneous AI ecosystems interaction,
+cross-platform collaboration, A2A enables network management Agents to:
 
 o Understand contextual nuances
 
@@ -152,15 +150,14 @@ A2A protocol to network management have been listed:
 
 o High Risk Operations of Agent2Agent interaction
 
-  * High risk operation can can to large-scale network outages.
+* High risk operation can lead to large-scale network outages.
 
 o The timeliness requirement of Agent2Agent collaboration
 
 * "Token-based" generation and reasoning approach, limited by computing power and algorithms, result
    in slow reasoning speeds.
 
-* Task-oriented "request-response" model without event subscription is unlike to meet time constraints
-  for tasks such as fault diagnosis, complaint handling, and user experience improvement.
+* Network events need to be correlated with the tasks they trigger. Task update delivery alone does not define how alarms are selected, correlated, or used to initiate diagnosis.
 
 o The Agent2agent Collaboration Reliability
 
@@ -212,18 +209,22 @@ o The Agent2agent Collaboration Reliability
 {: #arch title="A Reference Agent-to-Agent Architecture for Network Management" artwork-align="center"}
 
 As described in {{?I-D.wmz-nmrg-agent-ndt-arch}}, in the multi-agent communication deployment scenario,
-AI Agents can be deployed at both service layer,network layer and Network Element Level, e.g.,
+AI Agents can be deployed at the Service layer, Network layer and Network Element Level, e.g.,
 both service orchestrator and network controller can introduce AI Agent and allow Agent to Agent communication.
 Service AI Agent within the service orchestrator can provide registration center for other network AI agents
 and task agents within the network controller to register its location. In the meanwhile Network AI Agent
 within the network Controller can provide registration center for task agents at the network level and
 Network element level AI agent within the smart network element.
 
+Figure 1 shows one possible deployment. A2A does not require an agent at every layer or on every network element.
+
 The interaction in the multi-agent communication deployment scenario can be broken down into:
 
 - *AI Agent to Agent interaction*
 
 - *AI Agent to Tools/APIs/Models interaction*
+
+For example, an enterprise Service AI Agent may delegate network diagnosis to a vendor-provided Network AI Agent through A2A, while each agent manages access to its own tools.
 
 For AI Agent to Tools/APIs/Models interaction, to enable comprehensive functionality (e.g., large AI model
 and small AI model collaboration, network AI agent and Network element AI agent collaboration
@@ -242,13 +243,11 @@ A general workflow is as follows:
 
 - Agent Intent Processing: The service AI agent processes natural language inputs by parsing instructions into structured tasks.
 
-- Autonomous Close Loop Workflow Management: The service AI agent decomposing tasks into workflow map with subtasks, and
-  distributes subtasks via an Agent Card Registry to specialized task agents based on their capabilities.
+- Workflow Management: The service AI agent decomposes the request into subtasks, selects task agents using their Agent Cards, and sends requests to their A2A endpoints.
 
 - Task Execution: Iteration continues until all tasks reach executable task agents in the hierarchy.
 
-- Task Report: Task agents report outcomes to the central agent, which dynamically adjusts the workflow based
-  on result analysis and policy rules.
+- Task agents report outcomes to the central agent, which dynamically adjusts the workflow based on result analysis and policy rules.
 
 ## Multi-Agent Orchestration Patterns for Network Management
 
@@ -258,7 +257,7 @@ To efficiently coordinate multiple specialized AI Agents across the architecture
 
 The sequential pipeline pattern organizes a complex task into a linear, step-by-step execution sequence where each agent completes its execution and then passes the output to the next agent. This pattern is typically applied within the service or network Level to handle tasks with multiple fixed steps and each step requires different expertise and toolsets.
 
-As illustrated in {{seq}}, a configuration generation agent initially translates a network intent to generate network configuration, subsequently handing them over to a configuration validation agent for pre-deployment validation, which finally passes the verified artifacts to a configuration distribution agent for actual deployment. By ensuring that each specialist agent only perceives the direct output of its immediate predecessor, this pattern effectively guarantees deterministic execution workflows for network operations.
+As illustrated in {{seq}}, a configuration generation agent initially translates a network intent to generate network configuration, subsequently handing them over to a configuration validation agent for pre-deployment validation, which finally passes the verified artifacts to a configuration distribution agent for actual deployment. By ensuring that each specialist agent only perceives the direct output of its immediate predecessor. This pattern defines the order of execution; it does not guarantee the correctness of each agent's output.
 
 ~~~~
 +----------------+    +---------------------+     +-----------------+
@@ -290,9 +289,9 @@ As an examaple in {{fan}}, a Service AI Agent acts as the central coordinator th
 
 ### Supervisor
 
-Unlike the Fan-Out/Fan-In pattern which focuses on the static, parallel distribution and aggregation of decomposed sub-tasks, the Supervisor pattern establishes a centralized supervisor agent that maintains the overall workflow planning, and dynamic decides which task agent to invoke based on the real-time execution feedback of individual task agents. This pattern inherently drives cross-layer collaboration or a single-domain network autonomy.
+Unlike the Fan-Out/Fan-In pattern which focuses on the static, parallel distribution and aggregation of decomposed sub-tasks, the Supervisor pattern establishes a centralized supervisor agent that maintains the overall workflow planning, and dynamically decides which task agent to invoke based on the real-time execution feedback of individual task agents. This pattern supports cross-layer collaboration or a single-domain network autonomy.
 
-As illustrated in {{supervisor-mode}}, a supervisor Network AI Agent acts as the central brain that fulfills the service assurance intent. Upon receiving a link degradation alert, the supervisor first invokes a Fault Diagnosis Task Agent to identify the root cause. If the diagnosis reports a localized hardware issue, the supervisor dynamically decides to route the task to a Traffic Steering Task Agent to reroute alternative paths. Once the rerouting configuration is applied, the supervisor sequences a Service Verification Task Agent to monitor service statistics. If the statistic metrics indicate that the SLA has still not recovered, the supervisor Network AI Agent dynamically loops back to invoke the diagnosis or steering agents with updated constraints for further iteration. This pattern allows the flexibility necessary for complex, adaptive workflows while keeping the efficiency of underlying agentic reasoning and operations.
+As illustrated in {{supervisor-mode}}, a supervisor Network AI Agent acts as the central brain that fulfills the service assurance intent. Upon receiving a link degradation alert, the supervisor first invokes a Fault Diagnosis Task Agent to identify the root cause. If the diagnosis reports a localized hardware issue, the supervisor dynamically decides to route the task to a Traffic Steering Task Agent to reroute alternative paths. Once the rerouting configuration is applied, the supervisor sequences a Service Verification Task Agent to monitor service statistics. If the statistic metrics indicate that the SLA has still not recovered, the supervisor Network AI Agent dynamically loops back to invoke the diagnosis or steering agents with updated constraints for further iteration. The supervisor tracks subtask dependencies and outcomes and revises the plan as needed, within the authorized task scope.
 
 ~~~~
                     +----------------+
@@ -334,10 +333,8 @@ configuration deployment and potential large-scale network outages, which are un
 requirements of network management.
 
 YANG {{?RFC7950}}, as a standardized data modeling language defined by the IETF for network management, provides
-a extensible way to structure network management data and operational service and network intent; using
-YANG-modeled structured data to populate A2A communication payloads could help eliminate the ambiguity of natural
-language, and align A2A communication with the existing IETF-based network management ecosystem, enabling
-seamless integration with traditional network management protocols such as NETCONF {{?RFC6241}} and
+an extensible way to structure network management data and operational service and network intent; using
+YANG-modeled structured data to populate A2A communication payloads can make parameters and constraints explicit and support their validation, and align A2A communication with the existing IETF-based network management ecosystem, supporting integration with traditional network management protocols such as NETCONF {{?RFC6241}} and
 RESTCONF {{?RFC8040}}. The well-defined hierarchies and structures of YANG data models also enable Agents to
 quickly parse, validate and process communication data and support the definition of service or network intent
 for specific multi-domain and multi-vendor heterogeneous network scenarios. In addition, YANG-structured data
@@ -351,61 +348,81 @@ network AI Agent, after receving the intent from the operator to diagnose a spec
 a incident diagnosis task Agent. The data part complies with the Network Incident YANG data model defined
 in {{?I-D.ietf-nmop-network-incident-yang}}.
 
+The following example uses the JSON-RPC binding of A2A v1.0 {{A2A}}, with text and structured data in the same message. The Network AI Agent acts as the A2A client and sends a diagnosis request to the Incident Diagnosis Task Agent, acting as the A2A server. The request is sent over HTTPS to the server's advertised endpoint.
+The data part carries an incident instance using the ietf-incident module defined
+in {{?I-D.ietf-nmop-network-incident-yang}}.
+
+It uses the JSON encoding defined in {{?RFC7951}}. The example uses the module's access domain identity. The A2A fields and the YANG instance data are validated separately.
+The metadata keys yang_module, revision, request_type, priority, and response_deadline are application-defined conventions in this example, not standardized A2A fields. Their interpretation requires agreement between the participating agents.
+
+
 ~~~~
 POST /agents/network-ai-agent HTTP/1.1
 Host: example.com
 Content-Type: application/json
+A2A-Version: 1.0
+
 {
   "jsonrpc": "2.0",
-  "method": "message/send",
+  "id": "request-001",
+  "method": "SendMessage",
   "params": {
     "message": {
-      "message_id": "123e4567-e89b-12d3-a456-426614174000",
-      "context_id": "conversation-12345",
+      "messageId": "123e4567-e89b-12d3-a456-426614174000",
       "role": "ROLE_USER",
       "parts": [
         {
-          "text": "Please diagnose the service degeneration incident
-                   for 'optical-svc-A' in 'FAN' domain. Provide root
-                   cause, severity level, and resolution
-                   recommendations.",
-          "media_type": "text/plain"
+          "text": "Diagnose optical-svc-A in the FAN domain. Return the probable cause, severity and recommended actions.",
+          "mediaType": "text/plain"
         },
         {
           "data": {
-            "incident": {
-              "name": "Service Degradation",
-              "type": "network_problem",
-              "incident_id": "56433218",
-              "service_instances": ["optical-svc-A"],
-              "domain": "FAN",
-              "priority": "critical",
-              "status": "raised",
-              "occurrence_time": "2026-02-10T04:01:12Z",
-              "last_updated": "2026-02-10T04:01:12Z",
-              "probable_events": [
+            "ietf-incident:incidents": {
+              "incident": [
                 {
-                  "event_id": "8921834",
-                  "type": "alarm"
-                }
-              ],
-              "related_events": [
-                {
-                  "event_id": "8921832",
-                  "type": "alarm"
-                },
-                {
-                  "event_id": "8921833",
-                  "type": "alarm"
-                },
-                {
-                  "event_id": "8921834",
-                  "type": "alarm"
+                  "incident-no": "56433218",
+                  "name": "Service Degradation",
+                  "type": "ietf-incident:problem",
+                  "incident-id": "56433218",
+                  "service-instance": [
+                    "optical-svc-A"
+                  ],
+                  "domain": "ietf-incident:access",
+                  "priority": "critical",
+                  "status": "raised",
+                  "category": "ietf-incident:network",
+                  "detail": "Service degradation in the FAN domain.",
+                  "occur-time": "2026-02-10T04:01:12Z",
+                  "last-updated": "2026-02-10T04:01:12Z",
+                  "probable-events": {
+                    "probable-event": [
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921834"
+                      }
+                    ]
+                  },
+                  "events": {
+                    "event": [
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921832"
+                      },
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921833"
+                      },
+                      {
+                        "type": "ietf-incident:alarm",
+                        "event-id": "8921834"
+                      }
+                    ]
+                  }
                 }
               ]
             }
           },
-          "media_type": "application/json",
+          "mediaType": "application/yang-data+json",
           "metadata": {
             "yang_module": "ietf-incident",
             "revision": "2025-09-16"
@@ -414,9 +431,11 @@ Content-Type: application/json
       ]
     },
     "configuration": {
-      "accepted_output_modes": ["application/json"],
-      "blocking": false,
-      "history_length": 3
+      "acceptedOutputModes": [
+        "application/json"
+      ],
+      "returnImmediately": true,
+      "historyLength": 3
     },
     "metadata": {
       "request_type": "incident_diagnosis",
@@ -439,8 +458,8 @@ latency, and agent lifecycle operations.
 While AI agents have intelligence and capabilities, they may not always have expertise that we expect
 when performing specific network management and operation tasks. Agent Skills {{Agent-skills}},
 introduced by Anthropic, is an open standard that allows developers to package specialized knowledge,
-workflow, and scripts and empowers a general AI Agent to become an expert in a specified field. Each
-skill is organized as a seperate folder that consists of a "skill.md" to define the basic information
+workflow, and scripts for use by an AI Agent in a specified field. Each
+skill is organized as a seperate folder that consists of a "SKILL.md" to define the basic information
 of the skill, and other files such as scripts, reference documents, etc. Agent Skills use progressive
 disclosure as a design pattern to load these resources to reduce token consumption and use less of
 the context window.
@@ -448,28 +467,16 @@ the context window.
 Network operators could encode their domain expertise (e.g., troubleshooting workflow logic for fault
 scenarios) into structured skills, e.g., by defining the fault_diagnose_link skill to organize the
 logic of "checking link connectivity -> analyzing error syslogs -> verifying hardware status -> outputting
-a resolution solution"), it quickly equips AI Agents with domain expertise.
+a resolution solution"). These resources provide domain-specific guidance for task execution.
 
-## Knowledge Base as Ground Truth Data
+The Agent Skills packages discussed here are implementation resources, distinct from the skill descriptions advertised in an A2A Agent Card. A generated skill should be reviewed and tested before it is used for network changes.
 
-Another critical operational consideration for Agent-to-Agent (A2A) communication in network management
-is addressing the hallucination of Large Language Models (LLMs), which primarily stems from knowledge
-gaps within the models themselves. To mitigate this, a dedicated and machine-interpretable knowledge
-base can be constructed using unstructured product documents, maintenance manuals, historical fault
-tickets, network topology diagrams, configuration specifications, and expert experience, etc. The
-knowledge base enables LLMs to retrieve accurate, network operation and maintenance-specific
-information for reliable responses while ensuring data privacy and security, supporting domain knowledge
-plug-in to supplement knowledge Q&A. A shared knowledge base helps eliminate information asymmetry between
-heterogeneous Agents, ensuring that all Agents across the entire A2A system base their judgments and
-actions on consistent knowledge standards to avoid miscommunication or inconsistent operations.
-Throughout the entire A2A operational lifecycle, the knowledge base is not a static resource but a
-dynamic core that permeates Agent initialization, communication and interaction, task execution,
-and result feedback, making knowledge base management a prerequisite for effective A2A system
-operational design.
 
-Notably, The emerging Model Context Protocol (MCP) can facilitate the efficient updates and queries
-of the knowledge base by providing standardized interfaces, and build a standardized external
-knowledge base for multi-Agent system.
+## Knowledge Base and Data Freshness
+
+A knowledge base can provide product documentation, troubleshooting procedures, and historical incident records. Current topology, configuration, and operational state should be checked against authoritative management systems. Information exchanged between agents should identify its source and observation time so that the receiver can assess its relevance and freshness.
+
+MCP may provide interfaces for agents to query a knowledge base. Access remains subject to local policy.
 
 ## Event-driven Agent to Agent Communication
 
@@ -493,9 +500,8 @@ network management and operations. {{event-arch}} gives an overview of the archi
 ~~~~
 {: #event-arch title="An Architecture for Event-driven A2A" artwork-align="center"}
 
-The event-driven extension introduces a publish/subscribe paradigm alongside the primary
-task-driven interaction. For example, a "Fault Agent" identifies a link failure by data
-analyzing and publishes a message to the Message Broker, the "recovery agent" subscribes
+The event-driven integration uses a publish/subscribe paradigm alongside the primary
+task-driven interaction. For example, a "Fault Agent" identifies a link failure by analyzing data and publishes a message to the Message Broker, the "recovery agent" subscribes
 to the topic and it could initiate a task to generate recovery strategies such as link
 switching and traffic rerouting and submit to the operator for approval upon consuming
 the message.
@@ -504,9 +510,7 @@ the message.
 ## Scalability
 
 Large operational networks may contain tens of thousands of devices, multiple administrative
-domains, and a distributed set of controllers and orchestrators. The use of conversational,
-context-rich A2A messaging increases message volume compared to static RPC-based interfaces
-such as NETCONF or RESTCONF.
+domains, and a distributed set of controllers and orchestrators. Conversational, context-rich A2A workflows may require additional message exchanges for task coordination.
 
 Operators should evaluate:
 
@@ -597,10 +601,8 @@ conflict resolution, and accountability.
 
 # Security Considerations
 
-The communication between Agents for the exchange of context information, capability information
-and user instruction is security sensitive and requires authentication, authorization, and integrity
-protection. Legacy communication protocols such as HTTPS/TLS, designed for human-centric interactions,
-simply cannot withstand the high-speed exchanges between intelligent agents.  Key security challenges
+The communication between Agents for the exchange of context information, capability information and user instruction is security sensitive and requires authentication, authorization, and integrity protection. A2A deployments use TLS to protect communications and authenticate callers using the configured authentication scheme. Each receiving agent should authorize the requested operation against local policy. Permission to request diagnosis does not imply permission to change network configuration.
+Where operator approval is required, it should be bound to the proposed action and its target resources. Audit records should link the A2A task to the local operations performed and their results. Key security challenges
 in AI agent communication include:
 
 - Identity Verification: Ensuring that agents are who they claim to be
